@@ -1,0 +1,20 @@
+<resources>
+  <string name="app_name">WhatsUp</string>
+  <string name="sign_in_with_google">Sign in with Google</string>
+  <string name="sign_in_failed">Sign in failed</string>
+  <string name="logout">Logout</string>
+  <string name="login">Login</string>
+  <string name="feed">Feed</string>
+  <string name="new_post">New Post</string>
+  <string name="post">Post</string>
+  <string name="type_here">Type here</string>
+  <string name="empty_post_message">Post cannot be empty. Please add some content!</string>
+  <string name="empty_comment_message">Comment cannot be empty. Please add some content!</string>
+  <string name="posted_successfully">Posted successfully!</string>
+  <string name="post_details">Post Details</string>
+  <string name="update">Update</string>
+  <string name="delete">Delete</string>
+  <string name="comments">Comments</string>
+  <string name="add_comment">Add Comment</string>
+  <string name="comment">Comment…</string>
+</resources>

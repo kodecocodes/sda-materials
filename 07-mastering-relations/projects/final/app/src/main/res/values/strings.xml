@@ -1,0 +1,5 @@
+<resources>
+  <string name="app_name">DroidQuiz</string>
+  <string name="start">START</string>
+  <string name="title">Welcome to DroidQuiz!</string>
+</resources>

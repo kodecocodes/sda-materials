@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context=".ui.postDetails.PostDetailsActivity">
+
+  <androidx.appcompat.widget.Toolbar
+    android:id="@+id/postDetailsToolbar"
+    style="@style/ToolbarStyle"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:title="@string/post_details"
+    app:titleTextColor="@android:color/white" />
+
+  <EditText
+    android:id="@+id/postText"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/normal_margin"
+    android:layout_marginTop="@dimen/normal_margin"
+    android:layout_marginEnd="@dimen/normal_margin"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/postDetailsToolbar" />
+
+  <Button
+    android:id="@+id/updatePostButton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/normal_margin"
+    android:text="@string/update"
+    app:layout_constraintEnd_toStartOf="@id/deletePostButton"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/postText" />
+
+  <Button
+    android:id="@+id/deletePostButton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/delete"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toEndOf="@id/updatePostButton"
+    app:layout_constraintTop_toTopOf="@id/updatePostButton" />
+
+  <TextView
+    android:id="@+id/commentsLabel"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/normal_margin"
+    android:layout_marginTop="@dimen/normal_margin"
+    android:text="@string/comments"
+    android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/deletePostButton" />
+
+  <androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/commentsRecyclerView"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:padding="@dimen/normal_margin"
+    app:layout_constraintBottom_toTopOf="@id/commentEditText"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/commentsLabel" />
+
+  <EditText
+    android:id="@+id/commentEditText"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/normal_margin"
+    android:layout_marginEnd="@dimen/normal_margin"
+    android:layout_marginBottom="@dimen/small_margin"
+    android:hint="@string/comment"
+    app:layout_constraintBottom_toTopOf="@id/addCommentButton"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent" />
+
+  <Button
+    android:id="@+id/addCommentButton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/small_margin"
+    android:text="@string/add_comment"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

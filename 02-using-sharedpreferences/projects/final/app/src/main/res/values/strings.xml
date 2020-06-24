@@ -1,0 +1,29 @@
+<resources>
+  <string name="app_name">Organized Simple Note</string>
+  <string name="change_note_background_color">Change Note Background Color</string>
+  <string name="text_delete">Delete</string>
+  <string name="text_save">Save</string>
+  <string name="text_cancel">Cancel</string>
+  <string name="text_read">Read</string>
+  <string name="title_notes">Notes</string>
+  <string name="notes_hint">Enter Notes Here</string>
+  <string name="title_activity_main">Organized Simple Note</string>
+  <string name="note_text_hint">Note Text</string>
+  <string name="fake_date">01-01-01 01:01:01</string>
+  <string name="filename_hint">Filename</string>
+  <string name="lines_text_1">1</string>
+  <string name="hint_note_text">Note Text</string>
+  <string name="green">Green</string>
+  <string name="orange">Orange</string>
+  <string name="purple">Purple</string>
+  <string name="edit_note_title">Edit Note</string>
+  <string name="add_note_title">Add Note</string>
+
+
+  <string-array name="prioritiesList">
+    <item>(priority)</item>
+    <item>1</item>
+    <item>2</item>
+    <item>3</item>
+  </string-array>
+</resources>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context=".view.QuestionActivity">
+
+  <TextView
+          android:id="@+id/questionTextView"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="16dp"
+          android:layout_marginTop="8dp"
+          android:layout_marginEnd="16dp"
+          android:fontFamily="sans-serif-light"
+          android:text="Test"
+          android:textColor="@color/colorPrimaryDark"
+          android:textSize="24sp"
+          android:textStyle="bold"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          tools:text="Which of the following languages is not commonly used to create Android Apps?"
+          android:visibility="gone"/>
+
+  <RadioGroup
+          android:id="@+id/questionsRadioGroup"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="8dp"
+          android:layout_marginEnd="8dp"
+          android:layout_marginBottom="8dp"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/questionTextView" android:visibility="gone">
+
+    <RadioButton
+            android:id="@+id/option1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif-light"
+            android:text="Naruto"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            tools:text="Naruto"/>
+
+    <RadioButton
+            android:id="@+id/option2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif-light"
+            android:text="Dragon Ball"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            tools:text="Dragon Ball"/>
+
+    <RadioButton
+            android:id="@+id/option3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif-light"
+            android:text="Avatar"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            tools:text="Avatar"/>
+  </RadioGroup>
+
+  <ImageView
+          android:id="@+id/imageView2"
+          android:layout_width="0dp"
+          android:layout_height="0dp"
+          android:layout_marginStart="16dp"
+          android:layout_marginTop="16dp"
+          android:layout_marginEnd="16dp"
+          android:layout_marginBottom="16dp"
+          android:adjustViewBounds="true"
+          android:cropToPadding="false"
+          android:scaleType="fitCenter"
+          app:layout_constraintBottom_toTopOf="@+id/questionsRadioGroup"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/questionTextView"
+          app:srcCompat="@drawable/kotllin" android:visibility="gone"/>
+
+  <Button
+          android:id="@+id/button"
+          style="@style/Widget.AppCompat.Button"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:background="@color/colorPrimary"
+          android:fontFamily="sans-serif-light"
+          android:onClick="nextQuestion"
+          android:text="NEXT"
+          android:textColor="@android:color/background_light"
+          android:textSize="24sp"
+          android:textStyle="bold"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent" android:visibility="gone"/>
+  <ProgressBar
+          style="@android:style/Widget.Material.Light.ProgressBar.Large"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:id="@+id/progressBar"
+          app:layout_constraintTop_toBottomOf="@+id/questionTextView" android:layout_marginBottom="8dp"
+          app:layout_constraintBottom_toBottomOf="@+id/button" app:layout_constraintEnd_toEndOf="parent"
+          android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
+          android:layout_marginStart="8dp" android:visibility="gone"/>
+  <ImageView
+          android:layout_width="200dp"
+          android:layout_height="200dp" app:srcCompat="@drawable/liost"
+          android:id="@+id/emptyDroid" android:layout_marginTop="32dp"
+          app:layout_constraintTop_toTopOf="parent"
+          app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="24dp"
+          app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="24dp" android:layout_marginBottom="32dp"
+          app:layout_constraintBottom_toTopOf="@+id/emptyTextView" android:visibility="gone"/>
+  <TextView
+          android:text="There are no questions yet!"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:id="@+id/emptyTextView" android:layout_marginTop="8dp"
+          app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="8dp"
+          app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
+          android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
+          android:layout_marginStart="8dp" android:textSize="24sp" android:fontFamily="sans-serif-light"
+          android:textStyle="bold" android:visibility="gone"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
