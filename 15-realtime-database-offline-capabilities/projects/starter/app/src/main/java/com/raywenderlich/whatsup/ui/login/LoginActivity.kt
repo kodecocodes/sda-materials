@@ -29,16 +29,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.raywenderlich.whatsup.R
+import com.raywenderlich.whatsup.databinding.ActivityLoginBinding
 import com.raywenderlich.whatsup.firebase.authentication.AuthenticationManager
 import com.raywenderlich.whatsup.firebase.authentication.RC_SIGN_IN
 import com.raywenderlich.whatsup.ui.Router
 import com.raywenderlich.whatsup.util.showToast
-import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
 
   private val router by lazy { Router() }
   private val authenticationManager by lazy { AuthenticationManager() }
+  private lateinit var binding: ActivityLoginBinding
 
   companion object {
     fun createIntent(context: Context) = Intent(context, LoginActivity::class.java)
@@ -64,7 +65,7 @@ class LoginActivity : AppCompatActivity() {
   }
 
   private fun initialize() {
-    setSupportActionBar(loginToolbar)
+    setSupportActionBar(binding.loginToolbar)
     continueToHomeScreenIfUserSignedIn()
     setupClickListeners()
   }
@@ -72,7 +73,7 @@ class LoginActivity : AppCompatActivity() {
   private fun continueToHomeScreenIfUserSignedIn() = if (isUserSignedIn()) router.startHomeScreen(this) else Unit
 
   private fun setupClickListeners() {
-    googleSignInButton.setOnClickListener { authenticationManager.startSignInFlow(this) }
+    binding.googleSignInButton.setOnClickListener { authenticationManager.startSignInFlow(this) }
   }
 
   private fun isUserSignedIn() = authenticationManager.isUserSignedIn()

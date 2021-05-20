@@ -32,12 +32,12 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.raywenderlich.whatsup.R
+import com.raywenderlich.whatsup.databinding.ActivityHomeBinding
 import com.raywenderlich.whatsup.firebase.authentication.AuthenticationManager
 import com.raywenderlich.whatsup.firebase.realtimeDatabase.RealtimeDatabaseManager
 import com.raywenderlich.whatsup.model.Post
 import com.raywenderlich.whatsup.ui.Router
 import com.raywenderlich.whatsup.util.DateUtils
-import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity() {
 
@@ -46,6 +46,7 @@ class HomeActivity : AppCompatActivity() {
 
   private val router by lazy { Router() }
   private val feedAdapter by lazy { FeedAdapter(DateUtils()) }
+  private lateinit var binding: ActivityHomeBinding
 
   companion object {
     fun createIntent(context: Context) = Intent(context, HomeActivity::class.java)
@@ -54,7 +55,8 @@ class HomeActivity : AppCompatActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_home)
+    binding = ActivityHomeBinding.inflate(layoutInflater)
+    setContentView(binding.root)
     initialize()
   }
 
@@ -85,22 +87,22 @@ class HomeActivity : AppCompatActivity() {
       }
 
   private fun initialize() {
-    setSupportActionBar(homeToolbar)
+    setSupportActionBar(binding.homeToolbar)
     initializeRecyclerView()
 
-    addPostFab.setOnClickListener { router.startAddPostScreen(this) }
+    binding.addPostFab.setOnClickListener { router.startAddPostScreen(this) }
 
     feedAdapter.onPostItemClick()
         .observe(this, Observer(::onPostItemClick))
   }
 
   private fun initializeRecyclerView() {
-    postsFeed.layoutManager = LinearLayoutManager(this)
-    postsFeed.setHasFixedSize(true)
-    postsFeed.adapter = feedAdapter
+    binding.postsFeed.layoutManager = LinearLayoutManager(this)
+    binding.postsFeed.setHasFixedSize(true)
+    binding.postsFeed.adapter = feedAdapter
 
     val divider = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
-    postsFeed.addItemDecoration(divider)
+    binding.postsFeed.addItemDecoration(divider)
   }
 
   private fun listenForPostsUpdates() {
