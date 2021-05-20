@@ -42,7 +42,7 @@ import kotlinx.android.synthetic.main.activity_post_details.*
 
 class PostDetailsActivity : AppCompatActivity() {
 
-  private lateinit var post: Post
+  private var post: Post? = null
 
   private val commentsAdapter by lazy { CommentsAdapter(DateUtils()) }
   private val authenticationManager by lazy { AuthenticationManager() }
@@ -76,12 +76,12 @@ class PostDetailsActivity : AppCompatActivity() {
     extractArguments()
     initializeClickListener()
     initializeRecyclerView()
-    if (authenticationManager.getCurrentUser() != post.author) {
+    if (authenticationManager.getCurrentUser() != post?.author) {
       updatePostButton.visibility = View.GONE
       deletePostButton.visibility = View.GONE
     }
 
-    postText.setText(post.content, TextView.BufferType.EDITABLE)
+    postText.setText(post?.content, TextView.BufferType.EDITABLE)
   }
 
   private fun initializeRecyclerView() {
@@ -94,8 +94,10 @@ class PostDetailsActivity : AppCompatActivity() {
   }
 
   private fun listenForComments() {
-    realtimeDatabaseManager.onCommentsValuesChange(post.id)
+    post?.let { post->
+      realtimeDatabaseManager.onCommentsValuesChange(post.id)
         .observe(this, Observer(::onCommentsUpdate))
+    }
   }
 
   private fun onCommentsUpdate(comments: List<Comment>) {
@@ -104,19 +106,19 @@ class PostDetailsActivity : AppCompatActivity() {
 
   private fun initializeClickListener() {
     updatePostButton.setOnClickListener {
-      realtimeDatabaseManager.updatePostContent(post.id, postText.text.toString().trim())
+      post?.let { post -> realtimeDatabaseManager.updatePostContent(post.id, postText.text.toString().trim()) }
       finish()
     }
 
     deletePostButton.setOnClickListener {
-      realtimeDatabaseManager.deletePost(post.id)
+      post?.let { post -> realtimeDatabaseManager.deletePost(post.id) }
       finish()
     }
 
     addCommentButton.setOnClickListener {
       val comment = commentEditText.text.toString().trim()
       if (comment.isNotEmpty()) {
-        realtimeDatabaseManager.addComment(post.id, comment)
+        post?.let { post -> realtimeDatabaseManager.addComment(post.id, comment) }
         commentEditText.text.clear()
       } else {
         showToast(getString(R.string.empty_comment_message))

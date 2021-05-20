@@ -73,7 +73,7 @@ class HomeActivity : AppCompatActivity() {
     return true
   }
 
-  override fun onOptionsItemSelected(item: MenuItem?): Boolean =
+  override fun onOptionsItemSelected(item: MenuItem): Boolean =
       when (item?.itemId) {
         R.id.action_logout -> {
           authenticationManager.signOut(this)
