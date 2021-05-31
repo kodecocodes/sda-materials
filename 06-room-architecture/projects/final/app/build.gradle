@@ -1,0 +1,45 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-kapt'
+
+android {
+  compileSdkVersion 30
+  defaultConfig {
+    applicationId "com.raywenderlich.droidquiz"
+    minSdkVersion 21
+    targetSdkVersion 30
+    versionCode 1
+    versionName "1.0"
+    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+  }
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+    }
+  }
+
+  buildFeatures {
+    viewBinding true
+  }
+}
+
+dependencies {
+  implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+  implementation "androidx.core:core-ktx:$ktx_version"
+
+  //Constraint layout and Appcompat
+  implementation "androidx.constraintlayout:constraintlayout:$constraintlayout_version"
+  implementation "androidx.appcompat:appcompat:$appcompat_version"
+
+  //Espresso
+  androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
+
+  //Testing
+  androidTestImplementation "androidx.arch.core:core-testing:$androidx_common"
+  androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+  testImplementation "junit:junit:$junit_version"
+  androidTestImplementation "androidx.test:runner:$testrunner_version"
+}
