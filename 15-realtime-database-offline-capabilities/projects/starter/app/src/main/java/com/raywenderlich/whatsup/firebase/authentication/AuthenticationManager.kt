@@ -35,19 +35,6 @@ class AuthenticationManager {
 
   private val firebaseAuth: FirebaseAuth by lazy { FirebaseAuth.getInstance() }
 
-  private val providers = arrayListOf(AuthUI.IdpConfig.GoogleBuilder().build())
-
-  fun startSignInFlow(activity: Activity) {
-    activity.startActivityForResult(
-        AuthUI.getInstance()
-            .createSignInIntentBuilder()
-            .setAvailableProviders(providers)
-            .setIsSmartLockEnabled(false)
-            .build(),
-        RC_SIGN_IN
-    )
-  }
-
   fun isUserSignedIn() = firebaseAuth.currentUser != null
 
   fun getCurrentUser() = firebaseAuth.currentUser?.displayName ?: ""

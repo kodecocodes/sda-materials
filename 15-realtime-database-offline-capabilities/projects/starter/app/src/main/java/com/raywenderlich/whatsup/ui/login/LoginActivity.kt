@@ -28,9 +28,11 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.firebase.ui.auth.IdpResponse
 import com.raywenderlich.whatsup.R
 import com.raywenderlich.whatsup.databinding.ActivityLoginBinding
 import com.raywenderlich.whatsup.firebase.authentication.AuthenticationManager
+import com.raywenderlich.whatsup.firebase.authentication.FirebaseAuthResultContract
 import com.raywenderlich.whatsup.firebase.authentication.RC_SIGN_IN
 import com.raywenderlich.whatsup.ui.Router
 import com.raywenderlich.whatsup.util.showToast
@@ -52,19 +54,6 @@ class LoginActivity : AppCompatActivity() {
     initialize()
   }
 
-  override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-    super.onActivityResult(requestCode, resultCode, data)
-
-    if (requestCode == RC_SIGN_IN) {
-
-      if (resultCode == Activity.RESULT_OK) {
-        router.startHomeScreen(this)
-      } else {
-        showToast(getString(R.string.sign_in_failed))
-      }
-    }
-  }
-
   private fun initialize() {
     setSupportActionBar(binding.loginToolbar)
     continueToHomeScreenIfUserSignedIn()
@@ -74,8 +63,24 @@ class LoginActivity : AppCompatActivity() {
   private fun continueToHomeScreenIfUserSignedIn() = if (isUserSignedIn()) router.startHomeScreen(this) else Unit
 
   private fun setupClickListeners() {
-    binding.googleSignInButton.setOnClickListener { authenticationManager.startSignInFlow(this) }
+    binding.googleSignInButton.setOnClickListener { firebaseAuthResultLauncher.launch(RC_SIGN_IN) }
   }
 
   private fun isUserSignedIn() = authenticationManager.isUserSignedIn()
+
+  private val firebaseAuthResultLauncher =
+    registerForActivityResult(FirebaseAuthResultContract()) { idpResponse ->
+      handleFirebaseAuthResponse(idpResponse)
+    }
+
+  private fun handleFirebaseAuthResponse(idpResponse: IdpResponse?) {
+    when {
+      (idpResponse == null || idpResponse.error != null) -> {
+        showToast(getString(R.string.sign_in_failed))
+      }
+      else -> {
+        router.startHomeScreen(this)
+      }
+    }
+  }
 }
