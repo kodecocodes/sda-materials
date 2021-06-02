@@ -53,19 +53,6 @@ class LoginActivity : AppCompatActivity() {
     initialize()
   }
 
-  override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-    super.onActivityResult(requestCode, resultCode, data)
-
-    if (requestCode == RC_SIGN_IN) {
-
-      if (resultCode == Activity.RESULT_OK) {
-        router.startHomeScreen(this)
-      } else {
-        showToast(getString(R.string.sign_in_failed))
-      }
-    }
-  }
-
   private fun initialize() {
     setSupportActionBar(binding.loginToolbar)
     continueToHomeScreenIfUserSignedIn()
