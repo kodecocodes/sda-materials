@@ -24,12 +24,12 @@ package com.raywenderlich.whatsup.ui.addPost
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.raywenderlich.whatsup.R
+import com.raywenderlich.whatsup.databinding.ActivityAddPostBinding
 import com.raywenderlich.whatsup.firebase.realtimeDatabase.RealtimeDatabaseManager
 import com.raywenderlich.whatsup.util.showToast
-import kotlinx.android.synthetic.main.activity_add_post.*
 
 class AddPostActivity : AppCompatActivity() {
 
@@ -38,10 +38,12 @@ class AddPostActivity : AppCompatActivity() {
   }
 
   private val realtimeDatabaseManager by lazy { RealtimeDatabaseManager() }
+  private lateinit var binding: ActivityAddPostBinding
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_add_post)
+    binding = ActivityAddPostBinding.inflate(layoutInflater)
+    setContentView(binding.root)
     initialize()
   }
 
@@ -51,13 +53,13 @@ class AddPostActivity : AppCompatActivity() {
   }
 
   private fun setupClickListeners() {
-    addPostButton.setOnClickListener {
+    binding.addPostButton.setOnClickListener {
       addPostIfNotEmpty()
     }
   }
 
   private fun addPostIfNotEmpty() {
-    val postMessage = postText.text.toString().trim()
+    val postMessage = binding.postText.text.toString().trim()
     if (postMessage.isNotEmpty()) {
       realtimeDatabaseManager.addPost(postMessage)
       showToast(getString(R.string.posted_successfully))
@@ -68,6 +70,6 @@ class AddPostActivity : AppCompatActivity() {
   }
 
   private fun focusPostMessageInput() {
-    postText.requestFocus()
+    binding.postText.requestFocus()
   }
 }

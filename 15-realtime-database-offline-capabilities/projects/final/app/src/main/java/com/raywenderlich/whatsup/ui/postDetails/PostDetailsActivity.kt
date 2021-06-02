@@ -32,13 +32,13 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.raywenderlich.whatsup.R
+import com.raywenderlich.whatsup.databinding.ActivityPostDetailsBinding
 import com.raywenderlich.whatsup.firebase.authentication.AuthenticationManager
 import com.raywenderlich.whatsup.firebase.realtimeDatabase.RealtimeDatabaseManager
 import com.raywenderlich.whatsup.model.Comment
 import com.raywenderlich.whatsup.model.Post
 import com.raywenderlich.whatsup.util.DateUtils
 import com.raywenderlich.whatsup.util.showToast
-import kotlinx.android.synthetic.main.activity_post_details.*
 
 class PostDetailsActivity : AppCompatActivity() {
 
@@ -47,6 +47,7 @@ class PostDetailsActivity : AppCompatActivity() {
   private val commentsAdapter by lazy { CommentsAdapter(DateUtils()) }
   private val authenticationManager by lazy { AuthenticationManager() }
   private val realtimeDatabaseManager by lazy { RealtimeDatabaseManager() }
+  private lateinit var postDetailsBinding: ActivityPostDetailsBinding
 
   companion object {
     private const val POST_EXTRA = "post_extra"
@@ -57,7 +58,8 @@ class PostDetailsActivity : AppCompatActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_post_details)
+    postDetailsBinding = ActivityPostDetailsBinding.inflate(layoutInflater)
+    setContentView(postDetailsBinding.root)
     initialize()
   }
 
@@ -72,25 +74,25 @@ class PostDetailsActivity : AppCompatActivity() {
   }
 
   private fun initialize() {
-    setSupportActionBar(postDetailsToolbar)
+    setSupportActionBar(postDetailsBinding.postDetailsToolbar)
     extractArguments()
     initializeClickListener()
     initializeRecyclerView()
     if (authenticationManager.getCurrentUser() != post?.author) {
-      updatePostButton.visibility = View.GONE
-      deletePostButton.visibility = View.GONE
+      postDetailsBinding.updatePostButton.visibility = View.GONE
+      postDetailsBinding.deletePostButton.visibility = View.GONE
     }
 
-    postText.setText(post?.content, TextView.BufferType.EDITABLE)
+    postDetailsBinding.postText.setText(post?.content, TextView.BufferType.EDITABLE)
   }
 
   private fun initializeRecyclerView() {
-    commentsRecyclerView.layoutManager = LinearLayoutManager(this)
-    commentsRecyclerView.setHasFixedSize(true)
-    commentsRecyclerView.adapter = commentsAdapter
+    postDetailsBinding.commentsRecyclerView.layoutManager = LinearLayoutManager(this)
+    postDetailsBinding.commentsRecyclerView.setHasFixedSize(true)
+    postDetailsBinding.commentsRecyclerView.adapter = commentsAdapter
 
     val divider = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
-    commentsRecyclerView.addItemDecoration(divider)
+    postDetailsBinding.commentsRecyclerView.addItemDecoration(divider)
   }
 
   private fun listenForComments() {
@@ -105,21 +107,21 @@ class PostDetailsActivity : AppCompatActivity() {
   }
 
   private fun initializeClickListener() {
-    updatePostButton.setOnClickListener {
-      post?.let { post -> realtimeDatabaseManager.updatePostContent(post.id, postText.text.toString().trim()) }
+    postDetailsBinding.updatePostButton.setOnClickListener {
+      post?.let { post -> realtimeDatabaseManager.updatePostContent(post.id, postDetailsBinding.postText.text.toString().trim()) }
       finish()
     }
 
-    deletePostButton.setOnClickListener {
+    postDetailsBinding.deletePostButton.setOnClickListener {
       post?.let { post -> realtimeDatabaseManager.deletePost(post.id) }
       finish()
     }
 
-    addCommentButton.setOnClickListener {
-      val comment = commentEditText.text.toString().trim()
+    postDetailsBinding.addCommentButton.setOnClickListener {
+      val comment = postDetailsBinding.commentEditText.text.toString().trim()
       if (comment.isNotEmpty()) {
         post?.let { post -> realtimeDatabaseManager.addComment(post.id, comment) }
-        commentEditText.text.clear()
+        postDetailsBinding.commentEditText.text.clear()
       } else {
         showToast(getString(R.string.empty_comment_message))
       }
