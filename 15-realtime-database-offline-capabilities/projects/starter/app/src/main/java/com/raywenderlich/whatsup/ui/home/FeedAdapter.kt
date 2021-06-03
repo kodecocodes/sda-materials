@@ -23,12 +23,10 @@
 package com.raywenderlich.whatsup.ui.home
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
-import com.raywenderlich.whatsup.R
 import com.raywenderlich.whatsup.databinding.PostItemBinding
 import com.raywenderlich.whatsup.model.Post
 import com.raywenderlich.whatsup.util.DateUtils
