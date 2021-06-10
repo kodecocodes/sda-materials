@@ -2,16 +2,14 @@ apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
 
-apply plugin: 'kotlin-android-extensions'
-
 apply plugin: 'kotlin-kapt'
 
 android {
-  compileSdkVersion 28
+  compileSdkVersion 30
   defaultConfig {
     applicationId "com.raywenderlich.droidquiz"
     minSdkVersion 21
-    targetSdkVersion 28
+    targetSdkVersion 30
     versionCode 1
     versionName "1.0"
     testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -22,10 +20,13 @@ android {
       proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
     }
   }
+
+  buildFeatures {
+    viewBinding true
+  }
 }
 
 dependencies {
-  implementation fileTree(dir: 'libs', include: ['*.jar'])
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
   implementation "androidx.core:core-ktx:$ktx_version"
 
@@ -36,12 +37,9 @@ dependencies {
   //Espresso
   androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
 
-  //Anko
-  implementation "org.jetbrains.anko:anko:$anko_version"
-
   //Testing
-  androidTestImplementation 'androidx.test.ext:junit:1.1.0'
+  androidTestImplementation "androidx.arch.core:core-testing:$androidx_common"
+  androidTestImplementation 'androidx.test.ext:junit:1.1.2'
   testImplementation "junit:junit:$junit_version"
   androidTestImplementation "androidx.test:runner:$testrunner_version"
-
 }

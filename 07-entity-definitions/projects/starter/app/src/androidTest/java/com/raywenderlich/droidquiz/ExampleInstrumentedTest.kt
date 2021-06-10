@@ -1,6 +1,7 @@
 package com.raywenderlich.droidquiz
 
 import androidx.test.runner.AndroidJUnit4
+import com.raywenderlich.droidquiz.data.db.QuestionDao
 import org.junit.runner.RunWith
 
 /**
@@ -10,10 +11,10 @@ import org.junit.runner.RunWith
  */
 @RunWith(AndroidJUnit4::class)
 class ExampleInstrumentedTest {
-    /*@Test
-    fun useAppContext() {
-        // Context of the app under test.
-        val appContext = InstrumentationRegistry.getTargetContext()
-        assertEquals("com.raywenderlich.droidquiz", appContext.packageName)
-    }*/
+  /*@Test
+  fun useAppContext() {
+      // Context of the app under test.
+      val appContext = InstrumentationRegistry.getTargetContext()
+      assertEquals("com.raywenderlich.droidquiz", appContext.packageName)
+  }*/
 }

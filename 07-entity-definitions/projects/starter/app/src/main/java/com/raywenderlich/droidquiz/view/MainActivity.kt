@@ -32,18 +32,29 @@
 
 package com.raywenderlich.droidquiz.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.raywenderlich.droidquiz.R
-import org.jetbrains.anko.intentFor
+import com.raywenderlich.droidquiz.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
+  private lateinit var binding: ActivityMainBinding
+
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_main)
+
+    binding = ActivityMainBinding.inflate(layoutInflater)
+    setContentView(binding.root)
+
+    binding.startButton.setOnClickListener { goToQuestionActivity() }
+  }
+
+  private fun goToQuestionActivity() {
+    val intent = Intent(this, QuestionActivity::class.java)
+    startActivity(intent)
   }
 
   override fun onCreateOptionsMenu(menu: Menu?): Boolean {

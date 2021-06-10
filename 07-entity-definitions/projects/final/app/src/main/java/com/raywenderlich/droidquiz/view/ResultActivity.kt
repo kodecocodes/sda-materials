@@ -32,23 +32,31 @@
 
 package com.raywenderlich.droidquiz.view
 
+import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.raywenderlich.droidquiz.R
-import kotlinx.android.synthetic.main.activity_result.*
-import org.jetbrains.anko.clearTask
-import org.jetbrains.anko.intentFor
-import org.jetbrains.anko.newTask
+import com.raywenderlich.droidquiz.databinding.ActivityResultBinding
 
 class ResultActivity : AppCompatActivity() {
 
+  private lateinit var binding: ActivityResultBinding
+
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_result)
 
-    playButton.setOnClickListener { playAgain() }
+    binding = ActivityResultBinding.inflate(layoutInflater)
+    setContentView(binding.root)
+
+    binding.playButton.setOnClickListener { playAgain() }
   }
 
-  private fun playAgain() = startActivity(intentFor<MainActivity>().newTask().clearTask())
+  private fun playAgain() {
+    val intent = Intent(this, MainActivity::class.java).apply {
+      addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+      addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+    }
+
+    startActivity(intent)
+  }
 }
+
