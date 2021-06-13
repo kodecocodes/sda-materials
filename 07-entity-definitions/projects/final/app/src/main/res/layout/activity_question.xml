@@ -1,31 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!--Copyright (c) 2019 Razeware LLC
- Permission is hereby granted, free of charge, to any person obtaining a copy
- of this software and associated documentation files (the "Software"), to deal
- in the Software without restriction, including without limitation the rights
- to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- copies of the Software, and to permit persons to whom the Software is
- furnished to do so, subject to the following conditions:
+<!-- Copyright (c) 2019 Razeware LLC
 
- The above copyright notice and this permission notice shall be included in
- all copies or substantial portions of the Software.
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
 
- Notwithstanding the foregoing, you may not use, copy, modify, merge, publish,
- distribute, sublicense, create a derivative work, and/or sell copies of the
- Software in any work that is designed, intended, or marketed for pedagogical or
- instructional purposes related to programming, coding, application development,
- or information technology.  Permission for such use, copying, modification,
- merger, publication, distribution, sublicensing, creation of derivative works,
- or sale is expressly withheld.
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
 
- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- THE SOFTWARE.
+  Notwithstanding the foregoing, you may not use, copy, modify, merge, publish,
+  distribute, sublicense, create a derivative work, and/or sell copies of the
+  Software in any work that is designed, intended, or marketed for pedagogical or
+  instructional purposes related to programming, coding, application development,
+  or information technology.  Permission for such use, copying, modification,
+  merger, publication, distribution, sublicensing, creation of derivative works,
+  or sale is expressly withheld.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  THE SOFTWARE.
 -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -42,7 +43,7 @@
     android:layout_marginTop="8dp"
     android:layout_marginEnd="16dp"
     android:fontFamily="sans-serif-light"
-    android:text="Test"
+    android:text="@string/test"
     android:textColor="@color/colorPrimaryDark"
     android:textSize="24sp"
     android:textStyle="bold"
@@ -71,7 +72,6 @@
       android:layout_height="wrap_content"
       android:layout_weight="1"
       android:fontFamily="sans-serif-light"
-      android:text="Naruto"
       android:textSize="24sp"
       android:textStyle="bold"
       tools:text="Naruto" />
@@ -82,7 +82,6 @@
       android:layout_height="wrap_content"
       android:layout_weight="1"
       android:fontFamily="sans-serif-light"
-      android:text="Dragon Ball"
       android:textSize="24sp"
       android:textStyle="bold"
       tools:text="Dragon Ball" />
@@ -93,7 +92,6 @@
       android:layout_height="wrap_content"
       android:layout_weight="1"
       android:fontFamily="sans-serif-light"
-      android:text="Avatar"
       android:textSize="24sp"
       android:textStyle="bold"
       tools:text="Avatar" />
@@ -110,12 +108,13 @@
     android:adjustViewBounds="true"
     android:cropToPadding="false"
     android:scaleType="fitCenter"
+    android:contentDescription="@string/android_holding_a_device_running_kotlin"
     android:visibility="gone"
     app:layout_constraintBottom_toTopOf="@+id/questionsRadioGroup"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/questionTextView"
-    app:srcCompat="@drawable/kotllin" />
+    app:srcCompat="@drawable/kotlin" />
 
   <Button
     android:id="@+id/button"
@@ -124,7 +123,7 @@
     android:layout_height="wrap_content"
     android:background="@color/colorPrimary"
     android:fontFamily="sans-serif-light"
-    android:text="NEXT"
+    android:text="@string/next"
     android:textColor="@android:color/background_light"
     android:textSize="24sp"
     android:textStyle="bold"
@@ -155,12 +154,13 @@
     android:layout_marginTop="32dp"
     android:layout_marginEnd="24dp"
     android:layout_marginBottom="32dp"
+    android:contentDescription="@string/android_checking_a_list"
     android:visibility="gone"
     app:layout_constraintBottom_toTopOf="@+id/emptyTextView"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
-    app:srcCompat="@drawable/liost" />
+    app:srcCompat="@drawable/list" />
 
   <TextView
     android:id="@+id/emptyTextView"
@@ -171,7 +171,7 @@
     android:layout_marginEnd="8dp"
     android:layout_marginBottom="8dp"
     android:fontFamily="sans-serif-light"
-    android:text="There are no questions yet!"
+    android:text="@string/there_are_no_questions_yet"
     android:textSize="24sp"
     android:textStyle="bold"
     android:visibility="gone"

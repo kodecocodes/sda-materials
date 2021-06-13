@@ -7,7 +7,7 @@ apply plugin: 'kotlin-kapt'
 android {
   compileSdkVersion 30
   defaultConfig {
-    applicationId "com.raywenderlich.droidquiz"
+    applicationId "com.raywenderlich.android.droidquiz"
     minSdkVersion 21
     targetSdkVersion 30
     versionCode 1
