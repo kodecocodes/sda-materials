@@ -29,21 +29,23 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.raywenderlich.whatsup.R
+import com.raywenderlich.whatsup.databinding.PostItemBinding
 import com.raywenderlich.whatsup.model.Post
 import com.raywenderlich.whatsup.util.DateUtils
-import kotlinx.android.synthetic.main.post_item.view.*
 
-class FeedAdapter(private val dateUtils: DateUtils) : RecyclerView.Adapter<FeedAdapter.PostViewHolder>() {
+class FeedAdapter(private val dateUtils: DateUtils) :
+  RecyclerView.Adapter<FeedAdapter.PostViewHolder>() {
 
   private val posts = mutableListOf<Post>()
   private val onItemClickLiveData = MutableLiveData<Post>()
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
-    val view = LayoutInflater.from(parent.context).inflate(R.layout.post_item, parent, false)
+    val view = PostItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
     return PostViewHolder(view, onItemClickLiveData, dateUtils)
   }
 
-  override fun onBindViewHolder(holder: PostViewHolder, position: Int) = holder.setItem(posts[position])
+  override fun onBindViewHolder(holder: PostViewHolder, position: Int) =
+    holder.setItem(posts[position])
 
   override fun getItemCount(): Int = posts.size
 
@@ -56,20 +58,20 @@ class FeedAdapter(private val dateUtils: DateUtils) : RecyclerView.Adapter<FeedA
   fun onPostItemClick(): LiveData<Post> = onItemClickLiveData
 
   class PostViewHolder(
-      private val view: View,
-      private val onItemClickLiveData: MutableLiveData<Post>,
-      private val dateUtils: DateUtils
-  ) : RecyclerView.ViewHolder(view) {
+    private val binding: PostItemBinding,
+    private val onItemClickLiveData: MutableLiveData<Post>,
+    private val dateUtils: DateUtils
+  ) : RecyclerView.ViewHolder(binding.root) {
 
     private lateinit var post: Post
 
     init {
-      view.setOnClickListener { onItemClickLiveData.postValue(post) }
+      binding.root.setOnClickListener { onItemClickLiveData.postValue(post) }
     }
 
     fun setItem(post: Post) {
       this.post = post
-      with(view) {
+      with(binding) {
         author.text = post.author
         content.text = post.content
         time.text = dateUtils.mapToNormalisedDateText(post.timestamp)
