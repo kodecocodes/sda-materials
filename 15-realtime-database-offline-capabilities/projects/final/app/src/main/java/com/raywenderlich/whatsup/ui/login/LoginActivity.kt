@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019 Razeware LLC
+ * Copyright (c) 2021 Razeware LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -67,9 +67,9 @@ class LoginActivity : AppCompatActivity() {
   private fun isUserSignedIn() = authenticationManager.isUserSignedIn()
 
   private val firebaseAuthResultLauncher =
-    registerForActivityResult(FirebaseAuthResultContract()) { idpResponse ->
-      handleFirebaseAuthResponse(idpResponse)
-    }
+      registerForActivityResult(FirebaseAuthResultContract()) { idpResponse ->
+        handleFirebaseAuthResponse(idpResponse)
+      }
 
   private fun handleFirebaseAuthResponse(idpResponse: IdpResponse?) {
     when {

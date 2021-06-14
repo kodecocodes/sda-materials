@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019 Razeware LLC
+ * Copyright (c) 2021 Razeware LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -76,15 +76,15 @@ class HomeActivity : AppCompatActivity() {
   }
 
   override fun onOptionsItemSelected(item: MenuItem): Boolean =
-      when (item.itemId) {
-        R.id.action_logout -> {
-          authenticationManager.signOut(this)
-          router.startLoginScreen(this)
-          finish()
-          true
-        }
-        else -> super.onOptionsItemSelected(item)
+    when (item.itemId) {
+      R.id.action_logout -> {
+        authenticationManager.signOut(this)
+        router.startLoginScreen(this)
+        finish()
+        true
       }
+      else -> super.onOptionsItemSelected(item)
+    }
 
   private fun initialize() {
     setSupportActionBar(binding.homeToolbar)
@@ -93,7 +93,7 @@ class HomeActivity : AppCompatActivity() {
     binding.addPostFab.setOnClickListener { router.startAddPostScreen(this) }
 
     feedAdapter.onPostItemClick()
-        .observe(this, Observer(::onPostItemClick))
+      .observe(this, Observer(::onPostItemClick))
   }
 
   private fun initializeRecyclerView() {
@@ -107,7 +107,7 @@ class HomeActivity : AppCompatActivity() {
 
   private fun listenForPostsUpdates() {
     realtimeDatabaseManager.onPostsValuesChange()
-        .observe(this, Observer(::onPostsUpdate))
+      .observe(this, Observer(::onPostsUpdate))
   }
 
   private fun onPostsUpdate(posts: List<Post>) {

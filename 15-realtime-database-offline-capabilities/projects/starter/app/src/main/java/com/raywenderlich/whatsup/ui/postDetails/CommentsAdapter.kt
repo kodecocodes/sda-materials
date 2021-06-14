@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019 Razeware LLC
+ * Copyright (c) 2021 Razeware LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,7 +29,8 @@ import com.raywenderlich.whatsup.databinding.CommentListItemBinding
 import com.raywenderlich.whatsup.model.Comment
 import com.raywenderlich.whatsup.util.DateUtils
 
-class CommentsAdapter(private val dateUtils: DateUtils) : RecyclerView.Adapter<CommentsAdapter.CommentViewHolder>() {
+class CommentsAdapter(private val dateUtils: DateUtils) :
+  RecyclerView.Adapter<CommentsAdapter.CommentViewHolder>() {
 
   private val comments = mutableListOf<Comment>()
 
@@ -38,7 +39,8 @@ class CommentsAdapter(private val dateUtils: DateUtils) : RecyclerView.Adapter<C
     return CommentViewHolder(view, dateUtils)
   }
 
-  override fun onBindViewHolder(holder: CommentViewHolder, position: Int) = holder.setItem(comments[position])
+  override fun onBindViewHolder(holder: CommentViewHolder, position: Int) =
+    holder.setItem(comments[position])
 
   override fun getItemCount(): Int = comments.size
 
@@ -48,7 +50,10 @@ class CommentsAdapter(private val dateUtils: DateUtils) : RecyclerView.Adapter<C
     notifyDataSetChanged()
   }
 
-  class CommentViewHolder(private val binding: CommentListItemBinding, private val dateUtils: DateUtils) : RecyclerView.ViewHolder(binding.root) {
+  class CommentViewHolder(
+    private val binding: CommentListItemBinding,
+    private val dateUtils: DateUtils
+  ) : RecyclerView.ViewHolder(binding.root) {
 
     fun setItem(comment: Comment) {
       with(binding) {

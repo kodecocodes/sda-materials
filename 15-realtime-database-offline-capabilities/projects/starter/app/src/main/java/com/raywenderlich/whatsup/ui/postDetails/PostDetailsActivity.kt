@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019 Razeware LLC
+ * Copyright (c) 2021 Razeware LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -51,9 +51,10 @@ class PostDetailsActivity : AppCompatActivity() {
 
   companion object {
     private const val POST_EXTRA = "post_extra"
-    fun createIntent(context: Context, post: Post) = Intent(context, PostDetailsActivity::class.java).apply {
-      putExtra(POST_EXTRA, post)
-    }
+    fun createIntent(context: Context, post: Post) =
+      Intent(context, PostDetailsActivity::class.java).apply {
+        putExtra(POST_EXTRA, post)
+      }
   }
 
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -108,7 +109,12 @@ class PostDetailsActivity : AppCompatActivity() {
 
   private fun initializeClickListener() {
     postDetailsBinding.updatePostButton.setOnClickListener {
-      post?.let { post -> realtimeDatabaseManager.updatePostContent(post.id, postDetailsBinding.postText.text.toString().trim()) }
+      post?.let { post ->
+        realtimeDatabaseManager.updatePostContent(
+          post.id,
+          postDetailsBinding.postText.text.toString().trim()
+        )
+      }
       finish()
     }
 
