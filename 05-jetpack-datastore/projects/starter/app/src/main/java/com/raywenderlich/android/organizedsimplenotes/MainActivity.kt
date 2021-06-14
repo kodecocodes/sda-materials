@@ -44,6 +44,8 @@ import com.raywenderlich.android.organizedsimplenotes.NoteSortOrder.*
 import com.raywenderlich.android.organizedsimplenotes.databinding.ActivityMainBinding
 
 
+// TODO: add DataStore property delegate
+
 class MainActivity : AppCompatActivity(), NoteDialogFragment.NoticeNoteDialogListener {
 
   private val PRIORITY_ONE = "1"
@@ -75,6 +77,7 @@ class MainActivity : AppCompatActivity(), NoteDialogFragment.NoticeNoteDialogLis
     binding.recyclerView.adapter = noteAdapter
     binding.fab.setOnClickListener { showAddNoteDialog() }
 
+    // TODO: replace with Flow collect
     changeNotesBackgroundColor(getCurrentBackgroundColorInt())
   }
 
@@ -196,6 +199,7 @@ class MainActivity : AppCompatActivity(), NoteDialogFragment.NoticeNoteDialogLis
       val selectedRadioButton = radioButtons.firstOrNull { it.id == checkedId }
 
       if (selectedRadioButton != null) {
+        // TODO: replace with coroutine call
         notePrefs.saveNoteBackgroundColor(selectedRadioButton.text.toString())
         changeNotesBackgroundColor(getCurrentBackgroundColorInt())
       }

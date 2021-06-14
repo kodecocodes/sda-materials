@@ -33,6 +33,7 @@ package com.raywenderlich.android.organizedsimplenotes
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.Window
@@ -46,6 +47,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.raywenderlich.android.organizedsimplenotes.NoteSortOrder.*
 import com.raywenderlich.android.organizedsimplenotes.databinding.ActivityMainBinding
 import kotlinx.coroutines.flow.collect
+import java.lang.Exception
 
 private val Context.dataStore by preferencesDataStore(
   name = NotePrefs.PREFS_NAME,
@@ -87,11 +89,14 @@ class MainActivity : AppCompatActivity(), NoteDialogFragment.NoticeNoteDialogLis
     binding.recyclerView.adapter = noteAdapter
     binding.fab.setOnClickListener { showAddNoteDialog() }
 
-
-    lifecycleScope.launchWhenStarted {
-      notePrefs.userPreferencesFlow.collect {
-        changeNotesBackgroundColor(it.backgroundColor.intColor)
+    try {
+      lifecycleScope.launchWhenStarted {
+        notePrefs.userPreferencesFlow.collect { userPreferences ->
+          changeNotesBackgroundColor(userPreferences.backgroundColor.intColor)
+        }
       }
+    } catch (e: Exception) {
+      Log.e("MainActivity", e.localizedMessage)
     }
   }
 
