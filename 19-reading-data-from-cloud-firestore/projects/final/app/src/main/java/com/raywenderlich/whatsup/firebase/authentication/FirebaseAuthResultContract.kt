@@ -20,9 +20,27 @@
  * THE SOFTWARE.
  */
 
-package com.raywenderlich.whatsup.util
+package com.raywenderlich.whatsup.firebase.authentication
 
 import android.app.Activity
-import android.widget.Toast
+import android.content.Context
+import android.content.Intent
+import androidx.activity.result.contract.ActivityResultContract
+import com.firebase.ui.auth.AuthUI
+import com.firebase.ui.auth.IdpResponse
 
-fun Activity.showToast(message: String) = Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+class FirebaseAuthResultContract : ActivityResultContract<Int, IdpResponse>() {
+
+    private val providers = arrayListOf(AuthUI.IdpConfig.GoogleBuilder().build())
+
+    override fun createIntent(context: Context, input: Int?): Intent = AuthUI.getInstance()
+        .createSignInIntentBuilder()
+        .setAvailableProviders(providers)
+        .setIsSmartLockEnabled(false)
+        .build()
+
+    override fun parseResult(resultCode: Int, intent: Intent?): IdpResponse? = when (resultCode) {
+        Activity.RESULT_OK -> IdpResponse.fromResultIntent(intent)
+        else -> null
+    }
+}

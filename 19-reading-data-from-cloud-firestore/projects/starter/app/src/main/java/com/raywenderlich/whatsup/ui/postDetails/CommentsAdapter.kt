@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019 Razeware LLC
+ * Copyright (c) 2021 Razeware LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,16 +27,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.raywenderlich.whatsup.R
+import com.raywenderlich.whatsup.databinding.CommentListItemBinding
 import com.raywenderlich.whatsup.model.Comment
 import com.raywenderlich.whatsup.util.DateUtils
-import kotlinx.android.synthetic.main.comment_list_item.view.*
 
 class CommentsAdapter(private val dateUtils: DateUtils) : RecyclerView.Adapter<CommentsAdapter.CommentViewHolder>() {
 
   private val comments = mutableListOf<Comment>()
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CommentViewHolder {
-    val view = LayoutInflater.from(parent.context).inflate(R.layout.comment_list_item, parent, false)
+    val view = CommentListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
     return CommentViewHolder(view, dateUtils)
   }
 
@@ -50,10 +50,10 @@ class CommentsAdapter(private val dateUtils: DateUtils) : RecyclerView.Adapter<C
     notifyDataSetChanged()
   }
 
-  class CommentViewHolder(private val view: View, private val dateUtils: DateUtils) : RecyclerView.ViewHolder(view) {
+  class CommentViewHolder(private val itemBinding: CommentListItemBinding, private val dateUtils: DateUtils) : RecyclerView.ViewHolder(itemBinding.root) {
 
     fun setItem(comment: Comment) {
-      with(view) {
+      with(itemBinding) {
         author.text = comment.author
         timestamp.text = dateUtils.mapToNormalisedDateText(comment.timestamp)
         commentText.text = comment.content

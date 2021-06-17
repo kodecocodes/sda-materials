@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019 Razeware LLC
+ * Copyright (c) 2021 Razeware LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -32,6 +32,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.raywenderlich.whatsup.R
+import com.raywenderlich.whatsup.databinding.ActivityPostDetailsBinding
 import com.raywenderlich.whatsup.firebase.authentication.AuthenticationManager
 import com.raywenderlich.whatsup.firebase.firestore.CloudFirestoreManager
 import com.raywenderlich.whatsup.firebase.realtimeDatabase.RealtimeDatabaseManager
@@ -39,16 +40,16 @@ import com.raywenderlich.whatsup.model.Comment
 import com.raywenderlich.whatsup.model.Post
 import com.raywenderlich.whatsup.util.DateUtils
 import com.raywenderlich.whatsup.util.showToast
-import kotlinx.android.synthetic.main.activity_post_details.*
 
 class PostDetailsActivity : AppCompatActivity() {
 
-  private lateinit var post: Post
+  private var post: Post? = null
 
   private val commentsAdapter by lazy { CommentsAdapter(DateUtils()) }
   private val authenticationManager by lazy { AuthenticationManager() }
   private val realtimeDatabaseManager by lazy { RealtimeDatabaseManager() }
   private val cloudFirestoreManager by lazy { CloudFirestoreManager() }
+  private lateinit var postDetailsBinding: ActivityPostDetailsBinding
 
   companion object {
     private const val POST_EXTRA = "post_extra"
@@ -74,30 +75,32 @@ class PostDetailsActivity : AppCompatActivity() {
   }
 
   private fun initialize() {
-    setSupportActionBar(postDetailsToolbar)
+    setSupportActionBar(postDetailsBinding.postDetailsToolbar)
     extractArguments()
     initializeClickListener()
     initializeRecyclerView()
-    if (authenticationManager.getCurrentUser() != post.author) {
-      updatePostButton.visibility = View.GONE
-      deletePostButton.visibility = View.GONE
+    if (authenticationManager.getCurrentUser() != post?.author) {
+      postDetailsBinding.updatePostButton.visibility = View.GONE
+      postDetailsBinding.deletePostButton.visibility = View.GONE
     }
 
-    postText.setText(post.content, TextView.BufferType.EDITABLE)
+    postDetailsBinding.postText.setText(post?.content, TextView.BufferType.EDITABLE)
   }
 
   private fun initializeRecyclerView() {
-    commentsRecyclerView.layoutManager = LinearLayoutManager(this)
-    commentsRecyclerView.setHasFixedSize(true)
-    commentsRecyclerView.adapter = commentsAdapter
+    postDetailsBinding.commentsRecyclerView.layoutManager = LinearLayoutManager(this)
+    postDetailsBinding.commentsRecyclerView.setHasFixedSize(true)
+    postDetailsBinding.commentsRecyclerView.adapter = commentsAdapter
 
     val divider = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
-    commentsRecyclerView.addItemDecoration(divider)
+    postDetailsBinding.commentsRecyclerView.addItemDecoration(divider)
   }
 
   private fun listenForComments() {
-    cloudFirestoreManager.onCommentsValuesChange(post.id)
+    post?.id?.let {postId ->
+      cloudFirestoreManager.onCommentsValuesChange(postId)
         .observe(this, Observer(::onCommentsUpdate))
+    }
   }
 
   private fun onCommentsUpdate(comments: List<Comment>) {
@@ -105,30 +108,32 @@ class PostDetailsActivity : AppCompatActivity() {
   }
 
   private fun initializeClickListener() {
-    updatePostButton.setOnClickListener {
-      cloudFirestoreManager.updatePostContent(
+    post?.let { post ->
+      postDetailsBinding.updatePostButton.setOnClickListener {
+        cloudFirestoreManager.updatePostContent(
           post.id,
-          postText.text.toString().trim(),
+          postDetailsBinding.postText.text.toString().trim(),
           ::onPostSuccessfullyUpdated,
           ::onPostUpdateFailed
-      )
-    }
+        )
+      }
 
-    deletePostButton.setOnClickListener {
-      cloudFirestoreManager.deletePost(post.id, ::onPostSuccessfullyDeleted, ::onPostDeleteFailed)
-    }
+      postDetailsBinding.deletePostButton.setOnClickListener {
+        cloudFirestoreManager.deletePost(post.id, ::onPostSuccessfullyDeleted, ::onPostDeleteFailed)
+      }
 
-    addCommentButton.setOnClickListener {
-      val comment = commentEditText.text.toString().trim()
-      if (comment.isNotEmpty()) {
-        cloudFirestoreManager.addComment(
+      postDetailsBinding.addCommentButton.setOnClickListener {
+        val comment = postDetailsBinding.commentEditText.text.toString().trim()
+        if (comment.isNotEmpty()) {
+          cloudFirestoreManager.addComment(
             post.id,
             comment,
             ::onCommentSuccessfullyAdded,
             ::onCommentAddFailed
-        )
-      } else {
-        showToast(getString(R.string.empty_comment_message))
+          )
+        } else {
+          showToast(getString(R.string.empty_comment_message))
+        }
       }
     }
   }
@@ -152,7 +157,7 @@ class PostDetailsActivity : AppCompatActivity() {
   }
 
   private fun onCommentSuccessfullyAdded() {
-    commentEditText.text.clear()
+    postDetailsBinding.commentEditText.text.clear()
   }
 
   private fun onCommentAddFailed() {
