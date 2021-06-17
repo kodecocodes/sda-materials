@@ -108,10 +108,10 @@ class PostDetailsActivity : AppCompatActivity() {
   }
 
   private fun initializeClickListener() {
-    post?.id?.let { postId ->
+    post?.let { post ->
       postDetailsBinding.updatePostButton.setOnClickListener {
         cloudFirestoreManager.updatePostContent(
-            postId,
+            post.id,
             postDetailsBinding.postText.text.toString().trim(),
             ::onPostSuccessfullyUpdated,
             ::onPostUpdateFailed
@@ -119,13 +119,13 @@ class PostDetailsActivity : AppCompatActivity() {
       }
 
       postDetailsBinding.deletePostButton.setOnClickListener {
-        cloudFirestoreManager.deletePost(postId, ::onPostSuccessfullyDeleted, ::onPostDeleteFailed)
+        cloudFirestoreManager.deletePost(post.id, ::onPostSuccessfullyDeleted, ::onPostDeleteFailed)
       }
 
       postDetailsBinding.addCommentButton.setOnClickListener {
         val comment = postDetailsBinding.commentEditText.text.toString().trim()
         if (comment.isNotEmpty()) {
-          cloudFirestoreManager.addComment(postId, comment, ::onCommentSuccessfullyAdded, ::onCommentAddFailed)
+          cloudFirestoreManager.addComment(post.id, comment, ::onCommentSuccessfullyAdded, ::onCommentAddFailed)
         } else {
           showToast(getString(R.string.empty_comment_message))
         }

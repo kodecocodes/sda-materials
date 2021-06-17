@@ -78,15 +78,15 @@ class HomeActivity : AppCompatActivity() {
   }
 
   override fun onOptionsItemSelected(item: MenuItem): Boolean =
-    when (item.itemId) {
-      R.id.action_logout -> {
-        authenticationManager.signOut(this)
-        router.startLoginScreen(this)
-        finish()
-        true
+      when (item.itemId) {
+        R.id.action_logout -> {
+          authenticationManager.signOut(this)
+          router.startLoginScreen(this)
+          finish()
+          true
+        }
+        else -> super.onOptionsItemSelected(item)
       }
-      else -> super.onOptionsItemSelected(item)
-    }
 
   private fun initialize() {
     setSupportActionBar(binding.homeToolbar)
@@ -95,7 +95,7 @@ class HomeActivity : AppCompatActivity() {
     binding.addPostFab.setOnClickListener { router.startAddPostScreen(this) }
 
     feedAdapter.onPostItemClick()
-      .observe(this, Observer(::onPostItemClick))
+        .observe(this, Observer(::onPostItemClick))
   }
 
   private fun initializeRecyclerView() {

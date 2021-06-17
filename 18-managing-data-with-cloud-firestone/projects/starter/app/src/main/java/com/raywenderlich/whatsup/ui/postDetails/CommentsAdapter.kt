@@ -23,18 +23,14 @@
 package com.raywenderlich.whatsup.ui.postDetails
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.raywenderlich.whatsup.R
 import com.raywenderlich.whatsup.databinding.CommentListItemBinding
-import com.raywenderlich.whatsup.databinding.PostItemBinding
 import com.raywenderlich.whatsup.model.Comment
-import com.raywenderlich.whatsup.ui.home.FeedAdapter
 import com.raywenderlich.whatsup.util.DateUtils
 
 class CommentsAdapter(private val dateUtils: DateUtils) :
-  RecyclerView.Adapter<CommentsAdapter.CommentViewHolder>() {
+    RecyclerView.Adapter<CommentsAdapter.CommentViewHolder>() {
 
   private val comments = mutableListOf<Comment>()
 
@@ -44,7 +40,7 @@ class CommentsAdapter(private val dateUtils: DateUtils) :
   }
 
   override fun onBindViewHolder(holder: CommentViewHolder, position: Int) =
-    holder.setItem(comments[position])
+      holder.setItem(comments[position])
 
   override fun getItemCount(): Int = comments.size
 
@@ -55,10 +51,10 @@ class CommentsAdapter(private val dateUtils: DateUtils) :
   }
 
   class CommentViewHolder(
-    private val itemBinding: CommentListItemBinding,
-    private val dateUtils: DateUtils
+      private val itemBinding: CommentListItemBinding,
+      private val dateUtils: DateUtils
   ) :
-    RecyclerView.ViewHolder(itemBinding.root) {
+      RecyclerView.ViewHolder(itemBinding.root) {
 
     fun setItem(comment: Comment) {
       with(itemBinding) {

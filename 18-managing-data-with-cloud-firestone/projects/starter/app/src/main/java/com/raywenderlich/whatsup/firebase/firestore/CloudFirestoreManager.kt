@@ -58,10 +58,10 @@ class CloudFirestoreManager {
   }
 
   fun updatePostContent(
-    key: String,
-    content: String,
-    onSuccessAction: () -> Unit,
-    onFailureAction: () -> Unit
+      key: String,
+      content: String,
+      onSuccessAction: () -> Unit,
+      onFailureAction: () -> Unit
   ) {
     //TODO
   }
@@ -71,10 +71,10 @@ class CloudFirestoreManager {
   }
 
   fun addComment(
-    postId: String,
-    content: String,
-    onSuccessAction: () -> Unit,
-    onFailureAction: () -> Unit
+      postId: String,
+      content: String,
+      onSuccessAction: () -> Unit,
+      onFailureAction: () -> Unit
   ) {
     //TODO
   }

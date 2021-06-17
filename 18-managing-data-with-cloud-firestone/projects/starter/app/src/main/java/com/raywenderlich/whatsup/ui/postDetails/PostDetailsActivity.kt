@@ -24,11 +24,10 @@ package com.raywenderlich.whatsup.ui.postDetails
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
-import androidx.lifecycle.Observer
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.raywenderlich.whatsup.R
@@ -55,9 +54,9 @@ class PostDetailsActivity : AppCompatActivity() {
   companion object {
     private const val POST_EXTRA = "post_extra"
     fun createIntent(context: Context, post: Post) =
-      Intent(context, PostDetailsActivity::class.java).apply {
-        putExtra(POST_EXTRA, post)
-      }
+        Intent(context, PostDetailsActivity::class.java).apply {
+          putExtra(POST_EXTRA, post)
+        }
   }
 
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -108,20 +107,22 @@ class PostDetailsActivity : AppCompatActivity() {
   }
 
   private fun initializeClickListener() {
-    postDetailsBinding.updatePostButton.setOnClickListener {
-      //TODO
-    }
-
-    postDetailsBinding.deletePostButton.setOnClickListener {
-      //TODO
-    }
-
-    postDetailsBinding.addCommentButton.setOnClickListener {
-      val comment = postDetailsBinding.commentEditText.text.toString().trim()
-      if (comment.isNotEmpty()) {
+    post?.let { post ->
+      postDetailsBinding.updatePostButton.setOnClickListener {
         //TODO
-      } else {
-        showToast(getString(R.string.empty_comment_message))
+      }
+
+      postDetailsBinding.deletePostButton.setOnClickListener {
+        //TODO
+      }
+
+      postDetailsBinding.addCommentButton.setOnClickListener {
+        val comment = postDetailsBinding.commentEditText.text.toString().trim()
+        if (comment.isNotEmpty()) {
+          //TODO
+        } else {
+          showToast(getString(R.string.empty_comment_message))
+        }
       }
     }
   }
