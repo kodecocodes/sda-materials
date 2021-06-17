@@ -32,6 +32,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.raywenderlich.whatsup.R
+import com.raywenderlich.whatsup.databinding.ActivityLoginBinding
 import com.raywenderlich.whatsup.databinding.ActivityPostDetailsBinding
 import com.raywenderlich.whatsup.firebase.authentication.AuthenticationManager
 import com.raywenderlich.whatsup.firebase.firestore.CloudFirestoreManager
@@ -60,7 +61,8 @@ class PostDetailsActivity : AppCompatActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_post_details)
+    postDetailsBinding = ActivityPostDetailsBinding.inflate(layoutInflater)
+    setContentView(postDetailsBinding.root)
     initialize()
   }
 
