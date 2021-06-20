@@ -32,14 +32,11 @@ package com.raywenderlich.simplenote.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.raywenderlich.simplenote.R
 import com.raywenderlich.simplenote.app.showToast
 import com.raywenderlich.simplenote.databinding.ActivityMainBinding
 import com.raywenderlich.simplenote.model.EncryptedFileRepository
-import com.raywenderlich.simplenote.model.InternalFileRepository
 import com.raywenderlich.simplenote.model.Note
 import com.raywenderlich.simplenote.model.NoteRepository
-import kotlinx.android.synthetic.main.activity_main.*
 
 
 /**
