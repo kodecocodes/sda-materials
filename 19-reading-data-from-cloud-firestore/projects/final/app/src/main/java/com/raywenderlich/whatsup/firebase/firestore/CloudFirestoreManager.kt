@@ -147,7 +147,7 @@ class CloudFirestoreManager {
         // 2
         .whereEqualTo(POST_ID, postId) // 3
         // 4
-        .addSnapshotListener(EventListener<QuerySnapshot> { value, error ->
+        .addSnapshotListener(EventListener { value, error ->
           if (error != null || value == null) {
             return@EventListener
           }
@@ -169,7 +169,7 @@ class CloudFirestoreManager {
     // 1
     postsRegistration = database.collection(POSTS_COLLECTION) // 2
         // 3
-        .addSnapshotListener(EventListener<QuerySnapshot> { value, error ->
+        .addSnapshotListener(EventListener { value, error ->
           // 4
           if (error != null || value == null) {
             return@EventListener

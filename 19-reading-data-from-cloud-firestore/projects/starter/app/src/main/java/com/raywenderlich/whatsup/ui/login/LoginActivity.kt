@@ -22,12 +22,10 @@
 
 package com.raywenderlich.whatsup.ui.login
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.firebase.ui.auth.IdpResponse
 import com.raywenderlich.whatsup.R
 import com.raywenderlich.whatsup.databinding.ActivityLoginBinding
@@ -69,9 +67,9 @@ class LoginActivity : AppCompatActivity() {
   private fun isUserSignedIn() = authenticationManager.isUserSignedIn()
 
   private val firebaseAuthResultLauncher =
-    registerForActivityResult(FirebaseAuthResultContract()) { idpResponse ->
-      handleFirebaseAuthResponse(idpResponse)
-    }
+      registerForActivityResult(FirebaseAuthResultContract()) { idpResponse ->
+        handleFirebaseAuthResponse(idpResponse)
+      }
 
   private fun handleFirebaseAuthResponse(idpResponse: IdpResponse?) {
     when {

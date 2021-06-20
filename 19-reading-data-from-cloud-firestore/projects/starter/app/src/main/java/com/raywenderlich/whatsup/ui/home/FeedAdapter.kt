@@ -23,12 +23,10 @@
 package com.raywenderlich.whatsup.ui.home
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
-import com.raywenderlich.whatsup.R
 import com.raywenderlich.whatsup.databinding.PostItemBinding
 import com.raywenderlich.whatsup.model.Post
 import com.raywenderlich.whatsup.util.DateUtils
@@ -56,9 +54,9 @@ class FeedAdapter(private val dateUtils: DateUtils) : RecyclerView.Adapter<FeedA
   fun onPostItemClick(): LiveData<Post> = onItemClickLiveData
 
   class PostViewHolder(
-    private val binding: PostItemBinding,
-    private val onItemClickLiveData: MutableLiveData<Post>,
-    private val dateUtils: DateUtils
+      private val binding: PostItemBinding,
+      private val onItemClickLiveData: MutableLiveData<Post>,
+      private val dateUtils: DateUtils
   ) : RecyclerView.ViewHolder(binding.root) {
 
     private lateinit var post: Post

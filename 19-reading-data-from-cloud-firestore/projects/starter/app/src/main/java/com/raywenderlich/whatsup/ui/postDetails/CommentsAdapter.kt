@@ -23,10 +23,8 @@
 package com.raywenderlich.whatsup.ui.postDetails
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.raywenderlich.whatsup.R
 import com.raywenderlich.whatsup.databinding.CommentListItemBinding
 import com.raywenderlich.whatsup.model.Comment
 import com.raywenderlich.whatsup.util.DateUtils

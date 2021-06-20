@@ -97,9 +97,9 @@ class PostDetailsActivity : AppCompatActivity() {
   }
 
   private fun listenForComments() {
-    post?.id?.let {postId ->
+    post?.id?.let { postId ->
       cloudFirestoreManager.onCommentsValuesChange(postId)
-        .observe(this, Observer(::onCommentsUpdate))
+          .observe(this, Observer(::onCommentsUpdate))
     }
   }
 
@@ -111,10 +111,10 @@ class PostDetailsActivity : AppCompatActivity() {
     post?.let { post ->
       postDetailsBinding.updatePostButton.setOnClickListener {
         cloudFirestoreManager.updatePostContent(
-          post.id,
-          postDetailsBinding.postText.text.toString().trim(),
-          ::onPostSuccessfullyUpdated,
-          ::onPostUpdateFailed
+            post.id,
+            postDetailsBinding.postText.text.toString().trim(),
+            ::onPostSuccessfullyUpdated,
+            ::onPostUpdateFailed
         )
       }
 
@@ -126,10 +126,10 @@ class PostDetailsActivity : AppCompatActivity() {
         val comment = postDetailsBinding.commentEditText.text.toString().trim()
         if (comment.isNotEmpty()) {
           cloudFirestoreManager.addComment(
-            post.id,
-            comment,
-            ::onCommentSuccessfullyAdded,
-            ::onCommentAddFailed
+              post.id,
+              comment,
+              ::onCommentSuccessfullyAdded,
+              ::onCommentAddFailed
           )
         } else {
           showToast(getString(R.string.empty_comment_message))

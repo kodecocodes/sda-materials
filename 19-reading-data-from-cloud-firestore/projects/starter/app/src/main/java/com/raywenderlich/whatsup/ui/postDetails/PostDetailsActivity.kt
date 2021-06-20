@@ -24,11 +24,10 @@ package com.raywenderlich.whatsup.ui.postDetails
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
-import androidx.lifecycle.Observer
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.raywenderlich.whatsup.R
@@ -104,10 +103,10 @@ class PostDetailsActivity : AppCompatActivity() {
     post?.let { post ->
       postDetailsBinding.updatePostButton.setOnClickListener {
         cloudFirestoreManager.updatePostContent(
-          post.id,
-          postDetailsBinding.postText.text.toString().trim(),
-          ::onPostSuccessfullyUpdated,
-          ::onPostUpdateFailed
+            post.id,
+            postDetailsBinding.postText.text.toString().trim(),
+            ::onPostSuccessfullyUpdated,
+            ::onPostUpdateFailed
         )
       }
 
