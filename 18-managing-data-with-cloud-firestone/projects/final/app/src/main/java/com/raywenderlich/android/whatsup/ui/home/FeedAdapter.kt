@@ -31,7 +31,8 @@ import com.raywenderlich.android.whatsup.databinding.PostItemBinding
 import com.raywenderlich.android.whatsup.model.Post
 import com.raywenderlich.android.whatsup.util.DateUtils
 
-class FeedAdapter(private val dateUtils: DateUtils) : RecyclerView.Adapter<FeedAdapter.PostViewHolder>() {
+class FeedAdapter(private val dateUtils: DateUtils) :
+  RecyclerView.Adapter<FeedAdapter.PostViewHolder>() {
 
   private val posts = mutableListOf<Post>()
   private val onItemClickLiveData = MutableLiveData<Post>()
@@ -41,7 +42,8 @@ class FeedAdapter(private val dateUtils: DateUtils) : RecyclerView.Adapter<FeedA
     return PostViewHolder(view, onItemClickLiveData, dateUtils)
   }
 
-  override fun onBindViewHolder(holder: PostViewHolder, position: Int) = holder.setItem(posts[position])
+  override fun onBindViewHolder(holder: PostViewHolder, position: Int) =
+    holder.setItem(posts[position])
 
   override fun getItemCount(): Int = posts.size
 
@@ -54,9 +56,9 @@ class FeedAdapter(private val dateUtils: DateUtils) : RecyclerView.Adapter<FeedA
   fun onPostItemClick(): LiveData<Post> = onItemClickLiveData
 
   class PostViewHolder(
-      private val binding: PostItemBinding,
-      private val onItemClickLiveData: MutableLiveData<Post>,
-      private val dateUtils: DateUtils
+    private val binding: PostItemBinding,
+    private val onItemClickLiveData: MutableLiveData<Post>,
+    private val dateUtils: DateUtils
   ) : RecyclerView.ViewHolder(binding.root) {
 
     private lateinit var post: Post

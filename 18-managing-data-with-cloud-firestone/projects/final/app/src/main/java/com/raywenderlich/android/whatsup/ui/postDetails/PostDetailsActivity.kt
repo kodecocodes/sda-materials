@@ -53,9 +53,10 @@ class PostDetailsActivity : AppCompatActivity() {
 
   companion object {
     private const val POST_EXTRA = "post_extra"
-    fun createIntent(context: Context, post: Post) = Intent(context, PostDetailsActivity::class.java).apply {
-      putExtra(POST_EXTRA, post)
-    }
+    fun createIntent(context: Context, post: Post) =
+      Intent(context, PostDetailsActivity::class.java).apply {
+        putExtra(POST_EXTRA, post)
+      }
   }
 
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -100,7 +101,7 @@ class PostDetailsActivity : AppCompatActivity() {
   private fun listenForComments() {
     post?.id?.let { postId ->
       cloudFirestoreManager.onCommentsValuesChange(postId)
-          .observe(this, Observer(::onCommentsUpdate))
+        .observe(this, Observer(::onCommentsUpdate))
     }
   }
 
@@ -112,10 +113,10 @@ class PostDetailsActivity : AppCompatActivity() {
     post?.let { post ->
       postDetailsBinding.updatePostButton.setOnClickListener {
         cloudFirestoreManager.updatePostContent(
-            post.id,
-            postDetailsBinding.postText.text.toString().trim(),
-            ::onPostSuccessfullyUpdated,
-            ::onPostUpdateFailed
+          post.id,
+          postDetailsBinding.postText.text.toString().trim(),
+          ::onPostSuccessfullyUpdated,
+          ::onPostUpdateFailed
         )
       }
 
@@ -126,7 +127,12 @@ class PostDetailsActivity : AppCompatActivity() {
       postDetailsBinding.addCommentButton.setOnClickListener {
         val comment = postDetailsBinding.commentEditText.text.toString().trim()
         if (comment.isNotEmpty()) {
-          cloudFirestoreManager.addComment(post.id, comment, ::onCommentSuccessfullyAdded, ::onCommentAddFailed)
+          cloudFirestoreManager.addComment(
+            post.id,
+            comment,
+            ::onCommentSuccessfullyAdded,
+            ::onCommentAddFailed
+          )
         } else {
           showToast(getString(R.string.empty_comment_message))
         }
