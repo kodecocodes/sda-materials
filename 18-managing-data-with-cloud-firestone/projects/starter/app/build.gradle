@@ -7,7 +7,7 @@ apply plugin: 'kotlin-parcelize'
 android {
   compileSdkVersion 30
   defaultConfig {
-    applicationId "com.raywenderlich.whatsup"
+    applicationId "com.raywenderlich.android.whatsup"
     minSdkVersion 23
     targetSdkVersion 30
     versionCode 1
