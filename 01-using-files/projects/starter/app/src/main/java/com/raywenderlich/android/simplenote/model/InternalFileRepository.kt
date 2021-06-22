@@ -28,19 +28,16 @@
  * THE SOFTWARE.
  */
 
-package com.raywenderlich.simplenote.model
+package com.raywenderlich.android.simplenote.model
 
 import android.content.Context
-import android.os.Environment
 import java.io.File
 
-
-class ExternalFileRepository(var context: Context) :
+class InternalFileRepository(var context: Context) :
     NoteRepository {
 
   override fun addNote(note: Note) {
-    // TODO remove the following line of code
-    //  and add code from the tutorial here instead.
+    // TODO add code from the tutorial here
   }
 
   override fun getNote(fileName: String): Note {
@@ -55,17 +52,8 @@ class ExternalFileRepository(var context: Context) :
     return true
   }
 
-  private fun noteDirectory(): File? = context.getExternalFilesDir(null)
-
   private fun noteFile(fileName: String): File = File(noteDirectory(), fileName)
 
-  fun isExternalStorageWritable(): Boolean {
-    return Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED
-  }
-
-  fun isExternalStorageReadable(): Boolean {
-    return Environment.getExternalStorageState() in
-        setOf(Environment.MEDIA_MOUNTED, Environment.MEDIA_MOUNTED_READ_ONLY)
-  }
+  private fun noteDirectory(): String = context.filesDir.absolutePath
 
 }

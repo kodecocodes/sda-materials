@@ -36,7 +36,6 @@ import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
 
-
 class ExternalFileRepository(var context: Context) :
     NoteRepository {
 
@@ -69,13 +68,10 @@ class ExternalFileRepository(var context: Context) :
 
   private fun noteFile(fileName: String): File = File(noteDirectory(), fileName)
 
-  fun isExternalStorageWritable(): Boolean {
-    return Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED
-  }
+  private  fun isExternalStorageWritable(): Boolean =
+    Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED
 
-  fun isExternalStorageReadable(): Boolean {
-    return Environment.getExternalStorageState() in
+  private fun isExternalStorageReadable(): Boolean =
+    Environment.getExternalStorageState() in
         setOf(Environment.MEDIA_MOUNTED, Environment.MEDIA_MOUNTED_READ_ONLY)
-  }
-
 }
