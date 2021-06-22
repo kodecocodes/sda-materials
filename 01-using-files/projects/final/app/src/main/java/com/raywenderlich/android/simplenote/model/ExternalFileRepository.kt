@@ -28,37 +28,54 @@
  * THE SOFTWARE.
  */
 
-package com.raywenderlich.simplenote.model
+package com.raywenderlich.android.simplenote.model
 
 import android.content.Context
+import android.os.Environment
 import java.io.File
+import java.io.FileInputStream
+import java.io.FileOutputStream
 
-class InternalFileRepository(var context: Context) :
+
+class ExternalFileRepository(var context: Context) :
     NoteRepository {
 
   override fun addNote(note: Note) {
-    context.openFileOutput(note.fileName, Context.MODE_PRIVATE).use { output ->
-      output.write(note.noteText.toByteArray())
+    if (isExternalStorageWritable()) {
+      FileOutputStream(noteFile(note.fileName)).use { output ->
+        output.write(note.noteText.toByteArray())
+      }
     }
   }
 
   override fun getNote(fileName: String): Note {
     val note = Note(fileName, "")
-    context.openFileInput(fileName).use { stream ->
-      val text = stream.bufferedReader().use {
-        it.readText()
+    if (isExternalStorageReadable()) {
+      FileInputStream(noteFile(fileName)).use { stream ->
+        val text = stream.bufferedReader().use {
+          it.readText()
+        }
+        note.noteText = text
       }
-      note.noteText = text
     }
     return note
   }
 
   override fun deleteNote(fileName: String): Boolean {
-    return noteFile(fileName).delete()
+    return isExternalStorageWritable() && noteFile(fileName).delete()
   }
+
+  private fun noteDirectory(): File? = context.getExternalFilesDir(null)
 
   private fun noteFile(fileName: String): File = File(noteDirectory(), fileName)
 
-  private fun noteDirectory(): String = context.filesDir.absolutePath
+  fun isExternalStorageWritable(): Boolean {
+    return Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED
+  }
+
+  fun isExternalStorageReadable(): Boolean {
+    return Environment.getExternalStorageState() in
+        setOf(Environment.MEDIA_MOUNTED, Environment.MEDIA_MOUNTED_READ_ONLY)
+  }
 
 }
