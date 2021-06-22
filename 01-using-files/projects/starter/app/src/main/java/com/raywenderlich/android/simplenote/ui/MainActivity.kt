@@ -38,7 +38,7 @@ import com.raywenderlich.android.simplenote.model.ExternalFileRepository
 import com.raywenderlich.android.simplenote.model.InternalFileRepository
 import com.raywenderlich.android.simplenote.model.Note
 import com.raywenderlich.android.simplenote.model.NoteRepository
-import com.raywenderlich.simplenote.databinding.ActivityMainBinding
+import com.raywenderlich.android.simplenote.databinding.ActivityMainBinding
 
 /**
  * Main Screen

@@ -36,7 +36,7 @@ import com.raywenderlich.android.simplenote.app.showToast
 import com.raywenderlich.android.simplenote.model.EncryptedFileRepository
 import com.raywenderlich.android.simplenote.model.Note
 import com.raywenderlich.android.simplenote.model.NoteRepository
-import com.raywenderlich.simplenote.databinding.ActivityMainBinding
+import com.raywenderlich.android.simplenote.databinding.ActivityMainBinding
 
 
 /**
