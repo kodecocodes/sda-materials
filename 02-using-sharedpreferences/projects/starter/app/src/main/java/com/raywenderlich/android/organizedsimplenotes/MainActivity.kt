@@ -28,7 +28,7 @@
  * THE SOFTWARE.
  *
  */
-package com.raywenderlich.organizedsimplenotes
+package com.raywenderlich.android.organizedsimplenotes
 
 import android.app.Dialog
 import android.os.Bundle
@@ -40,8 +40,8 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.activity_main.*
-import com.raywenderlich.organizedsimplenotes.NoteSortOrder.*
+import com.raywenderlich.android.organizedsimplenotes.NoteSortOrder.*
+import com.raywenderlich.android.organizedsimplenotes.databinding.ActivityMainBinding
 
 private const val PRIORITY_ONE = "1"
 private const val PRIORITY_TWO = "2"
@@ -49,6 +49,7 @@ private const val PRIORITY_THREE = "3"
 
 class MainActivity : AppCompatActivity(), NoteDialogFragment.NoticeNoteDialogListener {
 
+  private lateinit var binding: ActivityMainBinding
   private val notePrefs: NotePrefs by lazy {
     NotePrefs(PreferenceManager.getDefaultSharedPreferences(this))
   }
@@ -58,11 +59,12 @@ class MainActivity : AppCompatActivity(), NoteDialogFragment.NoticeNoteDialogLis
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_main)
+    binding = ActivityMainBinding.inflate(layoutInflater)
+    setContentView(binding.root)
 
-    recyclerView.layoutManager = LinearLayoutManager(this)
-    recyclerView.adapter = noteAdapter
-    fab.setOnClickListener { showAddNoteDialog() }
+    binding.recyclerView.layoutManager = LinearLayoutManager(this)
+    binding.recyclerView.adapter = noteAdapter
+    binding.fab.setOnClickListener { showAddNoteDialog() }
 
     changeNotesBackgroundColor()
   }

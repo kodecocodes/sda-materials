@@ -26,42 +26,16 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- *
  */
-package com.raywenderlich.organizedsimplenotes
 
-import android.content.SharedPreferences
+package com.raywenderlich.android.organizedsimplenotes
 
-private const val KEY_APP_BACKGROUND_COLOR = "key_app_background_color"
-private const val DEFAULT_COLOR = "Green"
-private const val DEFAULT_SORT_ORDER = "FILENAME_ASC"
-private const val DEFAULT_PRIORITY_FILTER = "1"
+import android.app.Activity
+import android.widget.Toast
 
-//TODO: Add some constants for priorities and sort order
-
-class NotePrefs(private val sharedPrefs: SharedPreferences) {
-
-  fun saveNoteSortOrder(noteSortOrder: NoteSortOrder) {
-    //TODO: Add the code to save the sort order to sharedprefs
-  }
-
-  //TODO: Add the code to read the sort order to sharedprefs instead
-  fun getNoteSortOrder() = NoteSortOrder.FILENAME_ASC
-
-  fun saveNotePriorityFilters(priorities: Set<String>) {
-    //TODO: Add the code to save the priorities to sharedprefs
-  }
-
-  fun getNotePriorityFilters(): Set<String> = setOf()
-  //TODO: Add the code to read the priorities to sharedprefs instead
-
-  fun saveNoteBackgroundColor(noteBackgroundColor: String) {
-    sharedPrefs.edit()
-        .putString(KEY_APP_BACKGROUND_COLOR, noteBackgroundColor)
-        .apply()
-  }
-
-  fun getAppBackgroundColor(): AppBackgroundColor =
-      AppBackgroundColor.getColorByName(sharedPrefs.getString(KEY_APP_BACKGROUND_COLOR, DEFAULT_COLOR)
-          ?: DEFAULT_COLOR)
-}
+/**
+ * Utility class that allows to show a Toast
+ */
+fun Activity.showToast(msg: String) = Toast
+    .makeText(this, msg, Toast.LENGTH_LONG)
+    .show()

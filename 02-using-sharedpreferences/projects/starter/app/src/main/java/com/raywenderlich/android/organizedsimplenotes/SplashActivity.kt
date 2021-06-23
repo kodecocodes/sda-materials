@@ -28,7 +28,7 @@
  * THE SOFTWARE.
  */
 
-package com.raywenderlich.organizedsimplenotes
+package com.raywenderlich.android.organizedsimplenotes
 
 import android.content.Intent
 import android.os.Bundle

@@ -28,7 +28,7 @@
  * THE SOFTWARE.
  *
  */
-package com.raywenderlich.organizedsimplenotes
+package com.raywenderlich.android.organizedsimplenotes
 
 enum class AppBackgroundColor(val intColor: Int, val displayString: String) {
 

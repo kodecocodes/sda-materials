@@ -26,16 +26,16 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
+ *
  */
+package com.raywenderlich.android.organizedsimplenotes
 
-package com.raywenderlich.organizedsimplenotes
 
-import android.app.Activity
-import android.widget.Toast
-
-/**
- * Utility class that allows to show a Toast
- */
-fun Activity.showToast(msg: String) = Toast
-    .makeText(this, msg, Toast.LENGTH_LONG)
-    .show()
+interface NoteRepository {
+  fun addNote(note: Note): Boolean
+  fun getNote(fileName: String): Note
+  fun editNote(note: Note)
+  fun deleteNote(fileName: String): Boolean
+  fun getNotes(): List<Note>
+  fun getNotesWithPrioritySortedBy(priorities: Set<String>, order: NoteSortOrder): List<Note>
+}

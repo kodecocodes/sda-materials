@@ -28,14 +28,8 @@
  * THE SOFTWARE.
  *
  */
-package com.raywenderlich.organizedsimplenotes
+package com.raywenderlich.android.organizedsimplenotes
 
-
-interface NoteRepository {
-  fun addNote(note: Note): Boolean
-  fun getNote(fileName: String): Note
-  fun editNote(note: Note)
-  fun deleteNote(fileName: String): Boolean
-  fun getNotes(): List<Note>
-  fun getNotesWithPrioritySortedBy(priorities: Set<String>, order: NoteSortOrder): List<Note>
+enum class NoteSortOrder {
+  PRIORITY_ASC, PRIORITY_DESC, FILENAME_ASC, FILENAME_DESC, DATE_LAST_MOD_ASC, DATE_LAST_MOD_DESC
 }
