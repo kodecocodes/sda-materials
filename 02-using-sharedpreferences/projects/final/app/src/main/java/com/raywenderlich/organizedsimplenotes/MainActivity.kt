@@ -41,7 +41,6 @@ import android.widget.RadioGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.raywenderlich.organizedsimplenotes.NoteSortOrder.*
-import kotlinx.android.synthetic.main.activity_main.*
 
 private const val PRIORITY_ONE = "1"
 private const val PRIORITY_TWO = "2"
