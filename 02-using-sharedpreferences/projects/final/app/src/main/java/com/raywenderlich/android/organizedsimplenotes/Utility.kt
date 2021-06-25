@@ -28,7 +28,7 @@
  * THE SOFTWARE.
  */
 
-package com.raywenderlich.organizedsimplenotes
+package com.raywenderlich.android.organizedsimplenotes
 
 import android.app.Activity
 import android.widget.Toast

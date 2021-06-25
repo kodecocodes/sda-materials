@@ -29,7 +29,7 @@
  *
  */
 
-package com.raywenderlich.organizedsimplenotes
+package com.raywenderlich.android.organizedsimplenotes
 
 import java.io.Serializable
 import java.util.*

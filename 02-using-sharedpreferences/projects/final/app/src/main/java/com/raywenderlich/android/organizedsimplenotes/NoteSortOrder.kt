@@ -28,7 +28,7 @@
  * THE SOFTWARE.
  *
  */
-package com.raywenderlich.organizedsimplenotes
+package com.raywenderlich.android.organizedsimplenotes
 
 enum class NoteSortOrder {
   PRIORITY_ASC, PRIORITY_DESC, FILENAME_ASC, FILENAME_DESC, DATE_LAST_MOD_ASC, DATE_LAST_MOD_DESC

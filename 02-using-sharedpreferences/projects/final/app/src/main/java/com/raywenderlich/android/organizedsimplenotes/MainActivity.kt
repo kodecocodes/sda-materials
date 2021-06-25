@@ -28,7 +28,7 @@
  * THE SOFTWARE.
  *
  */
-package com.raywenderlich.organizedsimplenotes
+package com.raywenderlich.android.organizedsimplenotes
 
 import android.app.Dialog
 import android.os.Bundle
@@ -40,7 +40,7 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.raywenderlich.organizedsimplenotes.NoteSortOrder.*
+import com.raywenderlich.android.organizedsimplenotes.NoteSortOrder.*
 
 private const val PRIORITY_ONE = "1"
 private const val PRIORITY_TWO = "2"

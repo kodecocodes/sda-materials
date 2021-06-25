@@ -28,7 +28,7 @@
  * THE SOFTWARE.
  *
  */
-package com.raywenderlich.organizedsimplenotes
+package com.raywenderlich.android.organizedsimplenotes
 
 import android.content.Context
 import android.view.LayoutInflater
