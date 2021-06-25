@@ -64,13 +64,10 @@ class NoteDialogFragment : DialogFragment() {
   override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
     val note = arguments?.getSerializable(KEY_NOTE) as? Note ?: Note()
 
-    val context = requireActivity()
-
-    val builder = AlertDialog.Builder(context)
-    val inflater = requireActivity().layoutInflater
+    val builder = AlertDialog.Builder(requireActivity())
     notePopupBinding = NotePopupBinding.inflate(LayoutInflater.from(context))
 
-    builder.setView(view)
+    builder.setView(notePopupBinding.root)
 
     val isExistingNote = note.fileName.isNotBlank()
 
@@ -101,4 +98,5 @@ class NoteDialogFragment : DialogFragment() {
 
     return builder.create()
   }
+
 }
