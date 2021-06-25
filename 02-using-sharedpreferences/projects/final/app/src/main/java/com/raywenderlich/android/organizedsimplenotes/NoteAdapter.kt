@@ -32,10 +32,9 @@ package com.raywenderlich.android.organizedsimplenotes
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.note_item.view.*
+import com.raywenderlich.android.organizedsimplenotes.databinding.NoteItemBinding
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -57,7 +56,7 @@ class NoteAdapter(
   }
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-    val view = LayoutInflater.from(context).inflate(R.layout.note_item, parent, false)
+    val view = NoteItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
     return ViewHolder(view)
   }
 
@@ -67,16 +66,16 @@ class NoteAdapter(
     holder.bindViews(notes[position], onNoteClicked)
   }
 
-  inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+  inner class ViewHolder(private val binding: NoteItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
     fun bindViews(note: Note, onNoteClicked: (Note) -> Unit) {
       val priorityText = if (note.priority != 4) note.priority.toString() else NO_NOTE_PRIORITY
 
-      itemView.txtFileName.text = note.fileName
-      itemView.txtNoteText.text = note.noteText
-      itemView.txtPriority.text = priorityText
-      itemView.txtLastModified.text = simpleDateFormat.format(note.dateModified)
-      itemView.setOnClickListener { onNoteClicked(note) }
+      binding.txtFileName.text = note.fileName
+      binding.txtNoteText.text = note.noteText
+      binding.txtPriority.text = priorityText
+      binding.txtLastModified.text = simpleDateFormat.format(note.dateModified)
+      binding.root.setOnClickListener { onNoteClicked(note) }
     }
   }
 

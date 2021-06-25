@@ -32,16 +32,18 @@ package com.raywenderlich.android.organizedsimplenotes
 
 import android.app.Dialog
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.AdapterView
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
-import kotlinx.android.synthetic.main.note_popup.view.*
+import com.raywenderlich.android.organizedsimplenotes.databinding.NotePopupBinding
 
 
 class NoteDialogFragment : DialogFragment() {
 
   private lateinit var listener: NoticeNoteDialogListener
+  private lateinit var notePopupBinding: NotePopupBinding
 
   interface NoticeNoteDialogListener {
     fun onNoteDialogPositiveClick(note: Note, isEdited: Boolean)
@@ -64,18 +66,17 @@ class NoteDialogFragment : DialogFragment() {
 
     val context = requireActivity()
 
-    val builder = AlertDialog.Builder(context)
-    val inflater = requireActivity().layoutInflater
-    val view = inflater.inflate(R.layout.note_popup, null)
+    val builder = AlertDialog.Builder(requireActivity())
+    notePopupBinding = NotePopupBinding.inflate(LayoutInflater.from(context))
 
-    builder.setView(view)
+    builder.setView(notePopupBinding.root)
 
     val isExistingNote = note.fileName.isNotBlank()
 
-    view.edtFileName.isEnabled = !isExistingNote
-    view.edtFileName.setText(note.fileName)
-    view.edtNoteText.setText(note.noteText)
-    view.notePriority.setSelection(if (note.priority == 4) 0 else note.priority)
+    notePopupBinding.edtFileName.isEnabled = !isExistingNote
+    notePopupBinding.edtFileName.setText(note.fileName)
+    notePopupBinding.edtNoteText.setText(note.noteText)
+    notePopupBinding.notePriority.setSelection(if (note.priority == 4) 0 else note.priority)
 
     builder.setTitle(getString(if (isExistingNote) R.string.edit_note_title else R.string.add_note_title))
 
@@ -83,7 +84,7 @@ class NoteDialogFragment : DialogFragment() {
       builder.setNeutralButton(R.string.text_delete) { _, _ -> listener.onNoteDialogNeutralClick(note) }
     }
 
-    view.notePriority.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+    notePopupBinding.notePriority.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
       override fun onNothingSelected(parent: AdapterView<*>?) {}
 
       override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
@@ -92,8 +93,8 @@ class NoteDialogFragment : DialogFragment() {
     }
 
     builder.setPositiveButton(R.string.text_save) { _, _ ->
-      note.noteText = view.edtNoteText.text.toString()
-      note.fileName = view.edtFileName.text.toString()
+      note.noteText = notePopupBinding.edtNoteText.text.toString()
+      note.fileName = notePopupBinding.edtFileName.text.toString()
       listener.onNoteDialogPositiveClick(note, isExistingNote)
     }.setNegativeButton(R.string.text_cancel) { dialog, _ -> dialog.dismiss() }
 
