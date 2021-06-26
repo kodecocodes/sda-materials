@@ -2,8 +2,8 @@
   <string name="app_name">DroidQuiz</string>
   <string name="start">START</string>
   <string name="title">Welcome to DroidQuiz!</string>
-  <string name="prepopulate">prepopulate</string>
-  <string name="clear">clear</string>
+  <string name="prepopulate">Prepopulate</string>
+  <string name="clear">Clear</string>
   <string name="play_again">Play Again</string>
   <string name="congratulations">Congratulations!</string>
   <string name="test">Test</string>

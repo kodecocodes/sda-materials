@@ -32,20 +32,22 @@
 
 package com.raywenderlich.android.droidquiz.data
 
-import android.os.AsyncTask
 import com.raywenderlich.android.droidquiz.QuizApplication
 import com.raywenderlich.android.droidquiz.data.db.QuizDao
 import com.raywenderlich.android.droidquiz.data.model.Answer
 import com.raywenderlich.android.droidquiz.data.model.Question
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 class Repository : QuizRepository {
 
-  private val quizDao: QuizDao by lazy { QuizApplication.database.quizDao() }
-  private val allQuestions by lazy { quizDao.getAllQuestions() }
-  private val allQuestionsAndAllAnswers by lazy { quizDao.getQuestionAndAllAnswers() }
+  private val quizDao: QuizDao by lazy {
+    QuizApplication.database.quizDao()
+  }
+  private val allQuestions by lazy {
+    quizDao.getAllQuestions()
+  }
+  private val allQuestionsAndAllAnswers by lazy {
+    quizDao.getQuestionAndAllAnswers()
+  }
 
   override fun getSavedQuestions() = allQuestions
 

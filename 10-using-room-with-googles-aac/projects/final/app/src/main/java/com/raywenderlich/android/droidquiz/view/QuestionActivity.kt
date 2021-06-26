@@ -38,8 +38,6 @@ import android.view.View
 import android.widget.RadioButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.forEachIndexed
-import androidx.lifecycle.Observer
-import com.raywenderlich.android.droidquiz.R
 import com.raywenderlich.android.droidquiz.data.Repository
 import com.raywenderlich.android.droidquiz.data.model.QuizState
 import com.raywenderlich.android.droidquiz.databinding.ActivityQuestionBinding
@@ -68,9 +66,9 @@ class QuestionActivity : AppCompatActivity() {
   }
 
   private fun getQuestionsAndAnswers() {
-    viewModel.getCurrentState().observe(this, Observer {
+    viewModel.getCurrentState().observe(this) {
       render(it)
-    })
+    }
   }
 
   private fun render(state: QuizState) {
@@ -103,7 +101,7 @@ class QuestionActivity : AppCompatActivity() {
     binding.emptyTextView.visibility = View.VISIBLE
   }
 
-  fun nextQuestion() {
+  private fun nextQuestion() {
     val radioButton = findViewById<RadioButton>(binding.questionsRadioGroup.checkedRadioButtonId)
     val selectedOption = binding.questionsRadioGroup.indexOfChild(radioButton)
     viewModel.nextQuestion(selectedOption)

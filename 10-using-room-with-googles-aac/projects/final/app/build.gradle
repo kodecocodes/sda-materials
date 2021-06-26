@@ -49,11 +49,10 @@ dependencies {
   testImplementation "junit:junit:$junit_version"
   androidTestImplementation "androidx.test:runner:$testrunner_version"
 
-
   //Lifecycle
   implementation "androidx.arch.core:core-common:$androidx_common"
   implementation "androidx.lifecycle:lifecycle-common:$lifecycle_components"
   implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_components"
-  implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_components"
+  implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1"
 
 }
