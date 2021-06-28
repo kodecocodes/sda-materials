@@ -41,10 +41,10 @@ private const val POST_ID = "post_id"
 class CloudFirestoreManager {
 
   private val authenticationManager = AuthenticationManager()
-  private val database = FirebaseFirestore.getInstance()
 
   private val postsValues = MutableLiveData<List<Post>>()
   private val commentsValues = MutableLiveData<List<Comment>>()
+  private val database = FirebaseFirestore.getInstance()
 
   fun addPost(content: String, onSuccessAction: () -> Unit, onFailureAction: () -> Unit) {
     //1
