@@ -61,9 +61,9 @@ class CloudFirestoreManager {
 
     //4
     documentReference
-        .set(post)
-        .addOnSuccessListener { onSuccessAction() }
-        .addOnFailureListener { onFailureAction() }
+      .set(post)
+      .addOnSuccessListener { onSuccessAction() }
+      .addOnFailureListener { onFailureAction() }
   }
 
   fun onPostsValuesChange(): LiveData<List<Post>> {
@@ -75,7 +75,12 @@ class CloudFirestoreManager {
     //TODO
   }
 
-  fun updatePostContent(key: String, content: String, onSuccessAction: () -> Unit, onFailureAction: () -> Unit) {
+  fun updatePostContent(
+    key: String,
+    content: String,
+    onSuccessAction: () -> Unit,
+    onFailureAction: () -> Unit
+  ) {
     //1
     val updatedPost = HashMap<String, Any>()
 
@@ -84,21 +89,26 @@ class CloudFirestoreManager {
 
     //3
     database.collection(POSTS_COLLECTION)
-        .document(key)
-        .update(updatedPost)
-        .addOnSuccessListener { onSuccessAction() }
-        .addOnFailureListener { onFailureAction() }
+      .document(key)
+      .update(updatedPost)
+      .addOnSuccessListener { onSuccessAction() }
+      .addOnFailureListener { onFailureAction() }
   }
 
   fun deletePost(key: String, onSuccessAction: () -> Unit, onFailureAction: () -> Unit) {
     database.collection(POSTS_COLLECTION)
-        .document(key)
-        .delete()
-        .addOnSuccessListener { onSuccessAction() }
-        .addOnFailureListener { onFailureAction() }
+      .document(key)
+      .delete()
+      .addOnSuccessListener { onSuccessAction() }
+      .addOnFailureListener { onFailureAction() }
   }
 
-  fun addComment(postId: String, content: String, onSuccessAction: () -> Unit, onFailureAction: () -> Unit) {
+  fun addComment(
+    postId: String,
+    content: String,
+    onSuccessAction: () -> Unit,
+    onFailureAction: () -> Unit
+  ) {
     //TODO
   }
 

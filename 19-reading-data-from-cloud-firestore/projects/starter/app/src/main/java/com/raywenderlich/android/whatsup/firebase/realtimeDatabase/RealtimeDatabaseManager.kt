@@ -71,18 +71,18 @@ class RealtimeDatabaseManager {
   fun updatePostContent(key: String, content: String) {
     //1
     database.getReference(POSTS_REFERENCE)
-        //2
-        .child(key)
-        //3
-        .child(POST_CONTENT_PATH)
-        //4
-        .setValue(content)
+      //2
+      .child(key)
+      //3
+      .child(POST_CONTENT_PATH)
+      //4
+      .setValue(content)
   }
 
   fun deletePost(key: String) {
     database.getReference(POSTS_REFERENCE)
-        .child(key)
-        .removeValue()
+      .child(key)
+      .removeValue()
 
     deletePostComments(key)
   }
@@ -112,7 +112,8 @@ class RealtimeDatabaseManager {
 
       override fun onDataChange(dataSnapshot: DataSnapshot) {
         if (dataSnapshot.exists()) {
-          val comments = dataSnapshot.children.mapNotNull { it.getValue(Comment::class.java) }.toList()
+          val comments =
+            dataSnapshot.children.mapNotNull { it.getValue(Comment::class.java) }.toList()
           commentsValues.postValue(comments)
         } else {
           commentsValues.postValue(emptyList())
@@ -121,9 +122,9 @@ class RealtimeDatabaseManager {
     }
 
     database.getReference(COMMENTS_REFERENCE)
-        .orderByChild(COMMENT_POST_ID_PATH)
-        .equalTo(postId)
-        .addValueEventListener(commentsValueEventListener)
+      .orderByChild(COMMENT_POST_ID_PATH)
+      .equalTo(postId)
+      .addValueEventListener(commentsValueEventListener)
   }
 
   private fun createPost(key: String, content: String): Post {
@@ -134,17 +135,17 @@ class RealtimeDatabaseManager {
 
   private fun deletePostComments(postId: String) {
     database.getReference(COMMENTS_REFERENCE)
-        .orderByChild(COMMENT_POST_ID_PATH)
-        .equalTo(postId)
-        .addListenerForSingleValueEvent(object : ValueEventListener {
-          override fun onCancelled(databaseError: DatabaseError) {
-            /* No op */
-          }
+      .orderByChild(COMMENT_POST_ID_PATH)
+      .equalTo(postId)
+      .addListenerForSingleValueEvent(object : ValueEventListener {
+        override fun onCancelled(databaseError: DatabaseError) {
+          /* No op */
+        }
 
-          override fun onDataChange(dataSnapshot: DataSnapshot) {
-            dataSnapshot.children.forEach { it.ref.removeValue() }
-          }
-        })
+        override fun onDataChange(dataSnapshot: DataSnapshot) {
+          dataSnapshot.children.forEach { it.ref.removeValue() }
+        }
+      })
   }
 
   private fun listenForPostsValueChanges() {
@@ -170,7 +171,7 @@ class RealtimeDatabaseManager {
 
     //6
     database.getReference(POSTS_REFERENCE)
-        .addValueEventListener(postsValueEventListener)
+      .addValueEventListener(postsValueEventListener)
   }
 
   private fun createComment(postId: String, content: String): Comment {

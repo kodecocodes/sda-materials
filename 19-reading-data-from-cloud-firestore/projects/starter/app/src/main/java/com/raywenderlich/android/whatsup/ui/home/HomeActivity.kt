@@ -24,10 +24,10 @@ package com.raywenderlich.android.whatsup.ui.home
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -73,15 +73,15 @@ class HomeActivity : AppCompatActivity() {
   }
 
   override fun onOptionsItemSelected(item: MenuItem): Boolean =
-      when (item.itemId) {
-        R.id.action_logout -> {
-          authenticationManager.signOut(this)
-          router.startLoginScreen(this)
-          finish()
-          true
-        }
-        else -> super.onOptionsItemSelected(item)
+    when (item.itemId) {
+      R.id.action_logout -> {
+        authenticationManager.signOut(this)
+        router.startLoginScreen(this)
+        finish()
+        true
       }
+      else -> super.onOptionsItemSelected(item)
+    }
 
   private fun initialize() {
     setSupportActionBar(binding.homeToolbar)
@@ -90,7 +90,7 @@ class HomeActivity : AppCompatActivity() {
     binding.addPostFab.setOnClickListener { router.startAddPostScreen(this) }
 
     feedAdapter.onPostItemClick()
-        .observe(this, Observer(::onPostItemClick))
+      .observe(this, Observer(::onPostItemClick))
   }
 
   private fun initializeRecyclerView() {

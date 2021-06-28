@@ -52,9 +52,10 @@ class PostDetailsActivity : AppCompatActivity() {
 
   companion object {
     private const val POST_EXTRA = "post_extra"
-    fun createIntent(context: Context, post: Post) = Intent(context, PostDetailsActivity::class.java).apply {
-      putExtra(POST_EXTRA, post)
-    }
+    fun createIntent(context: Context, post: Post) =
+      Intent(context, PostDetailsActivity::class.java).apply {
+        putExtra(POST_EXTRA, post)
+      }
   }
 
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -103,10 +104,10 @@ class PostDetailsActivity : AppCompatActivity() {
     post?.let { post ->
       postDetailsBinding.updatePostButton.setOnClickListener {
         cloudFirestoreManager.updatePostContent(
-            post.id,
-            postDetailsBinding.postText.text.toString().trim(),
-            ::onPostSuccessfullyUpdated,
-            ::onPostUpdateFailed
+          post.id,
+          postDetailsBinding.postText.text.toString().trim(),
+          ::onPostSuccessfullyUpdated,
+          ::onPostUpdateFailed
         )
       }
 

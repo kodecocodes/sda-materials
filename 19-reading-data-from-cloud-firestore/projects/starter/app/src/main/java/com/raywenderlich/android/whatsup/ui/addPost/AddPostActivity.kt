@@ -24,8 +24,8 @@ package com.raywenderlich.android.whatsup.ui.addPost
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.raywenderlich.android.whatsup.R
 import com.raywenderlich.android.whatsup.databinding.ActivityAddPostBinding
 import com.raywenderlich.android.whatsup.firebase.firestore.CloudFirestoreManager

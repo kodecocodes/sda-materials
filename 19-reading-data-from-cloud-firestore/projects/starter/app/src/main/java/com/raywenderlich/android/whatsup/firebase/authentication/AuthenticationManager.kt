@@ -38,7 +38,8 @@ class AuthenticationManager {
   fun getCurrentUser() = firebaseAuth.currentUser?.displayName ?: ""
 
   fun signOut(context: Context) {
-    val googleSignInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).build()
+    val googleSignInOptions =
+      GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).build()
     val googleSignInClient = GoogleSignIn.getClient(context, googleSignInOptions)
     firebaseAuth.signOut()
     googleSignInClient.signOut()
