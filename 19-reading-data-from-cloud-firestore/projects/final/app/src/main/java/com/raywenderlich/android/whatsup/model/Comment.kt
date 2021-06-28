@@ -27,8 +27,8 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Comment(
-    val postId: String = "",
-    val author: String = "",
-    val timestamp: Long = 0L,
-    val content: String = ""
+  val postId: String = "",
+  val author: String = "",
+  val timestamp: Long = 0L,
+  val content: String = ""
 ) : Parcelable

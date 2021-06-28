@@ -58,7 +58,8 @@ class LoginActivity : AppCompatActivity() {
     setupClickListeners()
   }
 
-  private fun continueToHomeScreenIfUserSignedIn() = if (isUserSignedIn()) router.startHomeScreen(this) else Unit
+  private fun continueToHomeScreenIfUserSignedIn() =
+    if (isUserSignedIn()) router.startHomeScreen(this) else Unit
 
   private fun setupClickListeners() {
     binding.googleSignInButton.setOnClickListener { firebaseAuthResultLauncher.launch(RC_SIGN_IN) }
@@ -67,9 +68,9 @@ class LoginActivity : AppCompatActivity() {
   private fun isUserSignedIn() = authenticationManager.isUserSignedIn()
 
   private val firebaseAuthResultLauncher =
-      registerForActivityResult(FirebaseAuthResultContract()) { idpResponse ->
-        handleFirebaseAuthResponse(idpResponse)
-      }
+    registerForActivityResult(FirebaseAuthResultContract()) { idpResponse ->
+      handleFirebaseAuthResponse(idpResponse)
+    }
 
   private fun handleFirebaseAuthResponse(idpResponse: IdpResponse?) {
     when {

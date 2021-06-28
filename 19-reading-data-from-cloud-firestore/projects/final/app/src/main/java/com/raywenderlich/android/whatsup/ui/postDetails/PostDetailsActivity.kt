@@ -24,10 +24,10 @@ package com.raywenderlich.android.whatsup.ui.postDetails
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -61,7 +61,8 @@ class PostDetailsActivity : AppCompatActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_post_details)
+    postDetailsBinding = ActivityPostDetailsBinding.inflate(layoutInflater)
+    setContentView(postDetailsBinding.root)
     initialize()
   }
 
@@ -98,7 +99,7 @@ class PostDetailsActivity : AppCompatActivity() {
   }
 
   private fun listenForComments() {
-    post?.id?.let { postId ->
+    post?.id?.let {postId ->
       cloudFirestoreManager.onCommentsValuesChange(postId)
         .observe(this, Observer(::onCommentsUpdate))
     }

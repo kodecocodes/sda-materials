@@ -24,8 +24,8 @@ package com.raywenderlich.android.whatsup.ui.addPost
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.raywenderlich.android.whatsup.R
 import com.raywenderlich.android.whatsup.databinding.ActivityAddPostBinding
 import com.raywenderlich.android.whatsup.firebase.firestore.CloudFirestoreManager
@@ -41,6 +41,7 @@ class AddPostActivity : AppCompatActivity() {
   private val realtimeDatabaseManager by lazy { RealtimeDatabaseManager() }
   private val cloudFirestoreManager by lazy { CloudFirestoreManager() }
   private lateinit var binding: ActivityAddPostBinding
+
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)

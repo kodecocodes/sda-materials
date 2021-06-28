@@ -66,9 +66,9 @@ class CloudFirestoreManager {
 
     //4
     documentReference
-        .set(post)
-        .addOnSuccessListener { onSuccessAction() }
-        .addOnFailureListener { onFailureAction() }
+      .set(post)
+      .addOnSuccessListener { onSuccessAction() }
+      .addOnFailureListener { onFailureAction() }
   }
 
   fun onPostsValuesChange(): LiveData<List<Post>> {
@@ -78,7 +78,12 @@ class CloudFirestoreManager {
 
   fun stopListeningForPostChanges() = postsRegistration.remove()
 
-  fun updatePostContent(key: String, content: String, onSuccessAction: () -> Unit, onFailureAction: () -> Unit) {
+  fun updatePostContent(
+    key: String,
+    content: String,
+    onSuccessAction: () -> Unit,
+    onFailureAction: () -> Unit
+  ) {
     //1
     val updatedPost = HashMap<String, Any>()
 
@@ -87,40 +92,41 @@ class CloudFirestoreManager {
 
     //3
     database.collection(POSTS_COLLECTION)
-        .document(key)
-        .update(updatedPost)
-        .addOnSuccessListener { onSuccessAction() }
-        .addOnFailureListener { onFailureAction() }
+      .document(key)
+      .update(updatedPost)
+      .addOnSuccessListener { onSuccessAction() }
+      .addOnFailureListener { onFailureAction() }
   }
 
   fun deletePost(key: String, onSuccessAction: () -> Unit, onFailureAction: () -> Unit) {
     database.collection(POSTS_COLLECTION)
-        .document(key)
-        .delete()
-        .addOnSuccessListener { onSuccessAction() }
-        .addOnFailureListener { onFailureAction() }
-
+      .document(key)
+      .delete()
+      .addOnSuccessListener { onSuccessAction() }
+      .addOnFailureListener { onFailureAction() }
     deletePostComments(key)
   }
 
-  fun addComment(postId: String, content: String, onSuccessAction: () -> Unit, onFailureAction: () -> Unit) {
+  fun addComment(
+    postId: String,
+    content: String,
+    onSuccessAction: () -> Unit,
+    onFailureAction: () -> Unit
+  ) {
     // 1
     val commentReference = database.collection(COMMENTS_COLLECTION).document()
-
     // 2
     val comment = HashMap<String, Any>()
-
     // 3
     comment[AUTHOR_KEY] = authenticationManager.getCurrentUser()
     comment[CONTENT_KEY] = content
     comment[POST_ID] = postId
     comment[TIMESTAMP_KEY] = getCurrentTime()
-
     // 4
     commentReference
-        .set(comment) // 5
-        .addOnSuccessListener { onSuccessAction() } // 6
-        .addOnFailureListener { onFailureAction() } // 7
+      .set(comment) // 5
+      .addOnSuccessListener { onSuccessAction() } // 6
+      .addOnFailureListener { onFailureAction() } // 7
   }
 
   fun onCommentsValuesChange(postId: String): LiveData<List<Comment>> {
@@ -133,64 +139,62 @@ class CloudFirestoreManager {
   private fun deletePostComments(postId: String) {
     // 1
     database.collection(COMMENTS_COLLECTION)
-        .whereEqualTo(POST_ID, postId)
-        //2
-        .get()
-        //3
-        .continueWith { task -> task.result?.documents?.forEach { it.reference.delete() } }
+      .whereEqualTo(POST_ID, postId)
+      //2
+      .get()
+      //3
+      .continueWith { task -> task.result?.documents?.forEach { it.reference.delete() } }
   }
 
   private fun listenForPostCommentsValueChanges(postId: String) {
     // 1
     commentsRegistration = database.collection(COMMENTS_COLLECTION)
-        // 2
-        .whereEqualTo(POST_ID, postId) // 3
-        // 4
-        .addSnapshotListener(EventListener { value, error ->
-          if (error != null || value == null) {
-            return@EventListener
+      // 2
+      .whereEqualTo(POST_ID, postId) // 3
+      // 4
+      .addSnapshotListener(EventListener { value, error ->
+        if (error != null || value == null) {
+          return@EventListener
+        }
+        if (value.isEmpty) {
+          postsValues.postValue(emptyList())
+        } else {
+          val comments = ArrayList<Comment>()
+          for (doc in value) {
+            val comment = doc.toObject(Comment::class.java)
+            comments.add(comment)
           }
-
-          if (value.isEmpty) {
-            postsValues.postValue(emptyList())
-          } else {
-            val comments = ArrayList<Comment>()
-            for (doc in value) {
-              val comment = doc.toObject(Comment::class.java)
-              comments.add(comment)
-            }
-            commentsValues.postValue(comments)
-          }
-        })
+          commentsValues.postValue(comments)
+        }
+      })
   }
 
   private fun listenForPostsValueChanges() {
     // 1
-    postsRegistration = database.collection(POSTS_COLLECTION) // 2
+    postsRegistration = database.collection(POSTS_COLLECTION)
+      // 2
+      .addSnapshotListener(EventListener { value, error ->
         // 3
-        .addSnapshotListener(EventListener { value, error ->
-          // 4
-          if (error != null || value == null) {
-            return@EventListener
-          }
-
+        if (error != null || value == null) {
+          return@EventListener
+        }
+        // 4
+        if (value.isEmpty) {
           // 5
-          if (value.isEmpty) {
-            // 6
-            postsValues.postValue(emptyList())
-          } else {
-            // 7
-            val posts = ArrayList<Post>()
+          postsValues.postValue(emptyList())
+        } else {
+          // 6
+          val posts = ArrayList<Post>()
+          // 7
+          for (doc in value) {
             // 8
-            for (doc in value) {
-              // 9
-              val post = doc.toObject(Post::class.java)
-              posts.add(post)
-            }
-            // 10
-            postsValues.postValue(posts)
+            val post = doc.toObject(Post::class.java)
+            posts.add(post)
           }
-        })
+          // 9
+          postsValues.postValue(posts)
+        }
+      })
   }
 
   private fun getCurrentTime() = System.currentTimeMillis()
