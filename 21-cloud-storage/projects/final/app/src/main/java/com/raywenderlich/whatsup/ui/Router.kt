@@ -30,10 +30,6 @@ import com.raywenderlich.whatsup.ui.login.LoginActivity
 
 class Router {
 
-  companion object {
-    private const val IMAGE_TYPE = "image/jpeg"
-  }
-
   fun startHomeScreen(activity: Activity) {
     val intent = HomeActivity.createIntent(activity)
     activity.startActivity(intent)
@@ -42,12 +38,5 @@ class Router {
   fun startLoginScreen(activity: Activity) {
     val intent = LoginActivity.createIntent(activity)
     activity.startActivity(intent)
-  }
-
-  fun showImagePicker(activity: Activity) {
-    val intent = Intent(Intent.ACTION_GET_CONTENT)
-    intent.type = IMAGE_TYPE
-    intent.putExtra(Intent.EXTRA_LOCAL_ONLY, true)
-    activity.startActivityForResult(Intent.createChooser(intent, activity.getString(R.string.image_chooser_title)), HomeActivity.CHOOSE_IMAGE_REQUEST_CODE)
   }
 }

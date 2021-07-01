@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019 Razeware LLC
+ * Copyright (c) 2021 Razeware LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,12 +29,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import com.raywenderlich.whatsup.R
+import com.raywenderlich.whatsup.databinding.ActivityHomeBinding
 import com.raywenderlich.whatsup.firebase.authentication.AuthenticationManager
 import com.raywenderlich.whatsup.firebase.cloudStorage.CloudStorageManager
 import com.raywenderlich.whatsup.ui.Router
 import com.raywenderlich.whatsup.util.ImageLoader
-import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity() {
 
@@ -43,15 +44,16 @@ class HomeActivity : AppCompatActivity() {
 
   private val router by lazy { Router() }
   private val imageLoader by lazy { ImageLoader() }
+  private lateinit var binding: ActivityHomeBinding
 
   companion object {
-    const val CHOOSE_IMAGE_REQUEST_CODE = 123
     fun createIntent(context: Context) = Intent(context, HomeActivity::class.java)
   }
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_home)
+    binding = ActivityHomeBinding.inflate(layoutInflater)
+    setContentView(binding.root)
     initialize()
   }
 
@@ -60,8 +62,8 @@ class HomeActivity : AppCompatActivity() {
     return true
   }
 
-  override fun onOptionsItemSelected(item: MenuItem?): Boolean =
-      when (item?.itemId) {
+  override fun onOptionsItemSelected(item: MenuItem): Boolean =
+      when (item.itemId) {
         R.id.action_logout -> {
           authenticationManager.signOut(this)
           router.startLoginScreen(this)
@@ -71,20 +73,14 @@ class HomeActivity : AppCompatActivity() {
         else -> super.onOptionsItemSelected(item)
       }
 
-  override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-    super.onActivityResult(requestCode, resultCode, data)
-    if (requestCode == CHOOSE_IMAGE_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
-      //TODO
-    }
-  }
-
   private fun initialize() {
-    setSupportActionBar(homeToolbar)
+    setSupportActionBar(binding.homeToolbar)
 
-    addPostFab.setOnClickListener { router.showImagePicker(this) }
+    binding.addPostFab.setOnClickListener { router.showImagePicker(this) }
   }
 
   private fun onPhotoUploadSuccess(url: String) {
-    imageLoader.loadImage(this, url, imageView)
+    binding.progressbar.visibility = View.GONE
+    imageLoader.loadImage(this, url, binding.imageView)
   }
 }

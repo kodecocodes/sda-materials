@@ -22,7 +22,19 @@
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+    app:layout_constraintTop_toTopOf="parent"
+    android:contentDescription="@string/uploaded_image_description"/>
+
+  <ProgressBar
+    android:id="@+id/progressbar"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:indeterminate="true"
+    android:visibility="gone"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent"/>
 
   <com.google.android.material.floatingactionbutton.FloatingActionButton
     android:id="@+id/addPostFab"
@@ -32,6 +44,7 @@
     android:layout_marginBottom="@dimen/big_margin"
     android:src="@drawable/ic_add"
     app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent" />
+    app:layout_constraintEnd_toEndOf="parent"
+    android:contentDescription="@string/fab_description"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

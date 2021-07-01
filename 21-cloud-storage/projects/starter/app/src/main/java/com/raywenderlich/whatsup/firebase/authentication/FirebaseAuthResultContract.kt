@@ -20,21 +20,27 @@
  * THE SOFTWARE.
  */
 
-package com.raywenderlich.whatsup.firebase.cloudStorage
+package com.raywenderlich.whatsup.firebase.authentication
 
-import android.net.Uri
-import com.google.android.gms.tasks.Continuation
-import com.google.android.gms.tasks.Task
-import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.UploadTask
+import android.app.Activity
+import android.content.Context
+import android.content.Intent
+import androidx.activity.result.contract.ActivityResultContract
+import com.firebase.ui.auth.AuthUI
+import com.firebase.ui.auth.IdpResponse
 
-private const val PHOTOS_REFERENCE = "photos"
+class FirebaseAuthResultContract : ActivityResultContract<Int, IdpResponse>() {
 
-class CloudStorageManager {
+    private val providers = arrayListOf(AuthUI.IdpConfig.GoogleBuilder().build())
 
-  private val firebaseStorage by lazy { FirebaseStorage.getInstance() }
+    override fun createIntent(context: Context, input: Int?): Intent = AuthUI.getInstance()
+        .createSignInIntentBuilder()
+        .setAvailableProviders(providers)
+        .setIsSmartLockEnabled(false)
+        .build()
 
-  fun uploadPhoto(selectedImageUri: Uri, onSuccessAction: (String) -> Unit) {
-    //TODO
-  }
+    override fun parseResult(resultCode: Int, intent: Intent?): IdpResponse? = when (resultCode) {
+        Activity.RESULT_OK -> IdpResponse.fromResultIntent(intent)
+        else -> null
+    }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019 Razeware LLC
+ * Copyright (c) 2021 Razeware LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -34,19 +34,6 @@ const val RC_SIGN_IN = 1000
 class AuthenticationManager {
 
   private val firebaseAuth: FirebaseAuth by lazy { FirebaseAuth.getInstance() }
-
-  private val providers = arrayListOf(AuthUI.IdpConfig.GoogleBuilder().build())
-
-  fun startSignInFlow(activity: Activity) {
-    activity.startActivityForResult(
-        AuthUI.getInstance()
-            .createSignInIntentBuilder()
-            .setAvailableProviders(providers)
-            .setIsSmartLockEnabled(false)
-            .build(),
-        RC_SIGN_IN
-    )
-  }
 
   fun isUserSignedIn() = firebaseAuth.currentUser != null
 

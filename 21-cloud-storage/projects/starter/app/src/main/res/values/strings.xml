@@ -24,4 +24,6 @@
   <string name="post_delete_failed">Post could not be deleted</string>
   <string name="comment_add_failed">Comment could not be added</string>
   <string name="image_chooser_title">Complete action using</string>
+  <string name="uploaded_image_description">Image From Cloud Storage</string>
+  <string name="fab_description">Floating Action Button</string>
 </resources>
