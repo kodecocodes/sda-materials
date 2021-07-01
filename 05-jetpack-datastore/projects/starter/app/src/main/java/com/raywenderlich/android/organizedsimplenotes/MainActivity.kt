@@ -97,7 +97,7 @@ class MainActivity : AppCompatActivity(), NoteDialogFragment.NoticeNoteDialogLis
 
     when (notePrefs.getNoteSortOrder()) {
       FILENAME_ASC -> menu.findItem(R.id.sort_by_filename_asc).isChecked = true
-      FILENAME_DESC -> menu.findItem(R.id.sort_by_filename_asc).isChecked = true
+      FILENAME_DESC -> menu.findItem(R.id.sort_by_filename_desc).isChecked = true
       DATE_LAST_MOD_ASC -> menu.findItem(R.id.sort_by_date_last_modified_asc).isChecked = true
       DATE_LAST_MOD_DESC -> menu.findItem(R.id.sort_by_date_last_modified_desc).isChecked = true
       PRIORITY_ASC -> menu.findItem(R.id.sort_by_priority_asc).isChecked = true
