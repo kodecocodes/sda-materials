@@ -30,16 +30,21 @@
  *
  */
 
-package com.raywenderlich.android.droidquiz.data.model
+package com.raywenderlich.android.droidquiz
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.Index
-import androidx.room.PrimaryKey
+import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 
-@Entity(tableName = "questions", indices = [Index("question_id")])
-data class Question(
-  @PrimaryKey(autoGenerate = true)
-  @ColumnInfo(name = "question_id")
-  var questionId: Int,
-  val text: String)
+class ViewModelFactory<T>(val creator: () -> T) : ViewModelProvider.Factory {
+  override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+    return creator() as T
+  }
+}
+
+inline fun <reified T : ViewModel> FragmentActivity.getViewModel(noinline creator: (() -> T)? = null): T {
+  return if (creator == null)
+    ViewModelProvider(this).get(T::class.java)
+  else
+    ViewModelProvider(this, ViewModelFactory(creator)).get(T::class.java)
+}

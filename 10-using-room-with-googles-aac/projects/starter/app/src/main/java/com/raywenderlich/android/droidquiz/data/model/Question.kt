@@ -39,7 +39,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "question", indices = [Index("question_id")])
 data class Question(
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "question_id")
-    var questionId: Int,
-    val text: String)
+  @PrimaryKey(autoGenerate = true)
+  @ColumnInfo(name = "question_id")
+  var questionId: Int,
+  val text: String)
