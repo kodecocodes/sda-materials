@@ -38,8 +38,8 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "question")
 data class Question(
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "question_id")
-    var questionId: Int,
-    val text: String
+  @PrimaryKey(autoGenerate = true)
+  @ColumnInfo(name = "question_id")
+  var questionId: Int,
+  val text: String
 )

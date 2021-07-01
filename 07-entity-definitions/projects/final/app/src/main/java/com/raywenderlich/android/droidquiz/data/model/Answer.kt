@@ -38,12 +38,12 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "answer")
 data class Answer(
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "answer_id")
-    val answerId: Int,
-    @ColumnInfo(name = "question_id")
-    val questionId: Int,
-    @ColumnInfo(name = "is_correct")
-    val isCorrect: Boolean,
-    val text: String
+  @PrimaryKey(autoGenerate = true)
+  @ColumnInfo(name = "answer_id")
+  val answerId: Int,
+  @ColumnInfo(name = "question_id")
+  val questionId: Int,
+  @ColumnInfo(name = "is_correct")
+  val isCorrect: Boolean,
+  val text: String
 )

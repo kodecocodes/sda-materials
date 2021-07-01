@@ -47,6 +47,6 @@ class QuizApplication : Application() {
   override fun onCreate() {
     super.onCreate()
     database = Room.databaseBuilder(this, QuizDatabase::class.java, DB_NAME)
-        .build()
+      .build()
   }
 }
