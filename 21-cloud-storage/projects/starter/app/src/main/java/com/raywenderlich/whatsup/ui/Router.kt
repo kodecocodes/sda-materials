@@ -23,8 +23,6 @@
 package com.raywenderlich.whatsup.ui
 
 import android.app.Activity
-import android.content.Intent
-import com.raywenderlich.whatsup.R
 import com.raywenderlich.whatsup.ui.home.HomeActivity
 import com.raywenderlich.whatsup.ui.login.LoginActivity
 
@@ -38,9 +36,5 @@ class Router {
   fun startLoginScreen(activity: Activity) {
     val intent = LoginActivity.createIntent(activity)
     activity.startActivity(intent)
-  }
-
-  fun showImagePicker(activity: Activity) {
-
   }
 }

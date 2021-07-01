@@ -22,7 +22,6 @@
 
 package com.raywenderlich.whatsup.ui.home
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -48,7 +47,6 @@ class HomeActivity : AppCompatActivity() {
   private lateinit var binding: ActivityHomeBinding
 
   companion object {
-    const val CHOOSE_IMAGE_REQUEST_CODE = 123
     private const val IMAGE_TYPE = "image/jpeg"
     fun createIntent(context: Context) = Intent(context, HomeActivity::class.java)
   }
@@ -79,7 +77,9 @@ class HomeActivity : AppCompatActivity() {
   private fun initialize() {
     setSupportActionBar(binding.homeToolbar)
 
-    binding.addPostFab.setOnClickListener { pickImages.launch(IMAGE_TYPE) }
+    binding.addPostFab.setOnClickListener {
+      pickImages.launch(IMAGE_TYPE)
+    }
   }
 
   private fun onPhotoUploadSuccess(url: String) {

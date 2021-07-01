@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019 Razeware LLC
+ * Copyright (c) 2021 Razeware LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,8 +23,6 @@
 package com.raywenderlich.whatsup.ui
 
 import android.app.Activity
-import android.content.Intent
-import com.raywenderlich.whatsup.R
 import com.raywenderlich.whatsup.ui.home.HomeActivity
 import com.raywenderlich.whatsup.ui.login.LoginActivity
 

@@ -31,16 +31,16 @@ import com.firebase.ui.auth.IdpResponse
 
 class FirebaseAuthResultContract : ActivityResultContract<Int, IdpResponse>() {
 
-    private val providers = arrayListOf(AuthUI.IdpConfig.GoogleBuilder().build())
+  private val providers = arrayListOf(AuthUI.IdpConfig.GoogleBuilder().build())
 
-    override fun createIntent(context: Context, input: Int?): Intent = AuthUI.getInstance()
-        .createSignInIntentBuilder()
-        .setAvailableProviders(providers)
-        .setIsSmartLockEnabled(false)
-        .build()
+  override fun createIntent(context: Context, input: Int?): Intent = AuthUI.getInstance()
+      .createSignInIntentBuilder()
+      .setAvailableProviders(providers)
+      .setIsSmartLockEnabled(false)
+      .build()
 
-    override fun parseResult(resultCode: Int, intent: Intent?): IdpResponse? = when (resultCode) {
-        Activity.RESULT_OK -> IdpResponse.fromResultIntent(intent)
-        else -> null
-    }
+  override fun parseResult(resultCode: Int, intent: Intent?): IdpResponse? = when (resultCode) {
+    Activity.RESULT_OK -> IdpResponse.fromResultIntent(intent)
+    else -> null
+  }
 }

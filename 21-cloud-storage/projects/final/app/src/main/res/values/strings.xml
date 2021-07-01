@@ -5,25 +5,6 @@
   <string name="logout">Logout</string>
   <string name="login">Login</string>
   <string name="feed">Feed</string>
-  <string name="new_post">New Post</string>
-  <string name="post">Post</string>
-  <string name="type_here">Type here</string>
-  <string name="empty_post_message">Post cannot be empty. Please add some content!</string>
-  <string name="empty_comment_message">Comment cannot be empty. Please add some content!</string>
-  <string name="posted_successfully">Posted successfully!</string>
-  <string name="post_details">Post Details</string>
-  <string name="update">Update</string>
-  <string name="delete">Delete</string>
-  <string name="comments">Comments</string>
-  <string name="add_comment">Add Comment</string>
-  <string name="comment">Comment…</string>
-  <string name="post_add_error">Post could not be added</string>
-  <string name="post_updated_successfully">Post updated</string>
-  <string name="post_update_failed">Post update failed</string>
-  <string name="post_successfully_deleted">Post deleted</string>
-  <string name="post_delete_failed">Post could not be deleted</string>
-  <string name="comment_add_failed">Comment could not be added</string>
-  <string name="image_chooser_title">Complete action using</string>
   <string name="uploaded_image_description">Image From Cloud Storage</string>
   <string name="fab_description">Floating Action Button</string>
 </resources>

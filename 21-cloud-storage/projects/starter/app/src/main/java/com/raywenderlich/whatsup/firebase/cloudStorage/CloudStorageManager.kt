@@ -23,10 +23,7 @@
 package com.raywenderlich.whatsup.firebase.cloudStorage
 
 import android.net.Uri
-import com.google.android.gms.tasks.Continuation
-import com.google.android.gms.tasks.Task
 import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.UploadTask
 
 private const val PHOTOS_REFERENCE = "photos"
 

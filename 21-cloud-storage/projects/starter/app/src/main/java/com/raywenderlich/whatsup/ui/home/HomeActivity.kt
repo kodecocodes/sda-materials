@@ -22,14 +22,13 @@
 
 package com.raywenderlich.whatsup.ui.home
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import com.raywenderlich.whatsup.R
 import com.raywenderlich.whatsup.databinding.ActivityHomeBinding
 import com.raywenderlich.whatsup.firebase.authentication.AuthenticationManager
@@ -76,7 +75,9 @@ class HomeActivity : AppCompatActivity() {
   private fun initialize() {
     setSupportActionBar(binding.homeToolbar)
 
-    binding.addPostFab.setOnClickListener { router.showImagePicker(this) }
+    binding.addPostFab.setOnClickListener {
+      //TODO
+    }
   }
 
   private fun onPhotoUploadSuccess(url: String) {
