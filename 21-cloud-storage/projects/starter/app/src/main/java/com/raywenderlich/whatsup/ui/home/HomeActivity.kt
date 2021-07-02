@@ -28,6 +28,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.raywenderlich.whatsup.R
 import com.raywenderlich.whatsup.databinding.ActivityHomeBinding
@@ -46,6 +47,7 @@ class HomeActivity : AppCompatActivity() {
   private lateinit var binding: ActivityHomeBinding
 
   companion object {
+    private const val IMAGE_TYPE = "image/jpeg"
     fun createIntent(context: Context) = Intent(context, HomeActivity::class.java)
   }
 

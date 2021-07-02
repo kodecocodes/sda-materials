@@ -68,9 +68,9 @@ class LoginActivity : AppCompatActivity() {
   private fun isUserSignedIn() = authenticationManager.isUserSignedIn()
 
   private val firebaseAuthResultLauncher =
-    registerForActivityResult(FirebaseAuthResultContract()) { idpResponse ->
-      handleFirebaseAuthResponse(idpResponse)
-    }
+      registerForActivityResult(FirebaseAuthResultContract()) { idpResponse ->
+        handleFirebaseAuthResponse(idpResponse)
+      }
 
   private fun handleFirebaseAuthResponse(idpResponse: IdpResponse?) {
     when {
