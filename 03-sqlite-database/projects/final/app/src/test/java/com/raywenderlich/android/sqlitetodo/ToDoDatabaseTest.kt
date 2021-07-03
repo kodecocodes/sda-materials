@@ -1,7 +1,7 @@
-package com.raywenderlich.sqlitetodo
+package com.raywenderlich.android.sqlitetodo
 
-import com.raywenderlich.sqlitetodo.controller.ToDoDatabaseHandler
-import com.raywenderlich.sqlitetodo.model.ToDo
+import com.raywenderlich.android.sqlitetodo.controller.ToDoDatabaseHandler
+import com.raywenderlich.android.sqlitetodo.model.ToDo
 import org.junit.After
 import org.junit.Assert
 import org.junit.Before

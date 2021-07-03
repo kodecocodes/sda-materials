@@ -28,7 +28,7 @@
  * THE SOFTWARE.
  */
 
-package com.raywenderlich.sqlitetodo.view
+package com.raywenderlich.android.sqlitetodo.view
 
 import android.content.DialogInterface
 import android.os.Bundle
@@ -36,10 +36,10 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.raywenderlich.sqlitetodo.controller.ToDoAdapter
-import com.raywenderlich.sqlitetodo.controller.ToDoDatabaseHandler
-import com.raywenderlich.sqlitetodo.model.ToDo
-import com.raywenderlich.sqlitetodo.R
+import com.raywenderlich.android.sqlitetodo.controller.ToDoAdapter
+import com.raywenderlich.android.sqlitetodo.controller.ToDoDatabaseHandler
+import com.raywenderlich.android.sqlitetodo.model.ToDo
+import com.raywenderlich.android.sqlitetodo.R
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.dialog_to_do_item.view.*
 
@@ -53,7 +53,6 @@ class MainActivity : AppCompatActivity() {
   private var toDoList: ArrayList<ToDo>? = null
   private var toDoListItems: ArrayList<ToDo>? = null
   private var layoutManager: RecyclerView.LayoutManager? = null
-  private lateinit var toDoAdapter: ToDoAdapter
 
 
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,9 +65,8 @@ class MainActivity : AppCompatActivity() {
     toDoListItems = ArrayList()
     layoutManager = LinearLayoutManager(this)
     dbHandler = ToDoDatabaseHandler(this)
-    toDoAdapter = ToDoAdapter(dbHandler!!.readToDos(), this)
     recyclerView.layoutManager = layoutManager
-    recyclerView.adapter = toDoAdapter
+    recyclerView.adapter = ToDoAdapter(dbHandler!!.readToDos(), this)
 
 
     fab.setOnClickListener {
@@ -78,8 +76,11 @@ class MainActivity : AppCompatActivity() {
       dialog.setView(view)
       dialog.setPositiveButton("Add") { _: DialogInterface, _: Int ->
         if (view.edtToDoName.text.isNotEmpty()) {
-          toDoAdapter.insertToDo(view.edtToDoName.text.toString())
-          toDoAdapter.notifyDataSetChanged()
+          val toDo = ToDo()
+          toDo.toDoName = view.edtToDoName.text.toString()
+          toDo.isCompleted = false
+          dbHandler!!.createToDo(toDo)
+          recyclerView.adapter = ToDoAdapter(dbHandler!!.readToDos(), this)
         }
       }
       dialog.setNegativeButton("Cancel") { _: DialogInterface, _: Int ->

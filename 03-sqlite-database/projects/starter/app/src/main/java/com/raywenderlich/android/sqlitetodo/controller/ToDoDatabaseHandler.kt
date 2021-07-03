@@ -28,38 +28,36 @@
  * THE SOFTWARE.
  */
 
-package com.raywenderlich.sqlitetodo.model
+package com.raywenderlich.android.sqlitetodo.controller
 
-import android.provider.BaseColumns
+import android.content.Context
+import android.database.sqlite.SQLiteDatabase
+import com.raywenderlich.android.sqlitetodo.model.*
 
-/*
-This class defines all the column names and other
-important constants related to the database to reduce
-typos throughout the code
- */
+class ToDoDatabaseHandler(context: Context)
 
-object ToDoDbSchema {
-  // 1
-  const val DATABASE_VERSION: Int = 1
-  // 2
-  const val DATABASE_NAME: String = "todoitems.db"
-
-  object ToDoTable {
-    // 3
-    const val TABLE_NAME: String = "todoitems"
-
-    object Columns : BaseColumns {
-      // 4
-      //const val KEY_TODO_ID: String = "todoid" //The unique ID column
-      // 5
-      const val KEY_TODO_NAME: String = "todoname" //The ToDo's Name
-      // 6
-      const val KEY_TODO_IS_COMPLETED: String = "iscompleted" //The ToDo's category
-    }
+  //This method creates the database
+  override fun onCreate(db: SQLiteDatabase?) {
   }
+
+
+  //This method is used to update the database
+  override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
+  }
+
+  //Create a row in the table to store a joke
+  fun createToDo(toDo: ToDo) {
+  }
+
+  fun readToDos(): ArrayList<ToDo> {
+    return ArrayList()
+  }
+
+  fun updateToDo(toDo: ToDo): Int {
+    return 0
+  }
+
+  fun deleteToDo(id: Long) {
+  }
+
 }
-
-
-
-
-

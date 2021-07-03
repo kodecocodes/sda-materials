@@ -28,16 +28,38 @@
  * THE SOFTWARE.
  */
 
-package com.raywenderlich.sqlitetodo.model
+package com.raywenderlich.android.sqlitetodo.model
 
-class ToDo() {
-    var toDoId : Long = -1
-    var toDoName = ""
-    var isCompleted = false
+import android.provider.BaseColumns
 
-    constructor(toDoId: Long, toDoName: String, isCompleted: Boolean) : this() {
-        this.toDoId = toDoId
-        this.toDoName = toDoName
-        this.isCompleted = isCompleted
+/*
+This class defines all the column names and other
+important constants related to the database to reduce
+typos throughout the code
+ */
+
+object ToDoDbSchema {
+  // 1
+  const val DATABASE_VERSION: Int = 1
+  // 2
+  const val DATABASE_NAME: String = "todoitems.db"
+
+  object ToDoTable {
+    // 3
+    const val TABLE_NAME: String = "todoitems"
+
+    object Columns : BaseColumns {
+      // 4
+      //const val KEY_TODO_ID: String = "todoid" //The unique ID column
+      // 5
+      const val KEY_TODO_NAME: String = "todoname" //The ToDo's Name
+      // 6
+      const val KEY_TODO_IS_COMPLETED: String = "iscompleted" //The ToDo's category
     }
+  }
 }
+
+
+
+
+

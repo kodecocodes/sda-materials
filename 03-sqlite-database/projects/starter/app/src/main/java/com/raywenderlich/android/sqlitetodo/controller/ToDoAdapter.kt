@@ -28,7 +28,7 @@
  * THE SOFTWARE.
  */
 
-package com.raywenderlich.sqlitetodo.controller
+package com.raywenderlich.android.sqlitetodo.controller
 
 import android.content.Context
 import android.content.DialogInterface
@@ -37,8 +37,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
-import com.raywenderlich.sqlitetodo.model.ToDo
-import com.raywenderlich.sqlitetodo.R
+import com.raywenderlich.android.sqlitetodo.model.ToDo
+import com.raywenderlich.android.sqlitetodo.R
 import kotlinx.android.synthetic.main.dialog_to_do_item.view.*
 import kotlinx.android.synthetic.main.to_do_list_item.view.*
 
