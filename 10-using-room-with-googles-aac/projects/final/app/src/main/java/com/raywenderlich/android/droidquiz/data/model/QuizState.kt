@@ -33,8 +33,8 @@
 package com.raywenderlich.android.droidquiz.data.model
 
 sealed class QuizState {
-  object Loading : QuizState()
-  data class Data(val data: QuestionAndAllAnswers) : QuizState()
-  object Empty : QuizState()
-  data class Finish(val numberOfQuestions: Int, val score: Int) : QuizState()
+  object LoadingState : QuizState()
+  data class DataState(val data: QuestionAndAllAnswers) : QuizState()
+  object EmptyState : QuizState()
+  data class FinishState(val numberOfQuestions: Int, val score: Int) : QuizState()
 }

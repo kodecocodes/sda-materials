@@ -73,14 +73,14 @@ class QuestionActivity : AppCompatActivity() {
 
   private fun render(state: QuizState) {
     when (state) {
-      is QuizState.Empty -> renderEmptyState()
-      is QuizState.Data -> renderDataState(state)
-      is QuizState.Finish -> goToResultActivity(state.numberOfQuestions, state.score)
-      is QuizState.Loading -> renderLoadingState()
+      is QuizState.EmptyState -> renderEmptyState()
+      is QuizState.DataState -> renderDataState(state)
+      is QuizState.FinishState -> goToResultActivity(state.numberOfQuestions, state.score)
+      is QuizState.LoadingState -> renderLoadingState()
     }
   }
 
-  private fun renderDataState(quizState: QuizState.Data) {
+  private fun renderDataState(quizState: QuizState.DataState) {
     binding.progressBar.visibility = View.GONE
     displayQuestionsView()
     binding.questionsRadioGroup.clearCheck()

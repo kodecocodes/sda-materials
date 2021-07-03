@@ -49,7 +49,7 @@ class QuizViewModel(repository: QuizRepository) : ViewModel() {
   private var score: Int = 0
 
   init {
-    currentState.postValue(QuizState.Loading)
+    currentState.postValue(QuizState.LoadingState)
     addStateSources()
     addQuestionSources()
     currentQuestion.postValue(0)
@@ -95,16 +95,16 @@ class QuizViewModel(repository: QuizRepository) : ViewModel() {
   private fun addStateSources() {
     currentState.addSource(currentQuestion) { currentQuestionNumber ->
       if (currentQuestionNumber == allQuestionAndAllAnswers.value?.size) {
-        currentState.postValue(QuizState.Finish(currentQuestionNumber, score))
+        currentState.postValue(QuizState.FinishState(currentQuestionNumber, score))
       }
     }
     currentState.addSource(allQuestionAndAllAnswers) { allQuestionsAndAnswers ->
       if (allQuestionsAndAnswers.isEmpty()) {
-        currentState.postValue(QuizState.Empty)
+        currentState.postValue(QuizState.EmptyState)
       }
     }
     currentState.addSource(questionAndAnswers) { questionAndAnswers ->
-      currentState.postValue(QuizState.Data(questionAndAnswers))
+      currentState.postValue(QuizState.DataState(questionAndAnswers))
     }
   }
 }
