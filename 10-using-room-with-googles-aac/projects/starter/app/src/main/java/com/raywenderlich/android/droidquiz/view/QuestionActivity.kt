@@ -34,12 +34,16 @@ package com.raywenderlich.android.droidquiz.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.raywenderlich.android.droidquiz.R
+import com.raywenderlich.android.droidquiz.databinding.ActivityQuestionBinding
 
 class QuestionActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityQuestionBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_question)
+
+        binding = ActivityQuestionBinding.inflate(layoutInflater)
+        setContentView(binding.root)
     }
 }
