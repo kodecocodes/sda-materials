@@ -28,7 +28,7 @@
  * THE SOFTWARE.
  */
 
-package com.raywenderlich.sqlitetodo.Controller
+package com.raywenderlich.sqlitetodo.controller
 
 import android.content.ContentValues
 import android.content.Context
@@ -36,12 +36,12 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.provider.BaseColumns._ID
-import com.raywenderlich.sqlitetodo.Model.ToDo
-import com.raywenderlich.sqlitetodo.Model.ToDoDbSchema.DATABASE_NAME
-import com.raywenderlich.sqlitetodo.Model.ToDoDbSchema.DATABASE_VERSION
-import com.raywenderlich.sqlitetodo.Model.ToDoDbSchema.ToDoTable.Columns.KEY_TODO_IS_COMPLETED
-import com.raywenderlich.sqlitetodo.Model.ToDoDbSchema.ToDoTable.Columns.KEY_TODO_NAME
-import com.raywenderlich.sqlitetodo.Model.ToDoDbSchema.ToDoTable.TABLE_NAME
+import com.raywenderlich.sqlitetodo.model.ToDo
+import com.raywenderlich.sqlitetodo.model.ToDoDbSchema.DATABASE_NAME
+import com.raywenderlich.sqlitetodo.model.ToDoDbSchema.DATABASE_VERSION
+import com.raywenderlich.sqlitetodo.model.ToDoDbSchema.ToDoTable.Columns.KEY_TODO_IS_COMPLETED
+import com.raywenderlich.sqlitetodo.model.ToDoDbSchema.ToDoTable.Columns.KEY_TODO_NAME
+import com.raywenderlich.sqlitetodo.model.ToDoDbSchema.ToDoTable.TABLE_NAME
 
 class ToDoDatabaseHandler(context: Context) :
     SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {

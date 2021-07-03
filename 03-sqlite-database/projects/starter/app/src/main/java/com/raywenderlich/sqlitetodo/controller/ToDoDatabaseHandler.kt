@@ -28,15 +28,11 @@
  * THE SOFTWARE.
  */
 
-package com.raywenderlich.sqlitetodo.Controller
+package com.raywenderlich.sqlitetodo.controller
 
-import android.content.ContentValues
 import android.content.Context
-import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
-import android.database.sqlite.SQLiteOpenHelper
-import android.util.Log
-import com.raywenderlich.sqlitetodo.Model.*
+import com.raywenderlich.sqlitetodo.model.*
 
 class ToDoDatabaseHandler(context: Context)
 

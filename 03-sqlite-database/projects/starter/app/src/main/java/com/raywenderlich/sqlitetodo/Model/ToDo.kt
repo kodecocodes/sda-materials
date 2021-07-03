@@ -28,7 +28,7 @@
  * THE SOFTWARE.
  */
 
-package com.raywenderlich.sqlitetodo.Model
+package com.raywenderlich.sqlitetodo.model
 
 class ToDo() {
     var toDoId : Long = -1

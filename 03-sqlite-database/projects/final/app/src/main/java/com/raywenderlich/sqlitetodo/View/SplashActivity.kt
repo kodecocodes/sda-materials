@@ -28,7 +28,7 @@
  * THE SOFTWARE.
  */
 
-package com.raywenderlich.sqlitetodo.View
+package com.raywenderlich.sqlitetodo.view
 
 import android.content.Intent
 import android.os.Bundle

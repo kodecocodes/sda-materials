@@ -1,7 +1,7 @@
 package com.raywenderlich.sqlitetodo
 
-import com.raywenderlich.sqlitetodo.Controller.ToDoDatabaseHandler
-import com.raywenderlich.sqlitetodo.Model.ToDo
+import com.raywenderlich.sqlitetodo.controller.ToDoDatabaseHandler
+import com.raywenderlich.sqlitetodo.model.ToDo
 import org.junit.After
 import org.junit.Assert
 import org.junit.Before
