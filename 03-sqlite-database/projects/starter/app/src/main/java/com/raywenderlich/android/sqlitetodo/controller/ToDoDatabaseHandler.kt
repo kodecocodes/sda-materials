@@ -34,7 +34,7 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import com.raywenderlich.android.sqlitetodo.model.*
 
-class ToDoDatabaseHandler(context: Context)
+class ToDoDatabaseHandler(context: Context) {
 
   //This method creates the database
   override fun onCreate(db: SQLiteDatabase?) {
