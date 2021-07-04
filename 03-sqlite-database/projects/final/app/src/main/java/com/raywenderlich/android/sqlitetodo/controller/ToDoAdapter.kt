@@ -46,13 +46,7 @@ import kotlinx.android.synthetic.main.to_do_list_item.view.*
 class ToDoAdapter(private val list: ArrayList<ToDo>,
                           private val context: Context) :
                           RecyclerView.Adapter<ToDoAdapter.ViewHolder>() {
-  private var dialogBuilder: AlertDialog.Builder? = null
-  private var dialog: AlertDialog? = null
-  private var dbHandler: ToDoDatabaseHandler
-
-  init {
-    dbHandler = ToDoDatabaseHandler(context)
-  }
+  private var dbHandler: ToDoDatabaseHandler = ToDoDatabaseHandler(context)
 
   override fun onCreateViewHolder(parent: ViewGroup, position: Int):
                                                ToDoAdapter.ViewHolder {
