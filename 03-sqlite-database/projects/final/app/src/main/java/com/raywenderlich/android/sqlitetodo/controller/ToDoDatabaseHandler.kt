@@ -169,14 +169,15 @@ class ToDoDatabaseHandler(context: Context) :
   // 3
   fun getAllText(): String {
     var result = ""
-    var cols = arrayOf(KEY_TODO_NAME, KEY_TODO_IS_COMPLETED)
+    val cols = arrayOf(KEY_TODO_NAME, KEY_TODO_IS_COMPLETED)
     val cursor = writableDatabase.query(TABLE_NAME, cols,
         null, null, null, null, _ID)
     val COLUMN_NAME = cursor.getColumnIndexOrThrow(KEY_TODO_NAME)
-    while (cursor != null && cursor.moveToNext())
-    {
-      result += "${cursor.getString(COLUMN_NAME)}"
+    while (cursor != null && cursor.moveToNext()) {
+      result += cursor.getString(COLUMN_NAME)
     }
+    // free up the cursor when you are done with it
+    cursor.close()
     return result
   }
 }
