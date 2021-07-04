@@ -33,18 +33,23 @@ package com.raywenderlich.android.sqlitetodo.view
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.view.Window
-import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
 import com.raywenderlich.android.sqlitetodo.R
+
 
 /**
  * Splash Screen with the app icon and name at the center, this is also the launch screen and
  * opens up in fullscreen mode. Once launched it waits for 2 seconds after which it opens the
- * MainActivity
+ * MainActivityOriginal
  */
-
 class SplashActivity : AppCompatActivity() {
+
+  private lateinit var handler: Handler
+  private lateinit var runnable: Runnable
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -53,8 +58,9 @@ class SplashActivity : AppCompatActivity() {
 
     setContentView(R.layout.activity_splash)
 
-    // Using a handler to delay loading the MainActivity
-    Handler().postDelayed({
+    // Using a handler to delay loading the MainActivityOriginal
+    handler = Handler(Looper.getMainLooper())
+    runnable = Runnable {
 
       // Start activity
       startActivity(Intent(this, MainActivity::class.java))
@@ -65,7 +71,8 @@ class SplashActivity : AppCompatActivity() {
       // Close this activity
       finish()
 
-    }, 2000)
+    }
+    handler.postDelayed(runnable, 2000)
   }
 
   private fun makeFullScreen() {
@@ -73,10 +80,18 @@ class SplashActivity : AppCompatActivity() {
     requestWindowFeature(Window.FEATURE_NO_TITLE)
 
     // Make Fullscreen
-    window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-        WindowManager.LayoutParams.FLAG_FULLSCREEN)
+    WindowCompat.getInsetsController(window, window.decorView)
+      ?.hide(
+        WindowInsetsCompat.Type.statusBars() or
+            WindowInsetsCompat.Type.navigationBars()
+      )
 
     // Hide the toolbar
     supportActionBar?.hide()
+  }
+
+  override fun onDestroy() {
+    super.onDestroy()
+    handler.removeCallbacks(runnable)
   }
 }
