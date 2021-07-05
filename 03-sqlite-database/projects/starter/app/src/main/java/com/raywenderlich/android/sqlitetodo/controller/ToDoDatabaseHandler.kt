@@ -36,15 +36,6 @@ import com.raywenderlich.android.sqlitetodo.model.*
 
 class ToDoDatabaseHandler(context: Context) {
 
-  //This method creates the database
-  override fun onCreate(db: SQLiteDatabase?) {
-  }
-
-
-  //This method is used to update the database
-  override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
-  }
-
   //Create a row in the table to store a joke
   fun createToDo(toDo: ToDo) {
   }
