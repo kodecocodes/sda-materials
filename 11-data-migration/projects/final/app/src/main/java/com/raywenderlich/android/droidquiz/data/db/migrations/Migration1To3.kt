@@ -30,7 +30,7 @@
  *
  */
 
-package com.raywenderlich.android.droidquiz.data.migrations
+package com.raywenderlich.android.droidquiz.data.db.migrations
 
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase

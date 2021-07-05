@@ -30,13 +30,10 @@
  *
  */
 
-package com.raywenderlich.android.droidquiz.data.migrations
+package com.raywenderlich.android.droidquiz.data.db.migrations
 
-import androidx.room.migration.Migration
-import androidx.sqlite.db.SupportSQLiteDatabase
+import androidx.room.RenameColumn
+import androidx.room.migration.AutoMigrationSpec
 
-class Migration1To2 : Migration(1, 2) {
-  override fun migrate(database: SupportSQLiteDatabase) {
-    database.execSQL("ALTER TABLE questions ADD COLUMN difficulty INTEGER NOT NULL DEFAULT 0")
-  }
-}
+@RenameColumn(tableName = "questions", fromColumnName = "difficulty", toColumnName = "challengeLevel")
+class Migration3To4 : AutoMigrationSpec

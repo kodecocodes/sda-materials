@@ -35,10 +35,10 @@ package com.raywenderlich.android.droidquiz.data.db
 import androidx.room.AutoMigration
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.raywenderlich.android.droidquiz.data.migrations.Migration1To2
-import com.raywenderlich.android.droidquiz.data.migrations.Migration1To3
-import com.raywenderlich.android.droidquiz.data.migrations.Migration2To3
-import com.raywenderlich.android.droidquiz.data.migrations.Migration3To4
+import com.raywenderlich.android.droidquiz.data.db.migrations.Migration1To2
+import com.raywenderlich.android.droidquiz.data.db.migrations.Migration1To3
+import com.raywenderlich.android.droidquiz.data.db.migrations.Migration2To3
+import com.raywenderlich.android.droidquiz.data.db.migrations.Migration3To4
 import com.raywenderlich.android.droidquiz.data.model.Answer
 import com.raywenderlich.android.droidquiz.data.model.Question
 
