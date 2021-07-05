@@ -91,14 +91,14 @@ class ToDoAdapter(private val list: ArrayList<ToDo>,
 
 
     override fun onClick(imgButton: View?) {
-      var position: Int = adapterPosition
-      var toDo = list[position]
+      val position: Int = bindingAdapterPosition
+      val toDo = list[position]
 
       when (imgButton!!.id) {
         itemView.imgDelete.id -> {
           deleteToDo(toDo.toDoId)
-          list.removeAt(adapterPosition)
-          notifyItemRemoved(adapterPosition)
+          list.removeAt(bindingAdapterPosition)
+          notifyItemRemoved(bindingAdapterPosition)
         }
         itemView.imgEdit.id -> {
           editToDo(toDo)
@@ -108,11 +108,11 @@ class ToDoAdapter(private val list: ArrayList<ToDo>,
 
     }
 
-    fun deleteToDo(id: Long) {
+    private fun deleteToDo(id: Long) {
       dbHandler.deleteToDo(id)
     }
 
-    fun editToDo(toDo: ToDo) {
+    private fun editToDo(toDo: ToDo) {
       val dialog = AlertDialog.Builder(context)
       dialog.setTitle("Update To Do Item")
       val view = LayoutInflater.from(context).inflate(R.layout.dialog_to_do_item, null)

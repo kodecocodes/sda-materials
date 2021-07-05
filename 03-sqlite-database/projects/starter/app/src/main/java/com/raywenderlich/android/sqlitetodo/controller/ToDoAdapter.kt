@@ -53,7 +53,7 @@ class ToDoAdapter(private val list: ArrayList<ToDo>,
     val view = LayoutInflater.from(context)
     .inflate(R.layout.to_do_list_item, parent, false)
     dbHandler = ToDoDatabaseHandler(context)
-    return ViewHolder(view, context, list)
+    return ViewHolder(view)
   }
 
   override fun getItemCount(): Int {
@@ -64,7 +64,7 @@ class ToDoAdapter(private val list: ArrayList<ToDo>,
     holder.bindViews(list[position])
   }
 
-  inner class ViewHolder(itemView: View, context: Context, list: ArrayList<ToDo>) :
+  inner class ViewHolder(itemView: View) :
       RecyclerView.ViewHolder(itemView), View.OnClickListener {
 
     fun bindViews(toDo: ToDo) {
@@ -82,14 +82,14 @@ class ToDoAdapter(private val list: ArrayList<ToDo>,
 
 
     override fun onClick(imgButton: View?) {
-      var position: Int = adapterPosition
-      var toDo = list[position]
+      val position: Int = bindingAdapterPosition
+      val toDo = list[position]
 
       when (imgButton!!.id) {
         itemView.imgDelete.id -> {
           deleteToDo(toDo.toDoId)
-          list.removeAt(adapterPosition)
-          notifyItemRemoved(adapterPosition)
+          list.removeAt(bindingAdapterPosition)
+          notifyItemRemoved(bindingAdapterPosition)
         }
         itemView.imgEdit.id -> {
           editToDo(toDo)
@@ -99,11 +99,11 @@ class ToDoAdapter(private val list: ArrayList<ToDo>,
 
     }
 
-    fun deleteToDo(id: Long) {
+    private fun deleteToDo(id: Long) {
       dbHandler.deleteToDo(id)
     }
 
-    fun editToDo(toDo: ToDo) {
+    private fun editToDo(toDo: ToDo) {
       val dialog = AlertDialog.Builder(context)
       dialog.setTitle("Update To Do Item")
       val view = LayoutInflater.from(context).inflate(R.layout.dialog_to_do_item, null)
