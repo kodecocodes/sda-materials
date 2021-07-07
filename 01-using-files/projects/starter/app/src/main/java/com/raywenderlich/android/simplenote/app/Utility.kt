@@ -28,54 +28,14 @@
  * THE SOFTWARE.
  */
 
-package com.raywenderlich.simplenote.model
+package com.raywenderlich.android.simplenote.app
 
-import android.content.Context
-import android.os.Environment
-import java.io.File
-import java.io.FileInputStream
-import java.io.FileOutputStream
+import android.app.Activity
+import android.widget.Toast
 
-
-class ExternalFileRepository(var context: Context) :
-    NoteRepository {
-
-  override fun addNote(note: Note) {
-    if (isExternalStorageWritable()) {
-      FileOutputStream(noteFile(note.fileName)).use { output ->
-        output.write(note.noteText.toByteArray())
-      }
-    }
-  }
-
-  override fun getNote(fileName: String): Note {
-    val note = Note(fileName, "")
-    if (isExternalStorageReadable()) {
-      FileInputStream(noteFile(fileName)).use { stream ->
-        val text = stream.bufferedReader().use {
-          it.readText()
-        }
-        note.noteText = text
-      }
-    }
-    return note
-  }
-
-  override fun deleteNote(fileName: String): Boolean {
-    return isExternalStorageWritable() && noteFile(fileName).delete()
-  }
-
-  private fun noteDirectory(): File? = context.getExternalFilesDir(null)
-
-  private fun noteFile(fileName: String): File = File(noteDirectory(), fileName)
-
-  fun isExternalStorageWritable(): Boolean {
-    return Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED
-  }
-
-  fun isExternalStorageReadable(): Boolean {
-    return Environment.getExternalStorageState() in
-        setOf(Environment.MEDIA_MOUNTED, Environment.MEDIA_MOUNTED_READ_ONLY)
-  }
-
-}
+/**
+ * Utility class that allows to show a Toast
+ */
+fun Activity.showToast(msg: String) = Toast
+    .makeText(this, msg, Toast.LENGTH_LONG)
+    .show()

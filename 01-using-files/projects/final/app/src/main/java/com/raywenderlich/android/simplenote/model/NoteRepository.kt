@@ -29,6 +29,10 @@
  *
  */
 
-package com.raywenderlich.simplenote.model
+package com.raywenderlich.android.simplenote.model
 
-data class Note(var fileName: String, var noteText: String)
+interface NoteRepository {
+  fun addNote(note: Note)
+  fun getNote(fileName: String): Note
+  fun deleteNote(fileName: String): Boolean
+}

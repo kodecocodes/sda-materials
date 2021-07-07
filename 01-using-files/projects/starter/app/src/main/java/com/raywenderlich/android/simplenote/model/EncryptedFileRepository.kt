@@ -28,13 +28,19 @@
  * THE SOFTWARE.
  */
 
-package com.raywenderlich.simplenote.model
+package com.raywenderlich.android.simplenote.model
 
 import android.content.Context
 import android.os.Environment
-import java.io.File
-import java.io.FileInputStream
-import java.io.FileOutputStream
+import android.util.Log
+import java.io.*
+import java.security.SecureRandom
+import javax.crypto.Cipher
+import javax.crypto.SecretKeyFactory
+import javax.crypto.spec.IvParameterSpec
+import javax.crypto.spec.PBEKeySpec
+import javax.crypto.spec.SecretKeySpec
+
 
 class EncryptedFileRepository(var context: Context) :
     NoteRepository {
@@ -51,12 +57,8 @@ class EncryptedFileRepository(var context: Context) :
     return Note("", "")
   }
 
-  override fun deleteNote(fileName: String): Boolean {
-    if (isExternalStorageWritable()) {
-      return noteFile(fileName).delete()
-    }
-    return false
-  }
+  override fun deleteNote(fileName: String): Boolean =
+    isExternalStorageWritable() && noteFile(fileName).delete()
 
   private fun decrypt(map: HashMap<String, ByteArray>): ByteArray? {
     // TODO remove the following two lines of code
@@ -66,9 +68,12 @@ class EncryptedFileRepository(var context: Context) :
   }
 
   private fun encrypt(plainTextBytes: ByteArray): HashMap<String, ByteArray> {
-    // TODO remove the following two lines of code
-    //  and add code from the tutorial here instead.
     val map = HashMap<String, ByteArray>()
+    try {
+      // TODO add code here
+    } catch (e: Exception) {
+      Log.e("MYAPP", "encryption exception", e)
+    }
     return map
   }
 
@@ -81,13 +86,10 @@ class EncryptedFileRepository(var context: Context) :
   private fun noteFileInputStream(fileName: String): FileInputStream =
       FileInputStream(noteFile(fileName))
 
-  fun isExternalStorageWritable(): Boolean {
-    return Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED
-  }
+  private fun isExternalStorageWritable(): Boolean =
+    Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED
 
-  fun isExternalStorageReadable(): Boolean {
-    return Environment.getExternalStorageState() in
+  private fun isExternalStorageReadable(): Boolean =
+    Environment.getExternalStorageState() in
         setOf(Environment.MEDIA_MOUNTED, Environment.MEDIA_MOUNTED_READ_ONLY)
-  }
-
 }

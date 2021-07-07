@@ -28,14 +28,32 @@
  * THE SOFTWARE.
  */
 
-package com.raywenderlich.simplenote.app
+package com.raywenderlich.android.simplenote.model
 
-import android.app.Activity
-import android.widget.Toast
+import android.content.Context
+import java.io.File
 
-/**
- * Utility class that allows to show a Toast
- */
-fun Activity.showToast(msg: String) = Toast
-    .makeText(this, msg, Toast.LENGTH_LONG)
-    .show()
+class InternalFileRepository(var context: Context) :
+    NoteRepository {
+
+  override fun addNote(note: Note) {
+    // TODO add code from the tutorial here
+  }
+
+  override fun getNote(fileName: String): Note {
+    // TODO remove the following return statement
+    //  and add code from the tutorial here instead.
+    return Note("", "")
+  }
+
+  override fun deleteNote(fileName: String): Boolean {
+    // TODO remove the following return statement
+    //  and add code from the tutorial here instead.
+    return true
+  }
+
+  private fun noteFile(fileName: String): File = File(noteDirectory(), fileName)
+
+  private fun noteDirectory(): String = context.filesDir.absolutePath
+
+}

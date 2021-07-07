@@ -26,10 +26,44 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
- *
  */
 
-package com.raywenderlich.simplenote.model
+package com.raywenderlich.android.simplenote.model
 
-data class Note(var fileName: String, var noteText: String)
+import android.content.Context
+import android.os.Environment
+import java.io.File
+import java.io.FileInputStream
+import java.io.FileOutputStream
 
+class ExternalFileRepository(var context: Context) :
+    NoteRepository {
+
+  override fun addNote(note: Note) {
+    // TODO add code from the tutorial here.
+  }
+
+  override fun getNote(fileName: String): Note {
+    // TODO remove the following return statement
+    //  and add code from the tutorial here instead.
+    return Note("", "")
+  }
+
+  override fun deleteNote(fileName: String): Boolean {
+    // TODO remove the following return statement
+    //  and add code from the tutorial here instead.
+    return true
+  }
+
+  private fun noteDirectory(): File? = context.getExternalFilesDir(null)
+
+  private fun noteFile(fileName: String): File = File(noteDirectory(), fileName)
+
+  fun isExternalStorageWritable(): Boolean =
+    Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED
+
+  fun isExternalStorageReadable(): Boolean =
+    Environment.getExternalStorageState() in
+        setOf(Environment.MEDIA_MOUNTED, Environment.MEDIA_MOUNTED_READ_ONLY)
+
+}

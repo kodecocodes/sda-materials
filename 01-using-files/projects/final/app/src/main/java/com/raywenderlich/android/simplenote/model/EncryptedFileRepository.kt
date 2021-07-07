@@ -28,7 +28,7 @@
  * THE SOFTWARE.
  */
 
-package com.raywenderlich.simplenote.model
+package com.raywenderlich.android.simplenote.model
 
 import android.content.Context
 import android.os.Environment
@@ -41,9 +41,8 @@ import javax.crypto.spec.IvParameterSpec
 import javax.crypto.spec.PBEKeySpec
 import javax.crypto.spec.SecretKeySpec
 
-
 class EncryptedFileRepository(var context: Context) :
-    NoteRepository {
+  NoteRepository {
 
   private val passwordString = "Swordfish"
 
@@ -69,9 +68,8 @@ class EncryptedFileRepository(var context: Context) :
     return note
   }
 
-  override fun deleteNote(fileName: String): Boolean {
-    return isExternalStorageWritable() && noteFile(fileName).delete()
-  }
+  override fun deleteNote(fileName: String): Boolean =
+    isExternalStorageWritable() && noteFile(fileName).delete()
 
   private fun decrypt(map: HashMap<String, ByteArray>): ByteArray? {
     var decrypted: ByteArray? = null
@@ -153,18 +151,16 @@ class EncryptedFileRepository(var context: Context) :
 
   private fun noteFile(fileName: String): File = File(noteDirectory(), fileName)
 
-  private fun noteFileOutputStream(fileName: String): FileOutputStream = FileOutputStream(noteFile(fileName))
+  private fun noteFileOutputStream(fileName: String): FileOutputStream =
+    FileOutputStream(noteFile(fileName))
 
   private fun noteFileInputStream(fileName: String): FileInputStream =
-      FileInputStream(noteFile(fileName))
+    FileInputStream(noteFile(fileName))
 
-  fun isExternalStorageWritable(): Boolean {
-    return Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED
-  }
+  private fun isExternalStorageWritable(): Boolean =
+    Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED
 
-  fun isExternalStorageReadable(): Boolean {
-    return Environment.getExternalStorageState() in
-        setOf(Environment.MEDIA_MOUNTED, Environment.MEDIA_MOUNTED_READ_ONLY)
-  }
-
+  private fun isExternalStorageReadable(): Boolean =
+    Environment.getExternalStorageState() in
+      setOf(Environment.MEDIA_MOUNTED, Environment.MEDIA_MOUNTED_READ_ONLY)
 }

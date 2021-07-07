@@ -28,15 +28,15 @@
  * THE SOFTWARE.
  */
 
-package com.raywenderlich.simplenote.ui
+package com.raywenderlich.android.simplenote.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.raywenderlich.simplenote.R
-import com.raywenderlich.simplenote.app.showToast
-import com.raywenderlich.simplenote.model.InternalFileRepository
-import com.raywenderlich.simplenote.model.NoteRepository
-import kotlinx.android.synthetic.main.activity_main.*
+import com.raywenderlich.android.simplenote.app.showToast
+import com.raywenderlich.android.simplenote.model.EncryptedFileRepository
+import com.raywenderlich.android.simplenote.model.Note
+import com.raywenderlich.android.simplenote.model.NoteRepository
+import com.raywenderlich.android.simplenote.databinding.ActivityMainBinding
 
 
 /**
@@ -44,43 +44,58 @@ import kotlinx.android.synthetic.main.activity_main.*
  */
 class MainActivity : AppCompatActivity() {
 
-  private val repo: NoteRepository by lazy { InternalFileRepository(this) }
+  private val repo: NoteRepository by lazy { EncryptedFileRepository(this) }
+  private lateinit var binding: ActivityMainBinding
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_main)
+    binding = ActivityMainBinding.inflate(layoutInflater)
+    setContentView(binding.root)
 
-    btnWrite.setOnClickListener {
-      // TODO Add code here
+    binding.btnWrite.setOnClickListener {
+      if (binding.edtFileName.text.isNotEmpty()) {
+        try {
+          repo.addNote(Note(binding.edtFileName.text.toString(),
+            binding.edtNoteText.text.toString()))
+        } catch (e: Exception) {
+          showToast("File Write Failed")
+          e.printStackTrace()
+        }
+        binding.edtFileName.text.clear()
+        binding.edtNoteText.text.clear()
+      } else {
+        showToast("Please provide a Filename")
+      }
     }
 
-
-    btnRead.setOnClickListener {
-      if (edtFileName.text.isNotEmpty()) {
+    binding.btnRead.setOnClickListener {
+      if (binding.edtFileName.text.isNotEmpty()) {
         try {
-          val note = repo.getNote(edtFileName.text.toString())
-          edtNoteText.setText(note.noteText)
+          val note = repo.getNote(binding.edtFileName.text.toString())
+          binding.edtNoteText.setText(note.noteText)
         } catch (e: Exception) {
           showToast("File Read Failed")
+          e.printStackTrace()
         }
       } else {
         showToast("Please provide a Filename")
       }
     }
 
-    btnDelete.setOnClickListener {
-      if (edtFileName.text.isNotEmpty()) {
+    binding.btnDelete.setOnClickListener {
+      if (binding.edtFileName.text.isNotEmpty()) {
         try {
-          if (repo.deleteNote(edtFileName.text.toString())) {
+          if (repo.deleteNote(binding.edtFileName.text.toString())) {
             showToast("File Deleted")
           } else {
             showToast("File Could Not Be Deleted")
           }
         } catch (e: Exception) {
           showToast("File Delete Failed")
+          e.printStackTrace()
         }
-        edtFileName.text.clear()
-        edtNoteText.text.clear()
+        binding.edtFileName.text.clear()
+        binding.edtNoteText.text.clear()
       } else {
         showToast("Please provide a Filename")
       }
