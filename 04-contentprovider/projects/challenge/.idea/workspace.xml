@@ -34,8 +34,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a2b7582c-6f64-453d-954d-1879a91515e3" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/raywenderlich/contentprovidertodoclient/Controller/ToDoAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/raywenderlich/android/contentprovidertodoclient/Controller/ToDoAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/raywenderlich/contentprovidertodoclient/Controller/provider/ToDoContract.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/raywenderlich/android/contentprovidertodoclient/Controller/provider/ToDoContract.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/raywenderlich/contentprovidertodoclient/Model/ToDo.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/raywenderlich/android/contentprovidertodoclient/Model/ToDo.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/raywenderlich/contentprovidertodoclient/View/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/raywenderlich/android/contentprovidertodoclient/View/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/raywenderlich/contentprovidertodoclient/View/SplashActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../final/app/src/main/java/com/raywenderlich/android/contentprovidertodo/View/SplashActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../final/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../final/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../final/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../final/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../final/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../final/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../final/app/src/main/java/com/raywenderlich/contentprovidertodo/Controller/ToDoAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../final/app/src/main/java/com/raywenderlich/android/contentprovidertodo/Controller/ToDoAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../final/app/src/main/java/com/raywenderlich/contentprovidertodo/Controller/ToDoDatabaseHandler.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../starter/app/src/main/java/com/raywenderlich/android/contentprovidertodo/Controller/ToDoDatabaseHandler.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../final/app/src/main/java/com/raywenderlich/contentprovidertodo/Controller/provider/ToDoContentProvider.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../final/app/src/main/java/com/raywenderlich/android/contentprovidertodo/Controller/provider/ToDoContentProvider.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../final/app/src/main/java/com/raywenderlich/contentprovidertodo/Controller/provider/ToDoContract.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../final/app/src/main/java/com/raywenderlich/android/contentprovidertodo/Controller/provider/ToDoContract.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../final/app/src/main/java/com/raywenderlich/contentprovidertodo/Model/ToDo.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../starter/app/src/main/java/com/raywenderlich/android/contentprovidertodo/Model/ToDo.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../final/app/src/main/java/com/raywenderlich/contentprovidertodo/Model/ToDoDbSchema.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../starter/app/src/main/java/com/raywenderlich/android/contentprovidertodo/Model/ToDoDbSchema.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../final/app/src/main/java/com/raywenderlich/contentprovidertodo/View/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../final/app/src/main/java/com/raywenderlich/android/contentprovidertodo/View/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../final/app/src/main/java/com/raywenderlich/contentprovidertodo/View/SplashActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../starter/app/src/main/java/com/raywenderlich/android/contentprovidertodo/View/SplashActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../starter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../starter/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../starter/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../starter/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../starter/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../starter/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../starter/app/src/main/java/com/raywenderlich/contentprovidertodo/Controller/ToDoAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../starter/app/src/main/java/com/raywenderlich/android/contentprovidertodo/Controller/ToDoAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../starter/app/src/main/java/com/raywenderlich/contentprovidertodo/Controller/ToDoDatabaseHandler.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../final/app/src/main/java/com/raywenderlich/android/contentprovidertodo/Controller/ToDoDatabaseHandler.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../starter/app/src/main/java/com/raywenderlich/contentprovidertodo/Model/ToDo.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../final/app/src/main/java/com/raywenderlich/android/contentprovidertodo/Model/ToDo.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../starter/app/src/main/java/com/raywenderlich/contentprovidertodo/Model/ToDoDbSchema.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../final/app/src/main/java/com/raywenderlich/android/contentprovidertodo/Model/ToDoDbSchema.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../starter/app/src/main/java/com/raywenderlich/contentprovidertodo/View/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../starter/app/src/main/java/com/raywenderlich/android/contentprovidertodo/View/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../starter/app/src/main/java/com/raywenderlich/contentprovidertodo/View/SplashActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/raywenderlich/android/contentprovidertodoclient/View/SplashActivity.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +72,7 @@
     <option name="testRunner" value="GRADLE" />
     <option name="delegatedBuild" value="true" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[SerialNumber@9C9AYV05BG]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
