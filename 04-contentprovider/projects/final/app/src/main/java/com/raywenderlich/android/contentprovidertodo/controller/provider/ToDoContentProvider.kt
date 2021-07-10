@@ -65,8 +65,8 @@ class ToDoContentProvider : ContentProvider() {
 
     sUriMatcher = UriMatcher(UriMatcher.NO_MATCH)
     sUriMatcher.addURI(AUTHORITY,CONTENT_PATH, URI_ALL_ITEMS_CODE)
-    sUriMatcher.addURI(AUTHORITY, CONTENT_PATH + "/#", URI_ONE_ITEM_CODE)
-    sUriMatcher.addURI(AUTHORITY, CONTENT_PATH + "/" + COUNT, URI_COUNT_CODE)
+    sUriMatcher.addURI(AUTHORITY, "$CONTENT_PATH/#", URI_ONE_ITEM_CODE)
+    sUriMatcher.addURI(AUTHORITY, "$CONTENT_PATH/$COUNT", URI_COUNT_CODE)
   }
 
   // 3
@@ -77,9 +77,11 @@ class ToDoContentProvider : ContentProvider() {
 
   // The onCreate method
   override fun onCreate(): Boolean {
-    db = ToDoDatabaseHandler(context)
-    // intialize the URIs
-    initializeUriMatching()
+    context?.let {
+      db = ToDoDatabaseHandler(it)
+      // intialize the URIs
+      initializeUriMatching()
+    }
     return true
   }
 
@@ -92,14 +94,20 @@ class ToDoContentProvider : ContentProvider() {
 
   // Delete a record
   override fun delete(uri: Uri, selection: String?, selectionArgs: Array<String>?): Int {
-    return db.delete(parseLong(selectionArgs?.get(0)))
+    selectionArgs?.get(0)?.let {
+      return db.delete(parseLong(it))
+    }
+    return 0
   }
 
 
   // Insert a record
   override fun insert(uri: Uri, values: ContentValues?): Uri? {
-    val id = db.insert(values!!.getAsString(KEY_TODO_NAME))
-    return Uri.parse("$CONTENT_URI/$id")
+    values?.let {
+      val id = db.insert(it.getAsString(KEY_TODO_NAME))
+      return Uri.parse("$CONTENT_URI/$id")
+    }
+    return null
   }
 
   //Query the database
@@ -113,7 +121,11 @@ class ToDoContentProvider : ContentProvider() {
     var cursor : Cursor? = null
     when(sUriMatcher.match(uri)) {
       URI_ALL_ITEMS_CODE -> { cursor = db.query(ALL_ITEMS)}
-      URI_ONE_ITEM_CODE -> { cursor = db.query(uri.lastPathSegment.toInt()) }
+      URI_ONE_ITEM_CODE -> {
+        uri.lastPathSegment?.let {
+          cursor = db.query(it.toInt())
+        }
+      }
       URI_COUNT_CODE -> { cursor = db.count()}
       UriMatcher.NO_MATCH -> { /*error handling goes here*/ }
       else -> { /*unexpected problem*/ }
@@ -124,8 +136,10 @@ class ToDoContentProvider : ContentProvider() {
   // Update a record in the database
   override fun update(uri: Uri, values: ContentValues?, selection: String?,
       selectionArgs: Array<String>?): Int {
-    var toDo = ToDo(values!!.getAsLong(KEY_TODO_ID),values!!.getAsString(KEY_TODO_NAME), values!!
-        .getAsBoolean(KEY_TODO_IS_COMPLETED))
-    return db.update(toDo)
+    values?.let {
+      val toDo = ToDo(it.getAsLong(KEY_TODO_ID), it.getAsString(KEY_TODO_NAME), it.getAsBoolean(KEY_TODO_IS_COMPLETED))
+      return db.update(toDo)
+    }
+    return 0
   }
 }
