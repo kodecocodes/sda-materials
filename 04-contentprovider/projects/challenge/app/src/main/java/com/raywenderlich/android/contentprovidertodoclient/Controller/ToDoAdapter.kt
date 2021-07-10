@@ -72,7 +72,9 @@ class ToDoAdapter(private val context: Context) :
         null,sortOrder)
     if(cursor != null) {
       if(cursor.moveToFirst()) {
-        return cursor.getInt(0)
+        val itemCount = cursor.getInt(0)
+        cursor.close()
+        return itemCount
       }
     }
     return 0
@@ -81,7 +83,7 @@ class ToDoAdapter(private val context: Context) :
   override fun onBindViewHolder(holder: ViewHolder, position: Int) {
     selectionArgs = arrayOf(position.toString())
 
-    val cursor = context.contentResolver.query(Uri.parse("$queryUri"),projection,
+    val cursor = context.contentResolver.query(Uri.parse(queryUri),projection,
         selectionClause,
         selectionArgs, sortOrder)
     if(cursor != null) {
@@ -89,6 +91,7 @@ class ToDoAdapter(private val context: Context) :
         val toDoId = cursor.getLong(cursor.getColumnIndex(KEY_TODO_ID))
         val toDoName = cursor.getString(cursor.getColumnIndex(KEY_TODO_NAME))
         val toDoCompleted= cursor.getInt(cursor.getColumnIndex(KEY_TODO_IS_COMPLETED)) > 0
+        cursor.close()
         val toDo= ToDo(toDoId, toDoName, toDoCompleted)
         holder.bindViews(toDo)
       }
@@ -104,7 +107,7 @@ class ToDoAdapter(private val context: Context) :
       itemView.chkToDoCompleted.isChecked = toDo.isCompleted
       itemView.chkToDoCompleted.setOnCheckedChangeListener { compoundButton, _ ->
         toDo.isCompleted = compoundButton.isChecked
-        var values = ContentValues()
+        val values = ContentValues()
         values.put(KEY_TODO_IS_COMPLETED, toDo.isCompleted)
         values.put(KEY_TODO_ID, toDo.toDoId)
         values.put(KEY_TODO_NAME, toDo.toDoName)
@@ -119,7 +122,7 @@ class ToDoAdapter(private val context: Context) :
 
 
     override fun onClick(imgButton: View?) {
-      var position: Int = adapterPosition
+      var position: Int = bindingAdapterPosition
       selectionArgs = arrayOf(position.toString())
 
       val cursor = context.contentResolver.query(Uri.parse(queryUri),projection,selectionClause,
@@ -142,14 +145,14 @@ class ToDoAdapter(private val context: Context) :
       }
     }
 
-    fun deleteToDo(id: Long) {
+    private fun deleteToDo(id: Long) {
       selectionArgs = arrayOf(id.toString())
       Log.e("MESG","Trying to delete")
       context.contentResolver.delete(Uri.parse(queryUri), selectionClause, selectionArgs)
       notifyDataSetChanged()
     }
 
-    fun editToDo(toDo: ToDo) {
+    private fun editToDo(toDo: ToDo) {
       val dialog = AlertDialog.Builder(context)
       dialog.setTitle("Update To Do Item")
       val view = LayoutInflater.from(context).inflate(R.layout.dialog_to_do_item, null)

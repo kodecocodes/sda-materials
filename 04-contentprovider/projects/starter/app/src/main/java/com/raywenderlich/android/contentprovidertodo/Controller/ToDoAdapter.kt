@@ -101,10 +101,11 @@ class ToDoAdapter(private val context: Context) :
           selectionArgs, sortOrder)
 
       if(cursor != null) {
-        if(cursor.moveToPosition(adapterPosition)) {
+        if(cursor.moveToPosition(bindingAdapterPosition)) {
           val toDoId = cursor.getLong(cursor.getColumnIndex(KEY_TODO_ID))
           val toDoName = cursor.getString(cursor.getColumnIndex(KEY_TODO_NAME))
-          val toDoCompleted= cursor.getInt(cursor.getColumnIndex(KEY_TODO_IS_COMPLETED)) > 0
+          val toDoCompleted = cursor.getInt(cursor.getColumnIndex(KEY_TODO_IS_COMPLETED)) > 0
+          cursor.close()
           val toDo = ToDo(toDoId, toDoName, toDoCompleted)
           when (imgButton!!.id) {
             itemView.imgDelete.id -> {
@@ -119,12 +120,12 @@ class ToDoAdapter(private val context: Context) :
     }
 
     // Delete a To-Do item from the ContentResolver
-    fun deleteToDo(id: Long) {
+    private fun deleteToDo(id: Long) {
       // TODO: Populate selection args and call query to delete record
     }
 
     // Edit an Item in the ContentResolver
-    fun editToDo(toDo: ToDo) {
+    private fun editToDo(toDo: ToDo) {
       val dialog = AlertDialog.Builder(context)
       dialog.setTitle("Update To Do Item")
       val view = LayoutInflater.from(context).inflate(R.layout.dialog_to_do_item, null)

@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
   <component name="AndroidLogFilters">
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
@@ -36,7 +41,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4b2a0bce-7e53-4b23-b635-948a60969041" name="Default Changelist" comment="" />
+    <list default="true" id="4b2a0bce-7e53-4b23-b635-948a60969041" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../challenge/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge/app/src/main/java/com/raywenderlich/android/contentprovidertodoclient/Controller/ToDoAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge/app/src/main/java/com/raywenderlich/android/contentprovidertodoclient/Controller/ToDoAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../final/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../final/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../final/app/src/main/java/com/raywenderlich/android/contentprovidertodo/Controller/ToDoAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../final/app/src/main/java/com/raywenderlich/android/contentprovidertodo/Controller/ToDoAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/raywenderlich/android/contentprovidertodo/Controller/ToDoAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/raywenderlich/android/contentprovidertodo/Controller/ToDoAdapter.kt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

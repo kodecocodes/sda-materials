@@ -75,7 +75,9 @@ class ToDoAdapter(private val context: Context) :
     // Return the count of records
     if(cursor != null) {
       if(cursor.moveToFirst()) {
-        return cursor.getInt(0)
+        val itemCount = cursor.getInt(0)
+        cursor.close()
+        return itemCount
       }
     }
     return 0
@@ -84,7 +86,7 @@ class ToDoAdapter(private val context: Context) :
   // Row by row, populate the RecyclerView
   override fun onBindViewHolder(holder: ViewHolder, position: Int) {
     // 1
-    val cursor = context.contentResolver.query(Uri.parse("$queryUri"),
+    val cursor = context.contentResolver.query(Uri.parse(queryUri),
         projection,
         selectionClause,
         selectionArgs, sortOrder)
@@ -93,8 +95,9 @@ class ToDoAdapter(private val context: Context) :
       if(cursor.moveToPosition(position)) {
         val toDoId = cursor.getLong(cursor.getColumnIndex(KEY_TODO_ID))
         val toDoName = cursor.getString(cursor.getColumnIndex(KEY_TODO_NAME))
-        val toDoCompleted= cursor.getInt(cursor.getColumnIndex(KEY_TODO_IS_COMPLETED)) > 0
-        val toDo= ToDo(toDoId, toDoName, toDoCompleted)
+        val toDoCompleted = cursor.getInt(cursor.getColumnIndex(KEY_TODO_IS_COMPLETED)) > 0
+        cursor.close()
+        val toDo = ToDo(toDoId, toDoName, toDoCompleted)
         holder.bindViews(toDo)
       }
     }
@@ -103,7 +106,7 @@ class ToDoAdapter(private val context: Context) :
   //Insert a To-Do item from the ContentResolver
   fun insertToDo(toDoName: String) {
     // 1
-    var values = ContentValues()
+    val values = ContentValues()
     values.put(KEY_TODO_NAME, toDoName)
     // 2
     context.contentResolver.insert(CONTENT_URI, values)
@@ -139,10 +142,11 @@ class ToDoAdapter(private val context: Context) :
           selectionArgs, sortOrder)
 
       if(cursor != null) {
-        if(cursor.moveToPosition(adapterPosition)) {
+        if(cursor.moveToPosition(bindingAdapterPosition)) {
           val toDoId = cursor.getLong(cursor.getColumnIndex(KEY_TODO_ID))
           val toDoName = cursor.getString(cursor.getColumnIndex(KEY_TODO_NAME))
-          val toDoCompleted= cursor.getInt(cursor.getColumnIndex(KEY_TODO_IS_COMPLETED)) > 0
+          val toDoCompleted = cursor.getInt(cursor.getColumnIndex(KEY_TODO_IS_COMPLETED)) > 0
+          cursor.close()
           val toDo = ToDo(toDoId, toDoName, toDoCompleted)
           when (imgButton!!.id) {
             itemView.imgDelete.id -> {
@@ -157,7 +161,7 @@ class ToDoAdapter(private val context: Context) :
     }
 
     // Delete a To-Do item from the ContentResolver
-    fun deleteToDo(id: Long) {
+    private fun deleteToDo(id: Long) {
       // 1
       selectionArgs = arrayOf(id.toString())
       // 2
@@ -169,7 +173,7 @@ class ToDoAdapter(private val context: Context) :
 
 
     // Edit an Item in the ContentResolver
-    fun editToDo(toDo: ToDo) {
+    private fun editToDo(toDo: ToDo) {
       val dialog = AlertDialog.Builder(context)
       dialog.setTitle("Update To Do Item")
       val view = LayoutInflater.from(context).inflate(com.raywenderlich.android.contentprovidertodo.R.layout.dialog_to_do_item, null)
@@ -178,7 +182,7 @@ class ToDoAdapter(private val context: Context) :
       dialog.setPositiveButton("Update") { _: DialogInterface, _: Int ->
         if (view.edtToDoName.text.isNotEmpty()) {
           // 1
-          var values = ContentValues()
+          val values = ContentValues()
           values.put(KEY_TODO_NAME,view.edtToDoName.text.toString())
           values.put(KEY_TODO_ID, toDo.toDoId)
           values.put(KEY_TODO_IS_COMPLETED, toDo.isCompleted)
