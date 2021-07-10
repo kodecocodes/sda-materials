@@ -28,7 +28,7 @@
  * THE SOFTWARE.
  */
 
-package com.raywenderlich.android.contentprovidertodoclient.View
+package com.raywenderlich.android.contentprovidertodoclient.view
 
 import android.content.ContentValues
 import android.content.DialogInterface
@@ -37,9 +37,9 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.raywenderlich.android.contentprovidertodoclient.Controller.ToDoAdapter
-import com.raywenderlich.android.contentprovidertodoclient.Controller.provider.ToDoContract.CONTENT_URI
-import com.raywenderlich.android.contentprovidertodoclient.Controller.provider.ToDoContract.ToDoTable.Columns.KEY_TODO_NAME
+import com.raywenderlich.android.contentprovidertodoclient.controller.ToDoAdapter
+import com.raywenderlich.android.contentprovidertodoclient.controller.provider.ToDoContract.CONTENT_URI
+import com.raywenderlich.android.contentprovidertodoclient.controller.provider.ToDoContract.ToDoTable.Columns.KEY_TODO_NAME
 import com.raywenderlich.android.contentprovidertodoclient.R
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.dialog_to_do_item.view.*

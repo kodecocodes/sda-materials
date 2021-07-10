@@ -1,4 +1,4 @@
-package com.raywenderlich.android.contentprovidertodoclient.Controller.provider
+package com.raywenderlich.android.contentprovidertodoclient.controller.provider
 
 import android.net.Uri
 

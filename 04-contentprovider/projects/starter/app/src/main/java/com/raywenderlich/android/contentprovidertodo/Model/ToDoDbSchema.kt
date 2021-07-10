@@ -28,7 +28,7 @@
  * THE SOFTWARE.
  */
 
-package com.raywenderlich.android.contentprovidertodo.Model
+package com.raywenderlich.android.contentprovidertodo.model
 
 /*
 This class defines all the column names and other

@@ -11,14 +11,14 @@
       android:supportsRtl="true"
       android:theme="@style/AppTheme">
     <!-- Splash Activity -->
-    <activity android:name=".View.SplashActivity">
+    <activity android:name=".view.SplashActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
 
         <category android:name="android.intent.category.LAUNCHER"/>
       </intent-filter>
     </activity> <!-- Main Activity -->
-    <activity android:name=".View.MainActivity"/>
+    <activity android:name=".view.MainActivity"/>
   </application>
 
 </manifest>

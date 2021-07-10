@@ -28,7 +28,7 @@
  * THE SOFTWARE.
  */
 
-package com.raywenderlich.android.contentprovidertodo.Controller
+package com.raywenderlich.android.contentprovidertodo.controller
 
 import android.content.ContentValues
 import android.content.Context
@@ -37,15 +37,15 @@ import android.database.DatabaseUtils
 import android.database.MatrixCursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import com.raywenderlich.android.contentprovidertodo.Controller.provider.ToDoContract.ALL_ITEMS
-import com.raywenderlich.android.contentprovidertodo.Controller.provider.ToDoContract.CONTENT_PATH
-import com.raywenderlich.android.contentprovidertodo.Model.ToDo
-import com.raywenderlich.android.contentprovidertodo.Model.ToDoDbSchema.DATABASE_NAME
-import com.raywenderlich.android.contentprovidertodo.Model.ToDoDbSchema.DATABASE_VERSION
-import com.raywenderlich.android.contentprovidertodo.Model.ToDoDbSchema.ToDoTable.Columns.KEY_TODO_ID
-import com.raywenderlich.android.contentprovidertodo.Model.ToDoDbSchema.ToDoTable.Columns.KEY_TODO_IS_COMPLETED
-import com.raywenderlich.android.contentprovidertodo.Model.ToDoDbSchema.ToDoTable.Columns.KEY_TODO_NAME
-import com.raywenderlich.android.contentprovidertodo.Model.ToDoDbSchema.ToDoTable.TABLE_NAME
+import com.raywenderlich.android.contentprovidertodo.controller.provider.ToDoContract.ALL_ITEMS
+import com.raywenderlich.android.contentprovidertodo.controller.provider.ToDoContract.CONTENT_PATH
+import com.raywenderlich.android.contentprovidertodo.model.ToDo
+import com.raywenderlich.android.contentprovidertodo.model.ToDoDbSchema.DATABASE_NAME
+import com.raywenderlich.android.contentprovidertodo.model.ToDoDbSchema.DATABASE_VERSION
+import com.raywenderlich.android.contentprovidertodo.model.ToDoDbSchema.ToDoTable.Columns.KEY_TODO_ID
+import com.raywenderlich.android.contentprovidertodo.model.ToDoDbSchema.ToDoTable.Columns.KEY_TODO_IS_COMPLETED
+import com.raywenderlich.android.contentprovidertodo.model.ToDoDbSchema.ToDoTable.Columns.KEY_TODO_NAME
+import com.raywenderlich.android.contentprovidertodo.model.ToDoDbSchema.ToDoTable.TABLE_NAME
 
 
 class ToDoDatabaseHandler(context: Context) :

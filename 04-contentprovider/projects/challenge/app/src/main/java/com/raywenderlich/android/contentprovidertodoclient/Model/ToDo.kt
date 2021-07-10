@@ -28,7 +28,7 @@
  * THE SOFTWARE.
  */
 
-package com.raywenderlich.android.contentprovidertodoclient.Model
+package com.raywenderlich.android.contentprovidertodoclient.model
 
 class ToDo() {
     var toDoId : Long = -1

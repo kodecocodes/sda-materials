@@ -28,7 +28,7 @@
  * THE SOFTWARE.
  */
 
-package com.raywenderlich.android.contentprovidertodoclient.View
+package com.raywenderlich.android.contentprovidertodoclient.view
 
 import android.content.Intent
 import android.os.Bundle

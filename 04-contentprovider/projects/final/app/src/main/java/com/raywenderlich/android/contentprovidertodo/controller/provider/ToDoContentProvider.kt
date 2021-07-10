@@ -28,25 +28,25 @@
  * THE SOFTWARE.
  */
 
-package com.raywenderlich.android.contentprovidertodo.Controller.provider
+package com.raywenderlich.android.contentprovidertodo.controller.provider
 
 import android.content.ContentProvider
 import android.content.ContentValues
 import android.content.UriMatcher
 import android.database.Cursor
 import android.net.Uri
-import com.raywenderlich.android.contentprovidertodo.Controller.ToDoDatabaseHandler
-import com.raywenderlich.android.contentprovidertodo.Controller.provider.ToDoContract.ALL_ITEMS
-import com.raywenderlich.android.contentprovidertodo.Controller.provider.ToDoContract.AUTHORITY
-import com.raywenderlich.android.contentprovidertodo.Controller.provider.ToDoContract.CONTENT_PATH
-import com.raywenderlich.android.contentprovidertodo.Controller.provider.ToDoContract.CONTENT_URI
-import com.raywenderlich.android.contentprovidertodo.Controller.provider.ToDoContract.COUNT
-import com.raywenderlich.android.contentprovidertodo.Controller.provider.ToDoContract.MULTIPLE_RECORDS_MIME_TYPE
-import com.raywenderlich.android.contentprovidertodo.Controller.provider.ToDoContract.SINGLE_RECORD_MIME_TYPE
-import com.raywenderlich.android.contentprovidertodo.Controller.provider.ToDoContract.ToDoTable.Columns.KEY_TODO_ID
-import com.raywenderlich.android.contentprovidertodo.Controller.provider.ToDoContract.ToDoTable.Columns.KEY_TODO_IS_COMPLETED
-import com.raywenderlich.android.contentprovidertodo.Controller.provider.ToDoContract.ToDoTable.Columns.KEY_TODO_NAME
-import com.raywenderlich.android.contentprovidertodo.Model.ToDo
+import com.raywenderlich.android.contentprovidertodo.controller.ToDoDatabaseHandler
+import com.raywenderlich.android.contentprovidertodo.controller.provider.ToDoContract.ALL_ITEMS
+import com.raywenderlich.android.contentprovidertodo.controller.provider.ToDoContract.AUTHORITY
+import com.raywenderlich.android.contentprovidertodo.controller.provider.ToDoContract.CONTENT_PATH
+import com.raywenderlich.android.contentprovidertodo.controller.provider.ToDoContract.CONTENT_URI
+import com.raywenderlich.android.contentprovidertodo.controller.provider.ToDoContract.COUNT
+import com.raywenderlich.android.contentprovidertodo.controller.provider.ToDoContract.MULTIPLE_RECORDS_MIME_TYPE
+import com.raywenderlich.android.contentprovidertodo.controller.provider.ToDoContract.SINGLE_RECORD_MIME_TYPE
+import com.raywenderlich.android.contentprovidertodo.controller.provider.ToDoContract.ToDoTable.Columns.KEY_TODO_ID
+import com.raywenderlich.android.contentprovidertodo.controller.provider.ToDoContract.ToDoTable.Columns.KEY_TODO_IS_COMPLETED
+import com.raywenderlich.android.contentprovidertodo.controller.provider.ToDoContract.ToDoTable.Columns.KEY_TODO_NAME
+import com.raywenderlich.android.contentprovidertodo.model.ToDo
 import java.lang.Long.parseLong
 
 
