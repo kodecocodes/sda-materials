@@ -35,6 +35,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a2b7582c-6f64-453d-954d-1879a91515e3" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../final/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../final/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../starter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../starter/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +46,6 @@
     <option name="testRunner" value="GRADLE" />
     <option name="delegatedBuild" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[SerialNumber@9C9AYV05BG]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />

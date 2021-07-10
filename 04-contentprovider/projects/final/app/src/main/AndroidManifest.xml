@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.raywenderlich.contentprovidertodo"
+<manifest package="com.raywenderlich.android.contentprovidertodo"
           xmlns:android="http://schemas.android.com/apk/res/android">
 
   <application
@@ -10,8 +10,8 @@
       android:supportsRtl="true"
       android:theme="@style/AppTheme">
     <provider
-        android:name="com.raywenderlich.contentprovidertodo.Controller.provider.ToDoContentProvider"
-        android:authorities="com.raywenderlich.contentprovidertodo.provider"
+        android:name="com.raywenderlich.android.contentprovidertodo.Controller.provider.ToDoContentProvider"
+        android:authorities="com.raywenderlich.android.contentprovidertodo.provider"
         android:enabled="true"
         android:exported="true">
     </provider>

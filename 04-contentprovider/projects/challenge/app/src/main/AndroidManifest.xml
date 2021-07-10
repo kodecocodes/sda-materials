@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.raywenderlich.contentprovidertodoclient"
+<manifest package="com.raywenderlich.android.contentprovidertodoclient"
           xmlns:android="http://schemas.android.com/apk/res/android">
-  <uses-permission android:name = "com.raywenderlich.contentprovidertodo.PERMISSION"/>
+  <uses-permission android:name = "com.raywenderlich.android.contentprovidertodo.PERMISSION"/>
 
   <application
       android:allowBackup="false"
