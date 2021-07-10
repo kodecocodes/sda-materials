@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
@@ -33,23 +38,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24713964-d23a-4b90-8261-cc8c4bb56697" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../challenge/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../challenge/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../challenge/app/src/androidTest/java/com/raywenderlich/contentprovidertodoclient/ExampleInstrumentedTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../challenge/app/src/test/java/com/raywenderlich/contentprovidertodoclient/ExampleUnitTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../challenge/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/androidTest/java/com/raywenderlich/contentprovidertodo/ExampleInstrumentedTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/raywenderlich/contentprovidertodo/ExampleUnitTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../starter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../starter/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../starter/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../starter/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../starter/app/src/androidTest/java/com/raywenderlich/contentprovidertodo/ExampleInstrumentedTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../starter/app/src/test/java/com/raywenderlich/contentprovidertodo/ExampleUnitTest.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../starter/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../starter/build.gradle" afterDir="false" />
-    </list>
+    <list default="true" id="24713964-d23a-4b90-8261-cc8c4bb56697" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -183,5 +172,11 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="2486" y="987" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1625950417040">
+      <screen x="0" y="25" width="3840" height="2135" />
+    </state>
+    <state x="2486" y="987" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/-1440.1132.1440.875/0.25.3840.2135@0.25.3840.2135" timestamp="1625950417040" />
   </component>
 </project>
