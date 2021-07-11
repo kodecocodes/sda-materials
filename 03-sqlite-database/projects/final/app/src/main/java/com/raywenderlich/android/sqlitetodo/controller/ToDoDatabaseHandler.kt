@@ -35,10 +35,10 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import android.provider.BaseColumns._ID
 import com.raywenderlich.android.sqlitetodo.model.ToDo
 import com.raywenderlich.android.sqlitetodo.model.ToDoDbSchema.DATABASE_NAME
 import com.raywenderlich.android.sqlitetodo.model.ToDoDbSchema.DATABASE_VERSION
+import com.raywenderlich.android.sqlitetodo.model.ToDoDbSchema.ToDoTable.Columns.KEY_TODO_ID
 import com.raywenderlich.android.sqlitetodo.model.ToDoDbSchema.ToDoTable.Columns.KEY_TODO_IS_COMPLETED
 import com.raywenderlich.android.sqlitetodo.model.ToDoDbSchema.ToDoTable.Columns.KEY_TODO_NAME
 import com.raywenderlich.android.sqlitetodo.model.ToDoDbSchema.ToDoTable.TABLE_NAME
@@ -51,7 +51,7 @@ class ToDoDatabaseHandler(context: Context) :
     // 1
     val createToDoTable = """
       CREATE TABLE $TABLE_NAME  (
-        $_ID INTEGER PRIMARY KEY,
+        $KEY_TODO_ID INTEGER PRIMARY KEY,
         $KEY_TODO_NAME  TEXT,
         $KEY_TODO_IS_COMPLETED  LONG );
     """
@@ -108,7 +108,7 @@ class ToDoDatabaseHandler(context: Context) :
       do {
         // 6
         val toDo = ToDo().apply {
-          toDoId = cursor.getLong(cursor.getColumnIndex(_ID))
+          toDoId = cursor.getLong(cursor.getColumnIndex(KEY_TODO_ID))
           toDoName = cursor.getString(cursor.getColumnIndex(KEY_TODO_NAME))
           isCompleted = cursor.getInt(cursor.getColumnIndex(KEY_TODO_IS_COMPLETED)) == 1
         }
@@ -141,14 +141,14 @@ class ToDoDatabaseHandler(context: Context) :
 
     // 4
     //update a row
-    return db.update(TABLE_NAME, values, "$_ID=?", arrayOf(todoId))
+    return db.update(TABLE_NAME, values, "$KEY_TODO_ID=?", arrayOf(todoId))
   }
 
   fun deleteToDo(id: Long) {
     // 1
     val db: SQLiteDatabase = writableDatabase
     // 2
-    db.delete(TABLE_NAME, "$_ID=?", arrayOf(id.toString()))
+    db.delete(TABLE_NAME, "$KEY_TODO_ID=?", arrayOf(id.toString()))
     // 3
     db.close()
   }
@@ -171,7 +171,7 @@ class ToDoDatabaseHandler(context: Context) :
     var result = ""
     val cols = arrayOf(KEY_TODO_NAME, KEY_TODO_IS_COMPLETED)
     val cursor = writableDatabase.query(TABLE_NAME, cols,
-        null, null, null, null, _ID)
+        null, null, null, null, KEY_TODO_ID)
     val COLUMN_NAME = cursor.getColumnIndexOrThrow(KEY_TODO_NAME)
     while (cursor != null && cursor.moveToNext()) {
       result += cursor.getString(COLUMN_NAME)

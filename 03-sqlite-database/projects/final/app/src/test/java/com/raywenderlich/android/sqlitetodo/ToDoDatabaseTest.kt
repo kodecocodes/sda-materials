@@ -42,7 +42,7 @@ import org.robolectric.RobolectricTestRunner
 import org.robolectric.RuntimeEnvironment
 
 @RunWith(RobolectricTestRunner::class)
-class TestDatabase {
+class ToDoDatabaseTest {
   // 1
   private lateinit var dbHelper: ToDoDatabaseHandler
 

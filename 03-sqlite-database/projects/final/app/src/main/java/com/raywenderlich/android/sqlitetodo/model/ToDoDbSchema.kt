@@ -50,7 +50,7 @@ object ToDoDbSchema {
 
     object Columns : BaseColumns {
       // 4
-      //const val KEY_TODO_ID: String = "todoid" //The unique ID column
+      const val KEY_TODO_ID: String = "todoid" //The unique ID column
       // 5
       const val KEY_TODO_NAME: String = "todoname" //The ToDo's Name
       // 6
