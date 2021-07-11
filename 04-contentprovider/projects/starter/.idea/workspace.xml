@@ -44,8 +44,9 @@
     <list default="true" id="4b2a0bce-7e53-4b23-b635-948a60969041" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../challenge/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../final/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../final/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../final/app/src/main/java/com/raywenderlich/android/contentprovidertodo/controller/provider/ToDoContract.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../final/app/src/main/java/com/raywenderlich/android/contentprovidertodo/controller/provider/ToDoContract.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/raywenderlich/android/contentprovidertodo/Controller/ToDoAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/raywenderlich/android/contentprovidertodo/Controller/ToDoAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/raywenderlich/android/contentprovidertodo/Controller/ToDoDatabaseHandler.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/raywenderlich/android/contentprovidertodo/Controller/ToDoDatabaseHandler.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +70,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
   <component name="ProjectId" id="1uy69TDSiNh56MqTTCc4uoiawFk" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -80,6 +83,11 @@
     <property name="device.picker.selection" value="Pixel_2_API_28" />
     <property name="not.eligible.for.single.variant.sync" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
+      <recent name="com.raywenderlich.android.contentprovidertodo.controller.provider" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="&lt;template&gt;" type="Applet" default="true" selected="false">
@@ -122,7 +130,7 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
       <module name="starter.app" />
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
@@ -232,6 +240,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="870" y="843" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1626031948955">
+      <screen x="0" y="25" width="3840" height="2135" />
+    </state>
+    <state x="870" y="843" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1440.1132.1440.875/0.25.3840.2135@0.25.3840.2135" timestamp="1626031948955" />
     <state x="881" y="987" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1625950441451">
       <screen x="0" y="25" width="3840" height="2135" />
     </state>
