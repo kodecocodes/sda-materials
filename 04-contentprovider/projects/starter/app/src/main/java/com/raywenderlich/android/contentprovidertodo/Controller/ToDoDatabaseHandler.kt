@@ -37,6 +37,7 @@ import android.database.DatabaseUtils
 import android.database.MatrixCursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import com.raywenderlich.android.contentprovidertodo.controller.provider.ToDoContract.CONTENT_PATH
 //import com.raywenderlich.android.contentprovidertodo.controller.provider.ToDoContract.ALL_ITEMS
 //import com.raywenderlich.android.contentprovidertodo.controller.provider.ToDoContract.CONTENT_PATH
 import com.raywenderlich.android.contentprovidertodo.model.ToDo
@@ -94,12 +95,12 @@ class ToDoDatabaseHandler(context: Context) :
   }
 
   // Count the number of items from the database
-//  fun count() : Cursor? {
-//    val cursor = MatrixCursor(arrayOf(CONTENT_PATH))
-//    val count =  DatabaseUtils.queryNumEntries(readableDatabase, TABLE_NAME)
-//    cursor.addRow(arrayOf<Any>(count))
-//    return cursor
-//  }
+  fun count() : Cursor? {
+    val cursor = MatrixCursor(arrayOf(CONTENT_PATH))
+    val count =  DatabaseUtils.queryNumEntries(readableDatabase, TABLE_NAME)
+    cursor.addRow(arrayOf<Any>(count))
+    return cursor
+  }
 
   // Update the items in the database
   fun update(toDo: ToDo): Int {
