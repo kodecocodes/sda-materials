@@ -39,7 +39,7 @@ dependencies {
 
   //Testing
   androidTestImplementation "androidx.arch.core:core-testing:$androidx_common"
-  androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+  androidTestImplementation 'androidx.test.ext:junit:1.1.3'
   testImplementation "junit:junit:$junit_version"
   androidTestImplementation "androidx.test:runner:$testrunner_version"
 }
