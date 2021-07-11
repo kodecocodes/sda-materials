@@ -39,9 +39,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
-//import com.raywenderlich.android.contentprovidertodo.controller.provider.ToDoContract.ToDoTable.Columns.KEY_TODO_ID
-//import com.raywenderlich.android.contentprovidertodo.controller.provider.ToDoContract.ToDoTable.Columns.KEY_TODO_IS_COMPLETED
-//import com.raywenderlich.android.contentprovidertodo.controller.provider.ToDoContract.ToDoTable.Columns.KEY_TODO_NAME
+import com.raywenderlich.android.contentprovidertodo.controller.provider.ToDoContract.ToDoTable.Columns.KEY_TODO_ID
+import com.raywenderlich.android.contentprovidertodo.controller.provider.ToDoContract.ToDoTable.Columns.KEY_TODO_IS_COMPLETED
+import com.raywenderlich.android.contentprovidertodo.controller.provider.ToDoContract.ToDoTable.Columns.KEY_TODO_NAME
 import com.raywenderlich.android.contentprovidertodo.model.ToDo
 import com.raywenderlich.android.contentprovidertodo.R
 import kotlinx.android.synthetic.main.dialog_to_do_item.view.*
@@ -83,9 +83,9 @@ class ToDoAdapter(private val context: Context) :
       itemView.chkToDoCompleted.setOnCheckedChangeListener { compoundButton, _ ->
         toDo.isCompleted = compoundButton.isChecked
         val values = ContentValues()
-//        values.put(KEY_TODO_IS_COMPLETED, toDo.isCompleted)
-//        values.put(KEY_TODO_ID, toDo.toDoId)
-//        values.put(KEY_TODO_NAME, toDo.toDoName)
+        values.put(KEY_TODO_IS_COMPLETED, toDo.isCompleted)
+        values.put(KEY_TODO_ID, toDo.toDoId)
+        values.put(KEY_TODO_NAME, toDo.toDoName)
 //        selectionArgs = arrayOf(toDo.toDoId.toString())
 //        context.contentResolver.update(Uri.parse(queryUri), values, selectionClause,
 //            selectionArgs)
@@ -99,7 +99,7 @@ class ToDoAdapter(private val context: Context) :
     override fun onClick(imgButton: View?) {
 //      val cursor = context.contentResolver.query(Uri.parse(queryUri),projection,selectionClause,
 //          selectionArgs, sortOrder)
-//
+
 //      if(cursor != null) {
 //        if(cursor.moveToPosition(bindingAdapterPosition)) {
 //          val toDoId = cursor.getLong(cursor.getColumnIndex(KEY_TODO_ID))
