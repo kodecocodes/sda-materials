@@ -107,7 +107,7 @@ class ToDoAdapter(private val context: Context) :
           val toDoCompleted = cursor.getInt(cursor.getColumnIndex(KEY_TODO_IS_COMPLETED)) > 0
           cursor.close()
           val toDo = ToDo(toDoId, toDoName, toDoCompleted)
-          when (imgButton!!.id) {
+          when (imgButton?.id) {
             itemView.imgDelete.id -> {
               deleteToDo(toDo.toDoId)
             }

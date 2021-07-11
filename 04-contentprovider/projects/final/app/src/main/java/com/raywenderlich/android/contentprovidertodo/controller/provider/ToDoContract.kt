@@ -17,10 +17,10 @@ object ToDoContract {
   const val CONTENT_PATH = "todoitems"
 
   // Content URI for this table. Returns all items.
-  val CONTENT_URI = Uri.parse("content://$AUTHORITY/$CONTENT_PATH")
+  val CONTENT_URI: Uri = Uri.parse("content://$AUTHORITY/$CONTENT_PATH")
 
   // URI to get the number of entries.
-  val ROW_COUNT_URI = Uri.parse("content://$AUTHORITY/$CONTENT_PATH/$COUNT")
+  val ROW_COUNT_URI: Uri = Uri.parse("content://$AUTHORITY/$CONTENT_PATH/$COUNT")
 
 
   // Single record mime type
@@ -32,13 +32,8 @@ object ToDoContract {
   const val MULTIPLE_RECORDS_MIME_TYPE = "vnd.android.cursor.item/vnd.com.raywenderlich" +
       ".contentprovidertodo.provider.todoitems"
 
-  // Database name
-  const val DATABASE_NAME: String = "todoitems.db"
-
   // Table Constants
   object ToDoTable {
-    // The table name
-    const val TABLE_NAME: String = "todoitems"
 
     // The constants for the table columns
     object Columns {
