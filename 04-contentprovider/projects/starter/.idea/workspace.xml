@@ -41,7 +41,59 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4b2a0bce-7e53-4b23-b635-948a60969041" name="Default Changelist" comment="" />
+    <list default="true" id="4b2a0bce-7e53-4b23-b635-948a60969041" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../challenge/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../final/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../final/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../final/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../final/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../final/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../final/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../final/app/src/main/java/com/raywenderlich/android/contentprovidertodo/controller/ToDoAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../final/app/src/main/java/com/raywenderlich/android/contentprovidertodo/controller/ToDoAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../final/app/src/main/java/com/raywenderlich/android/contentprovidertodo/controller/ToDoDatabaseHandler.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../final/app/src/main/java/com/raywenderlich/android/contentprovidertodo/controller/ToDoDatabaseHandler.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../final/app/src/main/java/com/raywenderlich/android/contentprovidertodo/controller/provider/ToDoContentProvider.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../final/app/src/main/java/com/raywenderlich/android/contentprovidertodo/controller/provider/ToDoContentProvider.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../final/app/src/main/java/com/raywenderlich/android/contentprovidertodo/controller/provider/ToDoContract.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../final/app/src/main/java/com/raywenderlich/android/contentprovidertodo/controller/provider/ToDoContract.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../final/app/src/main/java/com/raywenderlich/android/contentprovidertodo/model/ToDo.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../final/app/src/main/java/com/raywenderlich/android/contentprovidertodo/model/ToDo.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../final/app/src/main/java/com/raywenderlich/android/contentprovidertodo/model/ToDoDbSchema.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../final/app/src/main/java/com/raywenderlich/android/contentprovidertodo/model/ToDoDbSchema.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../final/app/src/main/java/com/raywenderlich/android/contentprovidertodo/view/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../final/app/src/main/java/com/raywenderlich/android/contentprovidertodo/view/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../final/app/src/main/java/com/raywenderlich/android/contentprovidertodo/view/SplashActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../final/app/src/main/java/com/raywenderlich/android/contentprovidertodo/view/SplashActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../final/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../final/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../final/app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../final/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../final/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../final/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../final/app/src/main/res/layout/activity_splash.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../final/app/src/main/res/layout/activity_splash.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../final/app/src/main/res/layout/dialog_to_do_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../final/app/src/main/res/layout/dialog_to_do_item.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../final/app/src/main/res/layout/to_do_list_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../final/app/src/main/res/layout/to_do_list_item.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../final/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../final/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../final/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../final/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../final/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../final/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../final/app/src/main/res/values/dimens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../final/app/src/main/res/values/dimens.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../final/app/src/main/res/values/ic_launcher_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../final/app/src/main/res/values/ic_launcher_background.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../final/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../final/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../final/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../final/app/src/main/res/values/styles.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../final/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../final/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../final/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../final/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../final/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../final/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../final/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/../final/gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../final/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../final/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_splash.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_splash.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/dialog_to_do_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_to_do_item.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/to_do_list_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/to_do_list_item.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/ic_launcher_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/ic_launcher_background.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -76,7 +128,7 @@
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
     <property name="device.picker.selection" value="Pixel_2_API_28" />
     <property name="not.eligible.for.single.variant.sync" value="true" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="copyright" />
   </component>
   <component name="RecentsManager">
     <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
@@ -238,9 +290,13 @@
       <screen x="0" y="25" width="3840" height="2135" />
     </state>
     <state x="870" y="843" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-1440.1132.1440.875/0.25.3840.2135@0.25.3840.2135" timestamp="1626031948955" />
-    <state x="881" y="987" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1625950441451">
+    <state x="881" y="987" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1626050501213">
       <screen x="0" y="25" width="3840" height="2135" />
     </state>
-    <state x="881" y="987" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/-1440.1132.1440.875/0.25.3840.2135@0.25.3840.2135" timestamp="1625950441451" />
+    <state x="881" y="987" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/-1440.1132.1440.875/0.25.3840.2135@0.25.3840.2135" timestamp="1626050501213" />
+    <state x="641" y="728" key="SettingsEditor" timestamp="1626050493506">
+      <screen x="0" y="25" width="3840" height="2135" />
+    </state>
+    <state x="641" y="728" key="SettingsEditor/-1440.1132.1440.875/0.25.3840.2135@0.25.3840.2135" timestamp="1626050493506" />
   </component>
 </project>
