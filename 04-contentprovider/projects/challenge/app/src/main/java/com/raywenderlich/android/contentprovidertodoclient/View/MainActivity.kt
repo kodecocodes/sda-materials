@@ -33,6 +33,7 @@ package com.raywenderlich.android.contentprovidertodoclient.view
 import android.content.ContentValues
 import android.content.DialogInterface
 import android.os.Bundle
+import android.view.LayoutInflater
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -41,33 +42,35 @@ import com.raywenderlich.android.contentprovidertodoclient.controller.ToDoAdapte
 import com.raywenderlich.android.contentprovidertodoclient.controller.provider.ToDoContract.CONTENT_URI
 import com.raywenderlich.android.contentprovidertodoclient.controller.provider.ToDoContract.ToDoTable.Columns.KEY_TODO_NAME
 import com.raywenderlich.android.contentprovidertodoclient.R
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.dialog_to_do_item.view.*
+import com.raywenderlich.android.contentprovidertodoclient.databinding.ActivityMainBinding
+import com.raywenderlich.android.contentprovidertodoclient.databinding.DialogToDoItemBinding
 
 
 /**
  * Main Screen
  */
 class MainActivity : AppCompatActivity() {
+  lateinit private var binding: ActivityMainBinding
   private var layoutManager: RecyclerView.LayoutManager? = null
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_main)
+    binding = ActivityMainBinding.inflate(layoutInflater)
+    setContentView(binding.root)
     layoutManager = LinearLayoutManager(this)
-    recyclerView.layoutManager = layoutManager
-    recyclerView.adapter = ToDoAdapter(this)
+    binding.recyclerView.layoutManager = layoutManager
+    binding.recyclerView.adapter = ToDoAdapter(this)
 
 
-    fab.setOnClickListener {
+    binding.fab.setOnClickListener {
       val dialog = AlertDialog.Builder(this)
       dialog.setTitle("Add To Do Item")
-      val view = layoutInflater.inflate(R.layout.dialog_to_do_item, null)
-      dialog.setView(view)
+      val dialogToDoItemBinding = DialogToDoItemBinding.inflate(LayoutInflater.from(applicationContext))
+      dialog.setView(dialogToDoItemBinding.root)
       dialog.setPositiveButton("Add") { _: DialogInterface, _: Int ->
-        if (view.edtToDoName.text.isNotEmpty()) {
+        if (dialogToDoItemBinding.edtToDoName.text.isNotEmpty()) {
           var values = ContentValues()
-          values.put(KEY_TODO_NAME, view.edtToDoName.text.toString())
+          values.put(KEY_TODO_NAME, dialogToDoItemBinding.edtToDoName.text.toString())
           this.contentResolver.insert(CONTENT_URI, values)
         }
       }

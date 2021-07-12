@@ -48,12 +48,12 @@ import com.raywenderlich.android.contentprovidertodoclient.controller.provider.T
 import com.raywenderlich.android.contentprovidertodoclient.controller.provider.ToDoContract.ToDoTable.Columns.KEY_TODO_NAME
 import com.raywenderlich.android.contentprovidertodoclient.model.ToDo
 import com.raywenderlich.android.contentprovidertodoclient.R
-import kotlinx.android.synthetic.main.dialog_to_do_item.view.*
-import kotlinx.android.synthetic.main.to_do_list_item.view.*
+import com.raywenderlich.android.contentprovidertodoclient.databinding.DialogToDoItemBinding
+import com.raywenderlich.android.contentprovidertodoclient.databinding.ToDoListItemBinding
 
 
 class ToDoAdapter(private val context: Context) :
-                          RecyclerView.Adapter<ToDoAdapter.ViewHolder>() {
+  RecyclerView.Adapter<ToDoAdapter.ViewHolder>() {
   private val queryUri = CONTENT_URI.toString() // base uri
   private val queryCountUri = ROW_COUNT_URI.toString()
   private val projection = arrayOf(CONTENT_PATH) //table
@@ -61,17 +61,18 @@ class ToDoAdapter(private val context: Context) :
   private var selectionArgs: Array<String>? = null
   private val sortOrder = "ASC"
 
- override fun onCreateViewHolder(parent: ViewGroup, position: Int): ViewHolder {
-    val view = LayoutInflater.from(context)
-    .inflate(R.layout.to_do_list_item, parent, false)
+  override fun onCreateViewHolder(parent: ViewGroup, position: Int): ViewHolder {
+    val view = ToDoListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
     return ViewHolder(view)
   }
 
-  override fun getItemCount() : Int {
-    val cursor = context.contentResolver.query(Uri.parse(queryCountUri),projection,null,
-        null,sortOrder)
-    if(cursor != null) {
-      if(cursor.moveToFirst()) {
+  override fun getItemCount(): Int {
+    val cursor = context.contentResolver.query(
+      Uri.parse(queryCountUri), projection, null,
+      null, sortOrder
+    )
+    if (cursor != null) {
+      if (cursor.moveToFirst()) {
         val itemCount = cursor.getInt(0)
         cursor.close()
         return itemCount
@@ -83,41 +84,44 @@ class ToDoAdapter(private val context: Context) :
   override fun onBindViewHolder(holder: ViewHolder, position: Int) {
     selectionArgs = arrayOf(position.toString())
 
-    val cursor = context.contentResolver.query(Uri.parse(queryUri),projection,
-        selectionClause,
-        selectionArgs, sortOrder)
-    if(cursor != null) {
-      if(cursor.moveToPosition(position)) {
+    val cursor = context.contentResolver.query(
+      Uri.parse(queryUri), projection,
+      selectionClause,
+      selectionArgs, sortOrder
+    )
+    if (cursor != null) {
+      if (cursor.moveToPosition(position)) {
         val toDoId = cursor.getLong(cursor.getColumnIndex(KEY_TODO_ID))
         val toDoName = cursor.getString(cursor.getColumnIndex(KEY_TODO_NAME))
-        val toDoCompleted= cursor.getInt(cursor.getColumnIndex(KEY_TODO_IS_COMPLETED)) > 0
+        val toDoCompleted = cursor.getInt(cursor.getColumnIndex(KEY_TODO_IS_COMPLETED)) > 0
         cursor.close()
-        val toDo= ToDo(toDoId, toDoName, toDoCompleted)
+        val toDo = ToDo(toDoId, toDoName, toDoCompleted)
         holder.bindViews(toDo)
       }
     }
   }
 
 
-  inner class ViewHolder(itemView: View) :
-      RecyclerView.ViewHolder(itemView), View.OnClickListener {
+  inner class ViewHolder(private val binding: ToDoListItemBinding) : RecyclerView.ViewHolder(binding.root), View.OnClickListener {
 
     fun bindViews(toDo: ToDo) {
-      itemView.txtToDoName.text = toDo.toDoName
-      itemView.chkToDoCompleted.isChecked = toDo.isCompleted
-      itemView.chkToDoCompleted.setOnCheckedChangeListener { compoundButton, _ ->
+      binding.txtToDoName.text = toDo.toDoName
+      binding.chkToDoCompleted.isChecked = toDo.isCompleted
+      binding.chkToDoCompleted.setOnCheckedChangeListener { compoundButton, _ ->
         toDo.isCompleted = compoundButton.isChecked
         val values = ContentValues()
         values.put(KEY_TODO_IS_COMPLETED, toDo.isCompleted)
         values.put(KEY_TODO_ID, toDo.toDoId)
         values.put(KEY_TODO_NAME, toDo.toDoName)
         selectionArgs = arrayOf(toDo.toDoId.toString())
-        context.contentResolver.update(Uri.parse(queryUri), values, selectionClause,
-            selectionArgs)
+        context.contentResolver.update(
+          Uri.parse(queryUri), values, selectionClause,
+          selectionArgs
+        )
       }
 
-      itemView.imgDelete.setOnClickListener(this)
-      itemView.imgEdit.setOnClickListener(this)
+      binding.imgDelete.setOnClickListener(this)
+      binding.imgEdit.setOnClickListener(this)
     }
 
 
@@ -125,19 +129,21 @@ class ToDoAdapter(private val context: Context) :
       var position: Int = bindingAdapterPosition
       selectionArgs = arrayOf(position.toString())
 
-      val cursor = context.contentResolver.query(Uri.parse(queryUri),projection,selectionClause,
-          selectionArgs, sortOrder)
-      if(cursor != null) {
-        if(cursor.moveToPosition(position)) {
+      val cursor = context.contentResolver.query(
+        Uri.parse(queryUri), projection, selectionClause,
+        selectionArgs, sortOrder
+      )
+      if (cursor != null) {
+        if (cursor.moveToPosition(position)) {
           val toDoId = cursor.getLong(cursor.getColumnIndex(KEY_TODO_ID))
           val toDoName = cursor.getString(cursor.getColumnIndex(KEY_TODO_NAME))
-          val toDoCompleted= cursor.getInt(cursor.getColumnIndex(KEY_TODO_IS_COMPLETED)) > 0
+          val toDoCompleted = cursor.getInt(cursor.getColumnIndex(KEY_TODO_IS_COMPLETED)) > 0
           val toDo = ToDo(toDoId, toDoName, toDoCompleted)
           when (imgButton?.id) {
-            itemView.imgDelete.id -> {
+            binding.imgDelete.id -> {
               deleteToDo(toDo.toDoId)
             }
-            itemView.imgEdit.id -> {
+            binding.imgEdit.id -> {
               editToDo(toDo)
             }
           }
@@ -147,7 +153,7 @@ class ToDoAdapter(private val context: Context) :
 
     private fun deleteToDo(id: Long) {
       selectionArgs = arrayOf(id.toString())
-      Log.e("MESG","Trying to delete")
+      Log.e("MESG", "Trying to delete")
       context.contentResolver.delete(Uri.parse(queryUri), selectionClause, selectionArgs)
       notifyDataSetChanged()
     }
@@ -155,19 +161,21 @@ class ToDoAdapter(private val context: Context) :
     private fun editToDo(toDo: ToDo) {
       val dialog = AlertDialog.Builder(context)
       dialog.setTitle("Update To Do Item")
-      val view = LayoutInflater.from(context).inflate(R.layout.dialog_to_do_item, null)
-      view.edtToDoName.setText(toDo.toDoName)
-      dialog.setView(view)
+      val dialogToDoItemBinding = DialogToDoItemBinding.inflate(LayoutInflater.from(context))
+      dialogToDoItemBinding.edtToDoName.setText(toDo.toDoName)
+      dialog.setView(dialogToDoItemBinding.root)
       dialog.setPositiveButton("Update") { _: DialogInterface, _: Int ->
-        if (view.edtToDoName.text.isNotEmpty()) {
+        if (dialogToDoItemBinding.edtToDoName.text.isNotEmpty()) {
           selectionArgs = arrayOf(toDo.toDoId.toString())
           var values = ContentValues()
-          values.put(KEY_TODO_NAME,view.edtToDoName.text.toString())
+          values.put(KEY_TODO_NAME, dialogToDoItemBinding.edtToDoName.text.toString())
           values.put(KEY_TODO_ID, toDo.toDoId)
           values.put(KEY_TODO_IS_COMPLETED, toDo.isCompleted)
           selectionArgs = arrayOf(toDo.toDoId.toString())
-          context.contentResolver.update(Uri.parse(queryUri), values, selectionClause,
-              selectionArgs)
+          context.contentResolver.update(
+            Uri.parse(queryUri), values, selectionClause,
+            selectionArgs
+          )
           notifyDataSetChanged()
         }
       }

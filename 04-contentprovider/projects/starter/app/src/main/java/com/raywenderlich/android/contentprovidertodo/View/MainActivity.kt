@@ -32,39 +32,40 @@ package com.raywenderlich.android.contentprovidertodo.view
 
 import android.content.DialogInterface
 import android.os.Bundle
+import android.view.LayoutInflater
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.raywenderlich.android.contentprovidertodo.controller.ToDoAdapter
-import com.raywenderlich.android.contentprovidertodo.R
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.dialog_to_do_item.view.*
-
+import com.raywenderlich.android.contentprovidertodo.databinding.ActivityMainBinding
+import com.raywenderlich.android.contentprovidertodo.databinding.DialogToDoItemBinding
 
 /**
  * Main Screen
  */
 class MainActivity : AppCompatActivity() {
+  lateinit private var binding: ActivityMainBinding
   private var layoutManager: RecyclerView.LayoutManager? = null
-  private lateinit var toDoAdapter : ToDoAdapter
+  private lateinit var toDoAdapter: ToDoAdapter
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_main)
+    binding = ActivityMainBinding.inflate(layoutInflater)
+    setContentView(binding.root)
     layoutManager = LinearLayoutManager(this)
-    recyclerView.layoutManager = layoutManager
+    binding.recyclerView.layoutManager = layoutManager
     toDoAdapter = ToDoAdapter(this)
-    recyclerView.adapter = toDoAdapter
+    binding.recyclerView.adapter = toDoAdapter
 
-    fab.setOnClickListener {
+    binding.fab.setOnClickListener {
       val dialog = AlertDialog.Builder(this)
       dialog.setTitle("Add To Do Item")
-      val view = layoutInflater.inflate(R.layout.dialog_to_do_item, null)
-      dialog.setView(view)
+      val dialogToDoItemBinding = DialogToDoItemBinding.inflate(LayoutInflater.from(applicationContext))
+      dialog.setView(dialogToDoItemBinding.root)
       dialog.setPositiveButton("Add") { _: DialogInterface, _: Int ->
-        if (view.edtToDoName.text.isNotEmpty()) {
-          toDoAdapter.insertToDo(view.edtToDoName.text.toString())
+        if (dialogToDoItemBinding.edtToDoName.text.isNotEmpty()) {
+          toDoAdapter.insertToDo(dialogToDoItemBinding.edtToDoName.text.toString())
         }
       }
       dialog.setNegativeButton("Cancel") { _: DialogInterface, _: Int ->

@@ -43,17 +43,14 @@ import com.raywenderlich.android.contentprovidertodo.controller.provider.ToDoCon
 import com.raywenderlich.android.contentprovidertodo.controller.provider.ToDoContract.ToDoTable.Columns.KEY_TODO_IS_COMPLETED
 import com.raywenderlich.android.contentprovidertodo.controller.provider.ToDoContract.ToDoTable.Columns.KEY_TODO_NAME
 import com.raywenderlich.android.contentprovidertodo.model.ToDo
-import com.raywenderlich.android.contentprovidertodo.R
-import kotlinx.android.synthetic.main.dialog_to_do_item.view.*
-import kotlinx.android.synthetic.main.to_do_list_item.view.*
-
+import com.raywenderlich.android.contentprovidertodo.databinding.ToDoListItemBinding
+import com.raywenderlich.android.contentprovidertodo.databinding.DialogToDoItemBinding
 
 class ToDoAdapter(private val context: Context) :
                           RecyclerView.Adapter<ToDoAdapter.ViewHolder>() {
   
  override fun onCreateViewHolder(parent: ViewGroup, position: Int): ViewHolder {
-    val view = LayoutInflater.from(context)
-    .inflate(R.layout.to_do_list_item, parent, false)
+   val view = ToDoListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
     return ViewHolder(view)
   }
 
@@ -73,8 +70,7 @@ class ToDoAdapter(private val context: Context) :
     //TODO: Add insert query here
   }
 
-  inner class ViewHolder(itemView: View) :
-      RecyclerView.ViewHolder(itemView), View.OnClickListener {
+  inner class ViewHolder(private val binding: ToDoListItemBinding) : RecyclerView.ViewHolder(binding.root), View.OnClickListener {
 
     // Bind the To-Do Item fields to the controls in the RecyclerView row
     fun bindViews(toDo: ToDo) {
@@ -96,11 +92,11 @@ class ToDoAdapter(private val context: Context) :
     private fun editToDo(toDo: ToDo) {
       val dialog = AlertDialog.Builder(context)
       dialog.setTitle("Update To Do Item")
-      val view = LayoutInflater.from(context).inflate(R.layout.dialog_to_do_item, null)
-      view.edtToDoName.setText(toDo.toDoName)
-      dialog.setView(view)
+      val dialogToDoItemBinding = DialogToDoItemBinding.inflate(LayoutInflater.from(context))
+      dialogToDoItemBinding.edtToDoName.setText(toDo.toDoName)
+      dialog.setView(dialogToDoItemBinding.root)
       dialog.setPositiveButton("Update") { _: DialogInterface, _: Int ->
-        if (view.edtToDoName.text.isNotEmpty()) {
+        if (dialogToDoItemBinding.edtToDoName.text.isNotEmpty()) {
          //TODO: Populate selection args, content values and call query to update record here
         }
       }

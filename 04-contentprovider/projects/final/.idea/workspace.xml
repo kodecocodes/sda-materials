@@ -40,8 +40,12 @@
   <component name="ChangeListManager">
     <list default="true" id="24713964-d23a-4b90-8261-cc8c4bb56697" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../challenge/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../challenge/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../challenge/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/raywenderlich/android/contentprovidertodo/controller/ToDoAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/raywenderlich/android/contentprovidertodo/controller/ToDoAdapter.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../starter/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../starter/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../starter/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../starter/app/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,6 +86,7 @@
     <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2019-08-29T05:54:46.624Z" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="android-custom-view/Users/fuad.kamal/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.2.1/f0f93e67af3f7417bdd560d5142f6dec4fe629c3/recyclerview-1.2.1-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_SELECTED" value="RecyclerView" />
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
     <property name="not.eligible.for.single.variant.sync" value="true" />
     <property name="settings.editor.selected.configurable" value="copyright" />
@@ -184,13 +189,45 @@
       <screen x="0" y="25" width="3840" height="2135" />
     </state>
     <state x="2486" y="987" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/-1440.1132.1440.875/0.25.3840.2135@0.25.3840.2135" timestamp="1626050603596" />
+    <state width="2173" height="644" key="GridCell.Tab.0.bottom" timestamp="1626058180596">
+      <screen x="0" y="25" width="3840" height="2135" />
+    </state>
+    <state width="2173" height="644" key="GridCell.Tab.0.bottom/-1440.1132.1440.875/0.25.3840.2135@0.25.3840.2135" timestamp="1626058180596" />
+    <state width="2173" height="644" key="GridCell.Tab.0.center" timestamp="1626058180595">
+      <screen x="0" y="25" width="3840" height="2135" />
+    </state>
+    <state width="2173" height="644" key="GridCell.Tab.0.center/-1440.1132.1440.875/0.25.3840.2135@0.25.3840.2135" timestamp="1626058180595" />
+    <state width="2173" height="644" key="GridCell.Tab.0.left" timestamp="1626058180594">
+      <screen x="0" y="25" width="3840" height="2135" />
+    </state>
+    <state width="2173" height="644" key="GridCell.Tab.0.left/-1440.1132.1440.875/0.25.3840.2135@0.25.3840.2135" timestamp="1626058180594" />
+    <state width="2173" height="644" key="GridCell.Tab.0.right" timestamp="1626058180596">
+      <screen x="0" y="25" width="3840" height="2135" />
+    </state>
+    <state width="2173" height="644" key="GridCell.Tab.0.right/-1440.1132.1440.875/0.25.3840.2135@0.25.3840.2135" timestamp="1626058180596" />
+    <state width="2173" height="644" key="GridCell.Tab.1.bottom" timestamp="1626058180597">
+      <screen x="0" y="25" width="3840" height="2135" />
+    </state>
+    <state width="2173" height="644" key="GridCell.Tab.1.bottom/-1440.1132.1440.875/0.25.3840.2135@0.25.3840.2135" timestamp="1626058180597" />
+    <state width="2173" height="644" key="GridCell.Tab.1.center" timestamp="1626058180597">
+      <screen x="0" y="25" width="3840" height="2135" />
+    </state>
+    <state width="2173" height="644" key="GridCell.Tab.1.center/-1440.1132.1440.875/0.25.3840.2135@0.25.3840.2135" timestamp="1626058180597" />
+    <state width="2173" height="644" key="GridCell.Tab.1.left" timestamp="1626058180596">
+      <screen x="0" y="25" width="3840" height="2135" />
+    </state>
+    <state width="2173" height="644" key="GridCell.Tab.1.left/-1440.1132.1440.875/0.25.3840.2135@0.25.3840.2135" timestamp="1626058180596" />
+    <state width="2173" height="644" key="GridCell.Tab.1.right" timestamp="1626058180597">
+      <screen x="0" y="25" width="3840" height="2135" />
+    </state>
+    <state width="2173" height="644" key="GridCell.Tab.1.right/-1440.1132.1440.875/0.25.3840.2135@0.25.3840.2135" timestamp="1626058180597" />
     <state x="2241" y="728" key="SettingsEditor" timestamp="1626050596696">
       <screen x="0" y="25" width="3840" height="2135" />
     </state>
     <state x="2241" y="728" key="SettingsEditor/-1440.1132.1440.875/0.25.3840.2135@0.25.3840.2135" timestamp="1626050596696" />
-    <state x="2431" y="847" width="633" height="490" key="find.popup" timestamp="1626054532837">
+    <state x="2431" y="847" width="633" height="490" key="find.popup" timestamp="1626055234617">
       <screen x="0" y="25" width="3840" height="2135" />
     </state>
-    <state x="2431" y="847" width="633" height="490" key="find.popup/-1440.1132.1440.875/0.25.3840.2135@0.25.3840.2135" timestamp="1626054532837" />
+    <state x="2431" y="847" width="633" height="490" key="find.popup/-1440.1132.1440.875/0.25.3840.2135@0.25.3840.2135" timestamp="1626055234617" />
   </component>
 </project>
