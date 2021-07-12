@@ -20,19 +20,18 @@
  * THE SOFTWARE.
  */
 
-package com.raywenderlich.whatsup.ui.login
+package com.raywenderlich.android.whatsup.ui.login
 
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
-import com.raywenderlich.whatsup.R
-import com.raywenderlich.whatsup.firebase.authentication.AuthenticationManager
-import com.raywenderlich.whatsup.firebase.authentication.RC_SIGN_IN
-import com.raywenderlich.whatsup.ui.Router
-import com.raywenderlich.whatsup.util.showToast
+import com.raywenderlich.android.whatsup.R
+import com.raywenderlich.android.whatsup.firebase.authentication.AuthenticationManager
+import com.raywenderlich.android.whatsup.firebase.authentication.RC_SIGN_IN
+import com.raywenderlich.android.whatsup.ui.Router
+import com.raywenderlich.android.whatsup.util.showToast
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {

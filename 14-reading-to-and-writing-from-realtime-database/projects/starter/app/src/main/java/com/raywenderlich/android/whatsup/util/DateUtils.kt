@@ -20,7 +20,7 @@
  * THE SOFTWARE.
  */
 
-package com.raywenderlich.whatsup.util
+package com.raywenderlich.android.whatsup.util
 
 import java.text.SimpleDateFormat
 import java.util.*

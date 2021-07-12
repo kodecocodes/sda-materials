@@ -20,7 +20,7 @@
  * THE SOFTWARE.
  */
 
-package com.raywenderlich.whatsup.ui.postDetails
+package com.raywenderlich.android.whatsup.ui.postDetails
 
 import android.content.Context
 import android.content.Intent
@@ -31,13 +31,13 @@ import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.raywenderlich.whatsup.R
-import com.raywenderlich.whatsup.firebase.authentication.AuthenticationManager
-import com.raywenderlich.whatsup.firebase.realtimeDatabase.RealtimeDatabaseManager
-import com.raywenderlich.whatsup.model.Comment
-import com.raywenderlich.whatsup.model.Post
-import com.raywenderlich.whatsup.util.DateUtils
-import com.raywenderlich.whatsup.util.showToast
+import com.raywenderlich.android.whatsup.R
+import com.raywenderlich.android.whatsup.firebase.authentication.AuthenticationManager
+import com.raywenderlich.android.whatsup.firebase.realtimeDatabase.RealtimeDatabaseManager
+import com.raywenderlich.android.whatsup.model.Comment
+import com.raywenderlich.android.whatsup.model.Post
+import com.raywenderlich.android.whatsup.util.DateUtils
+import com.raywenderlich.android.whatsup.util.showToast
 import kotlinx.android.synthetic.main.activity_post_details.*
 
 class PostDetailsActivity : AppCompatActivity() {

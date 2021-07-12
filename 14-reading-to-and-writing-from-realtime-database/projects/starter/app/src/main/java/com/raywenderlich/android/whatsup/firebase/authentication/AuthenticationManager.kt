@@ -20,7 +20,7 @@
  * THE SOFTWARE.
  */
 
-package com.raywenderlich.whatsup.firebase.authentication
+package com.raywenderlich.android.whatsup.firebase.authentication
 
 import android.app.Activity
 import android.content.Context

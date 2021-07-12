@@ -20,7 +20,7 @@
  * THE SOFTWARE.
  */
 
-package com.raywenderlich.whatsup.ui.home
+package com.raywenderlich.android.whatsup.ui.home
 
 import android.content.Context
 import android.content.Intent
@@ -31,12 +31,12 @@ import android.view.MenuItem
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.raywenderlich.whatsup.R
-import com.raywenderlich.whatsup.firebase.authentication.AuthenticationManager
-import com.raywenderlich.whatsup.firebase.realtimeDatabase.RealtimeDatabaseManager
-import com.raywenderlich.whatsup.model.Post
-import com.raywenderlich.whatsup.ui.Router
-import com.raywenderlich.whatsup.util.DateUtils
+import com.raywenderlich.android.whatsup.R
+import com.raywenderlich.android.whatsup.firebase.authentication.AuthenticationManager
+import com.raywenderlich.android.whatsup.firebase.realtimeDatabase.RealtimeDatabaseManager
+import com.raywenderlich.android.whatsup.model.Post
+import com.raywenderlich.android.whatsup.ui.Router
+import com.raywenderlich.android.whatsup.util.DateUtils
 import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity() {

@@ -20,14 +20,14 @@
  * THE SOFTWARE.
  */
 
-package com.raywenderlich.whatsup.ui
+package com.raywenderlich.android.whatsup.ui
 
 import android.app.Activity
-import com.raywenderlich.whatsup.model.Post
-import com.raywenderlich.whatsup.ui.addPost.AddPostActivity
-import com.raywenderlich.whatsup.ui.home.HomeActivity
-import com.raywenderlich.whatsup.ui.login.LoginActivity
-import com.raywenderlich.whatsup.ui.postDetails.PostDetailsActivity
+import com.raywenderlich.android.whatsup.model.Post
+import com.raywenderlich.android.whatsup.ui.addPost.AddPostActivity
+import com.raywenderlich.android.whatsup.ui.home.HomeActivity
+import com.raywenderlich.android.whatsup.ui.login.LoginActivity
+import com.raywenderlich.android.whatsup.ui.postDetails.PostDetailsActivity
 
 class Router {
 

@@ -20,7 +20,7 @@
  * THE SOFTWARE.
  */
 
-package com.raywenderlich.whatsup.firebase.realtimeDatabase
+package com.raywenderlich.android.whatsup.firebase.realtimeDatabase
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -28,9 +28,9 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.raywenderlich.whatsup.firebase.authentication.AuthenticationManager
-import com.raywenderlich.whatsup.model.Comment
-import com.raywenderlich.whatsup.model.Post
+import com.raywenderlich.android.whatsup.firebase.authentication.AuthenticationManager
+import com.raywenderlich.android.whatsup.model.Comment
+import com.raywenderlich.android.whatsup.model.Post
 
 private const val POSTS_REFERENCE = "posts"
 private const val POST_CONTENT_PATH = "content"

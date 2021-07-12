@@ -20,9 +20,9 @@
  * THE SOFTWARE.
  */
 
-package com.raywenderlich.whatsup.firebase.realtimeDatabase
+package com.raywenderlich.android.whatsup.firebase.realtimeDatabase
 
-import com.raywenderlich.whatsup.firebase.authentication.AuthenticationManager
+import com.raywenderlich.android.whatsup.firebase.authentication.AuthenticationManager
 
 class RealtimeDatabaseManager {
 

@@ -20,7 +20,7 @@
  * THE SOFTWARE.
  */
 
-package com.raywenderlich.whatsup.model
+package com.raywenderlich.android.whatsup.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

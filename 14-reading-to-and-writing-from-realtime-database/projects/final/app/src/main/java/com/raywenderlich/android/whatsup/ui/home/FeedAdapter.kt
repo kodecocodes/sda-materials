@@ -20,7 +20,7 @@
  * THE SOFTWARE.
  */
 
-package com.raywenderlich.whatsup.ui.home
+package com.raywenderlich.android.whatsup.ui.home
 
 import android.view.LayoutInflater
 import android.view.View
@@ -28,9 +28,9 @@ import android.view.ViewGroup
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
-import com.raywenderlich.whatsup.R
-import com.raywenderlich.whatsup.model.Post
-import com.raywenderlich.whatsup.util.DateUtils
+import com.raywenderlich.android.whatsup.R
+import com.raywenderlich.android.whatsup.model.Post
+import com.raywenderlich.android.whatsup.util.DateUtils
 import kotlinx.android.synthetic.main.post_item.view.*
 
 class FeedAdapter(private val dateUtils: DateUtils) : RecyclerView.Adapter<FeedAdapter.PostViewHolder>() {

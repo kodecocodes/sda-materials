@@ -20,15 +20,15 @@
  * THE SOFTWARE.
  */
 
-package com.raywenderlich.whatsup.ui.postDetails
+package com.raywenderlich.android.whatsup.ui.postDetails
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.raywenderlich.whatsup.R
-import com.raywenderlich.whatsup.model.Comment
-import com.raywenderlich.whatsup.util.DateUtils
+import com.raywenderlich.android.whatsup.R
+import com.raywenderlich.android.whatsup.model.Comment
+import com.raywenderlich.android.whatsup.util.DateUtils
 import kotlinx.android.synthetic.main.comment_list_item.view.*
 
 class CommentsAdapter(private val dateUtils: DateUtils) : RecyclerView.Adapter<CommentsAdapter.CommentViewHolder>() {
