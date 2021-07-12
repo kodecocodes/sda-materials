@@ -78,45 +78,13 @@ class ToDoAdapter(private val context: Context) :
 
     // Bind the To-Do Item fields to the controls in the RecyclerView row
     fun bindViews(toDo: ToDo) {
-      itemView.txtToDoName.text = toDo.toDoName
-      itemView.chkToDoCompleted.isChecked = toDo.isCompleted
-      itemView.chkToDoCompleted.setOnCheckedChangeListener { compoundButton, _ ->
-        toDo.isCompleted = compoundButton.isChecked
-        val values = ContentValues()
-        values.put(KEY_TODO_IS_COMPLETED, toDo.isCompleted)
-        values.put(KEY_TODO_ID, toDo.toDoId)
-        values.put(KEY_TODO_NAME, toDo.toDoName)
-//        selectionArgs = arrayOf(toDo.toDoId.toString())
-//        context.contentResolver.update(Uri.parse(queryUri), values, selectionClause,
-//            selectionArgs)
-      }
-      itemView.imgDelete.setOnClickListener(this)
-      itemView.imgEdit.setOnClickListener(this)
+      // TODO : Implement
     }
 
 
     // Handle clicks on the RecyclerView rows
     override fun onClick(imgButton: View?) {
-//      val cursor = context.contentResolver.query(Uri.parse(queryUri),projection,selectionClause,
-//          selectionArgs, sortOrder)
-
-//      if(cursor != null) {
-//        if(cursor.moveToPosition(bindingAdapterPosition)) {
-//          val toDoId = cursor.getLong(cursor.getColumnIndex(KEY_TODO_ID))
-//          val toDoName = cursor.getString(cursor.getColumnIndex(KEY_TODO_NAME))
-//          val toDoCompleted = cursor.getInt(cursor.getColumnIndex(KEY_TODO_IS_COMPLETED)) > 0
-//          cursor.close()
-//          val toDo = ToDo(toDoId, toDoName, toDoCompleted)
-//          when (imgButton?.id) {
-//            itemView.imgDelete.id -> {
-//              deleteToDo(toDo.toDoId)
-//            }
-//            itemView.imgEdit.id -> {
-//              editToDo(toDo)
-//            }
-//          }
-//        }
-//      }
+      // TODO : Implement
     }
 
     // Delete a To-Do item from the ContentResolver
