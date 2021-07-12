@@ -125,6 +125,9 @@ class PostDetailsActivity : AppCompatActivity() {
   }
 
   private fun extractArguments() {
-    post = intent.getParcelableExtra(POST_EXTRA)
+    val tempPost : Post? = intent.getParcelableExtra(POST_EXTRA)
+    tempPost?.let {
+      post = it
+    }
   }
 }

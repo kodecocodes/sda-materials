@@ -73,8 +73,8 @@ class HomeActivity : AppCompatActivity() {
     return true
   }
 
-  override fun onOptionsItemSelected(item: MenuItem?): Boolean =
-      when (item?.itemId) {
+  override fun onOptionsItemSelected(item: MenuItem): Boolean =
+      when (item.itemId) {
         R.id.action_logout -> {
           authenticationManager.signOut(this)
           router.startLoginScreen(this)
@@ -82,9 +82,7 @@ class HomeActivity : AppCompatActivity() {
           true
         }
         else -> {
-          if (item != null) {
-            super.onOptionsItemSelected(item)
-          }
+          super.onOptionsItemSelected(item)
           true
         }
       }
