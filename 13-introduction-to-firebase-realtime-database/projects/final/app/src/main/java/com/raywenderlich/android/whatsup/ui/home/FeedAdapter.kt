@@ -35,9 +35,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.recyclerview.widget.RecyclerView
 import com.raywenderlich.android.whatsup.R
 import com.raywenderlich.android.whatsup.model.Post
+import 	androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.post_item.view.*
 
 class FeedAdapter : RecyclerView.Adapter<FeedAdapter.PostViewHolder>() {
