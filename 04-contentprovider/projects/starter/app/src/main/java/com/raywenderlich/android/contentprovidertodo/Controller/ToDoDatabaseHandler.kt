@@ -37,9 +37,8 @@ import android.database.DatabaseUtils
 import android.database.MatrixCursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import com.raywenderlich.android.contentprovidertodo.controller.provider.ToDoContract.ALL_ITEMS
 import com.raywenderlich.android.contentprovidertodo.controller.provider.ToDoContract.CONTENT_PATH
-//import com.raywenderlich.android.contentprovidertodo.controller.provider.ToDoContract.ALL_ITEMS
-//import com.raywenderlich.android.contentprovidertodo.controller.provider.ToDoContract.CONTENT_PATH
 import com.raywenderlich.android.contentprovidertodo.model.ToDo
 import com.raywenderlich.android.contentprovidertodo.model.ToDoDbSchema.DATABASE_NAME
 import com.raywenderlich.android.contentprovidertodo.model.ToDoDbSchema.DATABASE_VERSION
@@ -73,9 +72,9 @@ class ToDoDatabaseHandler(context: Context) :
   fun query(position: Int) : Cursor? {
     lateinit var cursor : Cursor
     var selectAll = "SELECT * FROM $TABLE_NAME"
-//    if(position != ALL_ITEMS) {
-//      selectAll = "SELECT * FROM $TABLE_NAME WHERE $KEY_TODO_ID = $position"
-//    }
+    if(position != ALL_ITEMS) {
+      selectAll = "SELECT * FROM $TABLE_NAME WHERE $KEY_TODO_ID = $position"
+    }
     cursor = readableDatabase.rawQuery(selectAll, null)
     return cursor
   }
