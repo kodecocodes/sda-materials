@@ -41,10 +41,6 @@ private const val KEY_NOTE_PRIORITY_SET = "note_priority_set"
 
 class NotePrefs(private val sharedPrefs: SharedPreferences) {
 
-  companion object {
-    const val PREFS_NAME = "user_preferences"
-  }
-
   fun saveNoteSortOrder(noteSortOrder: NoteSortOrder) {
     sharedPrefs.edit()
         .putString(KEY_NOTE_SORT_PREFERENCE, noteSortOrder.name)
@@ -74,4 +70,8 @@ class NotePrefs(private val sharedPrefs: SharedPreferences) {
 
   fun getAppBackgroundColor(): AppBackgroundColor =
       AppBackgroundColor.getColorByName(DEFAULT_COLOR)
+
+  companion object {
+    const val PREFS_NAME = "user_preferences"
+  }
 }

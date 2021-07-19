@@ -45,13 +45,6 @@ private const val DEFAULT_PRIORITY_FILTER = "1"
 
 class NotePrefs(private val dataStore: DataStore<Preferences>) {
 
-  companion object {
-    const val PREFS_NAME = "user_preferences"
-    private val BACKGROUND_COLOR = stringPreferencesKey("key_app_background_color")
-    private val NOTE_SORT_ORDER = stringPreferencesKey("note_sort_preference")
-    private val NOTE_PRIORITY_SET = stringSetPreferencesKey("note_priority_set")
-  }
-
   suspend fun saveNoteSortOrder(noteSortOrder: NoteSortOrder) {
     dataStore.edit { preferences ->
       preferences[NOTE_SORT_ORDER] = noteSortOrder.name
@@ -95,5 +88,12 @@ class NotePrefs(private val dataStore: DataStore<Preferences>) {
 
       UserPreferences(backgroundColor)
     }
+
+  companion object {
+    const val PREFS_NAME = "user_preferences"
+    private val BACKGROUND_COLOR = stringPreferencesKey("key_app_background_color")
+    private val NOTE_SORT_ORDER = stringPreferencesKey("note_sort_preference")
+    private val NOTE_PRIORITY_SET = stringSetPreferencesKey("note_priority_set")
+  }
 
 }
