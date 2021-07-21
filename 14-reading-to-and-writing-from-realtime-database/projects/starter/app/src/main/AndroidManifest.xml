@@ -12,7 +12,7 @@
     <activity android:name=".ui.postDetails.PostDetailsActivity" />
     <activity android:name=".ui.addPost.AddPostActivity" />
     <activity
-      android:name=".ui.login.LoginActivity"
+      android:name=".ui.splash.SplashActivity"
       android:noHistory="true">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
@@ -20,7 +20,11 @@
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
+    <activity android:name=".ui.login.LoginActivity" />
     <activity android:name=".ui.home.HomeActivity" />
+    <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
   </application>
 
 </manifest>
