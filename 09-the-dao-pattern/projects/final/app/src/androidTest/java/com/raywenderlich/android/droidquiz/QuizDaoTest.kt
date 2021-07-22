@@ -10,7 +10,11 @@ import com.raywenderlich.android.droidquiz.data.QuestionInfoProvider
 import com.raywenderlich.android.droidquiz.data.db.QuizDao
 import com.raywenderlich.android.droidquiz.data.db.QuizDatabase
 import com.raywenderlich.android.droidquiz.data.model.Question
-import org.junit.*
+import org.junit.After
+import org.junit.Assert
+import org.junit.Before
+import org.junit.Rule
+import org.junit.Test
 import org.junit.rules.TestRule
 import org.junit.runner.RunWith
 
@@ -48,7 +52,7 @@ class QuizDaoTest {
     //4
     val changeInQuestions = newNumberOfQuestions - previousNumberOfQuestions
     // 5
-    Assert.assertEquals(1, newNumberOfQuestions - changeInQuestions)
+    Assert.assertEquals(1, changeInQuestions)
   }
 
   @Test
