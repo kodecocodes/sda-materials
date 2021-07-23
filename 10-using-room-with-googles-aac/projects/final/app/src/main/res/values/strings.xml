@@ -12,4 +12,5 @@
   <string name="android_checking_a_list">Android checking a list</string>
   <string name="android_holding_a_device_running_kotlin">Android holding a device running Kotlin</string>
   <string name="score_message">You scored: %1$d/%2$d</string>
+  <string name="please_select_an_option">Please select an option</string>
 </resources>
