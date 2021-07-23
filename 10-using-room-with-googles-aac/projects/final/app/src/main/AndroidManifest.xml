@@ -12,13 +12,14 @@
     android:supportsRtl="true"
     android:theme="@style/AppTheme"
     tools:ignore="AllowBackup">
+    <activity android:name=".view.MainActivity"/>
     <activity android:name=".view.ResultActivity"/>
     <activity
       android:name=".view.QuestionActivity"
       android:screenOrientation="portrait"
       tools:ignore="LockedOrientationActivity" />
     <activity
-      android:name=".view.MainActivity"
+      android:name=".view.SplashActivity"
       android:screenOrientation="portrait"
       tools:ignore="LockedOrientationActivity">
       <intent-filter>
@@ -27,6 +28,9 @@
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
+    <meta-data
+      android:name="preloaded_fonts"
+      android:resource="@array/preloaded_fonts" />
   </application>
 
 </manifest>
