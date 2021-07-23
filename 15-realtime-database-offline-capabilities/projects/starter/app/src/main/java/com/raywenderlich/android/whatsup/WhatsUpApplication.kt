@@ -23,8 +23,6 @@
 package com.raywenderlich.android.whatsup
 
 import android.app.Application
-import com.google.firebase.database.FirebaseDatabase
-import com.raywenderlich.android.whatsup.firebase.realtimeDatabase.COMMENTS_REFERENCE
 
 class WhatsUpApplication : Application() {
 
