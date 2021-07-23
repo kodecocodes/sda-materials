@@ -49,6 +49,10 @@
       </intent-filter>
     </activity> <!-- Main Activity -->
     <activity android:name=".view.MainActivity"/>
+
+    <meta-data
+      android:name="preloaded_fonts"
+      android:resource="@array/preloaded_fonts" />
   </application>
 
 </manifest>
