@@ -35,7 +35,8 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:context=".SplashActivity">
+  android:background="@color/ic_launcher_background"
+  tools:context=".ui.splash.SplashActivity">
 
   <ImageView
     android:id="@+id/imageView"
