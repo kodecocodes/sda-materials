@@ -43,5 +43,5 @@ data class Question(
   @ColumnInfo(name = "question_id")
   var questionId: Int,
   val text: String,
-  val challengeLevel: String = "0" //Only this lane changes
+  val challengeLevel: String = "0" // Only this line changes
 )

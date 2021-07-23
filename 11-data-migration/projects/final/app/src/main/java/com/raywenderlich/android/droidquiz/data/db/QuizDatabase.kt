@@ -54,10 +54,11 @@ import com.raywenderlich.android.droidquiz.data.model.Question
   ]
 )
 abstract class QuizDatabase : RoomDatabase() {
+  abstract fun quizDao(): QuizDao
+
   companion object {
     val MIGRATION_1_TO_2 = Migration1To2()
     val MIGRATION_2_TO_3 = Migration2To3()
     val MIGRATION_1_TO_3 = Migration1To3()
   }
-  abstract fun quizDao(): QuizDao
 }
