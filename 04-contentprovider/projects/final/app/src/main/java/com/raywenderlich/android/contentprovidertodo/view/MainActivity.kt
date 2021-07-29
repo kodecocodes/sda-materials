@@ -46,7 +46,7 @@ import com.raywenderlich.android.contentprovidertodo.databinding.DialogToDoItemB
  * Main Screen
  */
 class MainActivity : AppCompatActivity() {
-  lateinit private var binding: ActivityMainBinding
+  private lateinit var binding: ActivityMainBinding
   private var layoutManager: RecyclerView.LayoutManager? = null
   private lateinit var toDoAdapter : ToDoAdapter
 

@@ -37,6 +37,8 @@ import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import android.widget.Toast.LENGTH_LONG
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import com.raywenderlich.android.contentprovidertodo.controller.provider.ToDoContract.CONTENT_PATH
@@ -45,9 +47,9 @@ import com.raywenderlich.android.contentprovidertodo.controller.provider.ToDoCon
 import com.raywenderlich.android.contentprovidertodo.controller.provider.ToDoContract.ToDoTable.Columns.KEY_TODO_ID
 import com.raywenderlich.android.contentprovidertodo.controller.provider.ToDoContract.ToDoTable.Columns.KEY_TODO_IS_COMPLETED
 import com.raywenderlich.android.contentprovidertodo.controller.provider.ToDoContract.ToDoTable.Columns.KEY_TODO_NAME
-import com.raywenderlich.android.contentprovidertodo.model.ToDo
-import com.raywenderlich.android.contentprovidertodo.databinding.ToDoListItemBinding
 import com.raywenderlich.android.contentprovidertodo.databinding.DialogToDoItemBinding
+import com.raywenderlich.android.contentprovidertodo.databinding.ToDoListItemBinding
+import com.raywenderlich.android.contentprovidertodo.model.ToDo
 
 class ToDoAdapter(private val context: Context) : RecyclerView.Adapter<ToDoAdapter.ViewHolder>() {
   private val queryUri = CONTENT_URI.toString() // base uri
@@ -66,7 +68,8 @@ class ToDoAdapter(private val context: Context) : RecyclerView.Adapter<ToDoAdapt
   override fun getItemCount(): Int {
     // Get the number of records from the Content Resolver
     val cursor = context.contentResolver.query(
-      Uri.parse(queryCountUri), projection, selectionClause,
+      Uri.parse(queryCountUri),
+      projection, selectionClause,
       selectionArgs, sortOrder
     )
     // Return the count of records
@@ -89,6 +92,7 @@ class ToDoAdapter(private val context: Context) : RecyclerView.Adapter<ToDoAdapt
       selectionClause,
       selectionArgs, sortOrder
     )
+
     // 2
     if (cursor != null) {
       if (cursor.moveToPosition(position)) {
@@ -109,38 +113,50 @@ class ToDoAdapter(private val context: Context) : RecyclerView.Adapter<ToDoAdapt
     values.put(KEY_TODO_NAME, toDoName)
     // 2
     context.contentResolver.insert(CONTENT_URI, values)
+    notifyDataSetChanged()
   }
 
 
-  inner class ViewHolder(private val binding: ToDoListItemBinding) : RecyclerView.ViewHolder(binding.root), View.OnClickListener {
+  inner class ViewHolder(private val binding: ToDoListItemBinding) :
+    RecyclerView.ViewHolder(binding.root), View.OnClickListener {
 
     // Bind the To-Do Item fields to the controls in the RecyclerView row
     fun bindViews(toDo: ToDo) {
-      binding.txtToDoName.text = toDo.toDoName
-      binding.chkToDoCompleted.isChecked = toDo.isCompleted
-      binding.chkToDoCompleted.setOnCheckedChangeListener { compoundButton, _ ->
-        toDo.isCompleted = compoundButton.isChecked
-        val values = ContentValues()
-        values.put(KEY_TODO_IS_COMPLETED, toDo.isCompleted)
-        values.put(KEY_TODO_ID, toDo.toDoId)
-        values.put(KEY_TODO_NAME, toDo.toDoName)
-        selectionArgs = arrayOf(toDo.toDoId.toString())
-        context.contentResolver.update(
-          Uri.parse(queryUri), values, selectionClause,
-          selectionArgs
-        )
+      with(binding) {
+        // 1
+        txtToDoName.text = toDo.toDoName
+        chkToDoCompleted.isChecked = toDo.isCompleted
+        // 2
+        imgDelete.setOnClickListener(this@ViewHolder)
+        imgEdit.setOnClickListener(this@ViewHolder)
+        // 3
+        chkToDoCompleted.setOnCheckedChangeListener { compoundButton, _ ->
+          toDo.isCompleted = compoundButton.isChecked
+          val values = ContentValues().apply {
+            put(KEY_TODO_IS_COMPLETED, toDo.isCompleted)
+            put(KEY_TODO_ID, toDo.toDoId)
+            put(KEY_TODO_NAME, toDo.toDoName)
+          }
+          selectionArgs = arrayOf(toDo.toDoId.toString())
+          context.contentResolver.update(
+            Uri.parse(queryUri),
+            values,
+            selectionClause,
+            selectionArgs
+          )
+        }
       }
-
-      binding.imgDelete.setOnClickListener(this)
-      binding.imgEdit.setOnClickListener(this)
     }
 
 
     // Handle clicks on the RecyclerView rows
     override fun onClick(imgButton: View?) {
       val cursor = context.contentResolver.query(
-        Uri.parse(queryUri), projection, selectionClause,
-        selectionArgs, sortOrder
+        Uri.parse(queryUri),
+        projection,
+        selectionClause,
+        selectionArgs,
+        sortOrder
       )
 
       if (cursor != null) {
@@ -170,6 +186,7 @@ class ToDoAdapter(private val context: Context) : RecyclerView.Adapter<ToDoAdapt
       context.contentResolver.delete(Uri.parse(queryUri), selectionClause, selectionArgs)
       // 3
       notifyDataSetChanged()
+      Toast.makeText(context, "Item deleted.", LENGTH_LONG).show()
     }
 
 
@@ -183,13 +200,16 @@ class ToDoAdapter(private val context: Context) : RecyclerView.Adapter<ToDoAdapt
       dialog.setPositiveButton("Update") { _: DialogInterface, _: Int ->
         if (dialogToDoItemBinding.edtToDoName.text.isNotEmpty()) {
           // 1
-          val values = ContentValues()
-          values.put(KEY_TODO_NAME, dialogToDoItemBinding.edtToDoName.text.toString())
-          values.put(KEY_TODO_ID, toDo.toDoId)
-          values.put(KEY_TODO_IS_COMPLETED, toDo.isCompleted)
+          val values = ContentValues().apply {
+            put(KEY_TODO_NAME, dialogToDoItemBinding.edtToDoName.text.toString())
+            put(KEY_TODO_ID, toDo.toDoId)
+            put(KEY_TODO_IS_COMPLETED, toDo.isCompleted)
+          }
           // 2
           context.contentResolver.update(
-            Uri.parse(queryUri), values, selectionClause,
+            Uri.parse(queryUri),
+            values,
+            selectionClause,
             selectionArgs
           )
           // 3

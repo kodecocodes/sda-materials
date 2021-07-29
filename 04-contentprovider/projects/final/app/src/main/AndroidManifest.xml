@@ -42,7 +42,7 @@
       android:name="com.raywenderlich.android.contentprovidertodo.controller.provider.ToDoContentProvider"
       android:authorities="com.raywenderlich.android.contentprovidertodo.provider"
       android:enabled="true"
-      android:exported="true"></provider>
+      android:exported="true" />
     <!-- Splash Activity -->
     <activity android:name=".view.SplashActivity">
       <intent-filter>
