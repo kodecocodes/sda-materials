@@ -34,10 +34,11 @@ import android.content.ContentValues
 import android.content.Context
 import android.content.DialogInterface
 import android.net.Uri
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import android.widget.Toast.LENGTH_LONG
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import com.raywenderlich.android.contentprovidertodoclient.controller.provider.ToDoContract.CONTENT_PATH
@@ -46,14 +47,11 @@ import com.raywenderlich.android.contentprovidertodoclient.controller.provider.T
 import com.raywenderlich.android.contentprovidertodoclient.controller.provider.ToDoContract.ToDoTable.Columns.KEY_TODO_ID
 import com.raywenderlich.android.contentprovidertodoclient.controller.provider.ToDoContract.ToDoTable.Columns.KEY_TODO_IS_COMPLETED
 import com.raywenderlich.android.contentprovidertodoclient.controller.provider.ToDoContract.ToDoTable.Columns.KEY_TODO_NAME
-import com.raywenderlich.android.contentprovidertodoclient.model.ToDo
-import com.raywenderlich.android.contentprovidertodoclient.R
 import com.raywenderlich.android.contentprovidertodoclient.databinding.DialogToDoItemBinding
 import com.raywenderlich.android.contentprovidertodoclient.databinding.ToDoListItemBinding
+import com.raywenderlich.android.contentprovidertodoclient.model.ToDo
 
-
-class ToDoAdapter(private val context: Context) :
-  RecyclerView.Adapter<ToDoAdapter.ViewHolder>() {
+class ToDoAdapter(private val context: Context) : RecyclerView.Adapter<ToDoAdapter.ViewHolder>() {
   private val queryUri = CONTENT_URI.toString() // base uri
   private val queryCountUri = ROW_COUNT_URI.toString()
   private val projection = arrayOf(CONTENT_PATH) //table
@@ -66,11 +64,15 @@ class ToDoAdapter(private val context: Context) :
     return ViewHolder(view)
   }
 
+  // Get the count of all items
   override fun getItemCount(): Int {
+    // Get the number of records from the Content Resolver
     val cursor = context.contentResolver.query(
-      Uri.parse(queryCountUri), projection, null,
-      null, sortOrder
+      Uri.parse(queryCountUri),
+      projection, selectionClause,
+      selectionArgs, sortOrder
     )
+    // Return the count of records
     if (cursor != null) {
       if (cursor.moveToFirst()) {
         val itemCount = cursor.getInt(0)
@@ -81,14 +83,17 @@ class ToDoAdapter(private val context: Context) :
     return 0
   }
 
+  // Row by row, populate the RecyclerView
   override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-    selectionArgs = arrayOf(position.toString())
-
+    // 1
     val cursor = context.contentResolver.query(
-      Uri.parse(queryUri), projection,
+      Uri.parse(queryUri),
+      projection,
       selectionClause,
       selectionArgs, sortOrder
     )
+
+    // 2
     if (cursor != null) {
       if (cursor.moveToPosition(position)) {
         val toDoId = cursor.getLong(cursor.getColumnIndex(KEY_TODO_ID))
@@ -101,43 +106,65 @@ class ToDoAdapter(private val context: Context) :
     }
   }
 
+  //Insert a To-Do item from the ContentResolver
+  fun insertToDo(toDoName: String) {
+    // 1
+    val values = ContentValues()
+    values.put(KEY_TODO_NAME, toDoName)
+    // 2
+    context.contentResolver.insert(CONTENT_URI, values)
+    notifyDataSetChanged()
+  }
 
-  inner class ViewHolder(private val binding: ToDoListItemBinding) : RecyclerView.ViewHolder(binding.root), View.OnClickListener {
 
+  inner class ViewHolder(private val binding: ToDoListItemBinding) :
+    RecyclerView.ViewHolder(binding.root), View.OnClickListener {
+
+    // Bind the To-Do Item fields to the controls in the RecyclerView row
     fun bindViews(toDo: ToDo) {
-      binding.txtToDoName.text = toDo.toDoName
-      binding.chkToDoCompleted.isChecked = toDo.isCompleted
-      binding.chkToDoCompleted.setOnCheckedChangeListener { compoundButton, _ ->
-        toDo.isCompleted = compoundButton.isChecked
-        val values = ContentValues()
-        values.put(KEY_TODO_IS_COMPLETED, toDo.isCompleted)
-        values.put(KEY_TODO_ID, toDo.toDoId)
-        values.put(KEY_TODO_NAME, toDo.toDoName)
-        selectionArgs = arrayOf(toDo.toDoId.toString())
-        context.contentResolver.update(
-          Uri.parse(queryUri), values, selectionClause,
-          selectionArgs
-        )
+      with(binding) {
+        // 1
+        txtToDoName.text = toDo.toDoName
+        chkToDoCompleted.isChecked = toDo.isCompleted
+        // 2
+        imgDelete.setOnClickListener(this@ViewHolder)
+        imgEdit.setOnClickListener(this@ViewHolder)
+        // 3
+        chkToDoCompleted.setOnCheckedChangeListener { compoundButton, _ ->
+          toDo.isCompleted = compoundButton.isChecked
+          val values = ContentValues().apply {
+            put(KEY_TODO_IS_COMPLETED, toDo.isCompleted)
+            put(KEY_TODO_ID, toDo.toDoId)
+            put(KEY_TODO_NAME, toDo.toDoName)
+          }
+          selectionArgs = arrayOf(toDo.toDoId.toString())
+          context.contentResolver.update(
+            Uri.parse(queryUri),
+            values,
+            selectionClause,
+            selectionArgs
+          )
+        }
       }
-
-      binding.imgDelete.setOnClickListener(this)
-      binding.imgEdit.setOnClickListener(this)
     }
 
 
+    // Handle clicks on the RecyclerView rows
     override fun onClick(imgButton: View?) {
-      var position: Int = bindingAdapterPosition
-      selectionArgs = arrayOf(position.toString())
-
       val cursor = context.contentResolver.query(
-        Uri.parse(queryUri), projection, selectionClause,
-        selectionArgs, sortOrder
+        Uri.parse(queryUri),
+        projection,
+        selectionClause,
+        selectionArgs,
+        sortOrder
       )
+
       if (cursor != null) {
-        if (cursor.moveToPosition(position)) {
+        if (cursor.moveToPosition(bindingAdapterPosition)) {
           val toDoId = cursor.getLong(cursor.getColumnIndex(KEY_TODO_ID))
           val toDoName = cursor.getString(cursor.getColumnIndex(KEY_TODO_NAME))
           val toDoCompleted = cursor.getInt(cursor.getColumnIndex(KEY_TODO_IS_COMPLETED)) > 0
+          cursor.close()
           val toDo = ToDo(toDoId, toDoName, toDoCompleted)
           when (imgButton?.id) {
             binding.imgDelete.id -> {
@@ -151,13 +178,19 @@ class ToDoAdapter(private val context: Context) :
       }
     }
 
+    // Delete a To-Do item from the ContentResolver
     private fun deleteToDo(id: Long) {
+      // 1
       selectionArgs = arrayOf(id.toString())
-      Log.e("MESG", "Trying to delete")
+      // 2
       context.contentResolver.delete(Uri.parse(queryUri), selectionClause, selectionArgs)
+      // 3
       notifyDataSetChanged()
+      Toast.makeText(context, "Item deleted.", LENGTH_LONG).show()
     }
 
+
+    // Edit an Item in the ContentResolver
     private fun editToDo(toDo: ToDo) {
       val dialog = AlertDialog.Builder(context)
       dialog.setTitle("Update To Do Item")
@@ -166,16 +199,20 @@ class ToDoAdapter(private val context: Context) :
       dialog.setView(dialogToDoItemBinding.root)
       dialog.setPositiveButton("Update") { _: DialogInterface, _: Int ->
         if (dialogToDoItemBinding.edtToDoName.text.isNotEmpty()) {
-          selectionArgs = arrayOf(toDo.toDoId.toString())
-          var values = ContentValues()
-          values.put(KEY_TODO_NAME, dialogToDoItemBinding.edtToDoName.text.toString())
-          values.put(KEY_TODO_ID, toDo.toDoId)
-          values.put(KEY_TODO_IS_COMPLETED, toDo.isCompleted)
-          selectionArgs = arrayOf(toDo.toDoId.toString())
+          // 1
+          val values = ContentValues().apply {
+            put(KEY_TODO_NAME, dialogToDoItemBinding.edtToDoName.text.toString())
+            put(KEY_TODO_ID, toDo.toDoId)
+            put(KEY_TODO_IS_COMPLETED, toDo.isCompleted)
+          }
+          // 2
           context.contentResolver.update(
-            Uri.parse(queryUri), values, selectionClause,
+            Uri.parse(queryUri),
+            values,
+            selectionClause,
             selectionArgs
           )
+          // 3
           notifyDataSetChanged()
         }
       }

@@ -31,7 +31,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
   package="com.raywenderlich.android.contentprovidertodoclient">
 
-  <uses-permission android:name="com.raywenderlich.android.contentprovidertodo.PERMISSION" />
+  <uses-permission android:name = "com.raywenderlich.android.contentprovidertodo.provider.PERMISSION"/>
 
   <application
     android:allowBackup="false"
@@ -41,14 +41,15 @@
     android:supportsRtl="true"
     android:theme="@style/AppTheme">
     <!-- Splash Activity -->
-    <activity android:name=".view.SplashActivity">
+    <activity android:name="com.raywenderlich.android.contentprovidertodoclient.view.SplashActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
 
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity> <!-- Main Activity -->
-    <activity android:name=".view.MainActivity" />
+    <activity android:name="com.raywenderlich.android.contentprovidertodoclient.view.MainActivity" />
+
     <meta-data
       android:name="preloaded_fonts"
       android:resource="@array/preloaded_fonts" />

@@ -34,10 +34,14 @@ import android.net.Uri
 
 object ToDoContract {
 
+  // The URI Code for All items
   const val ALL_ITEMS = -2
+
+  //The URI suffix for counting records
   const val COUNT = "count"
 
-  const val AUTHORITY = "com.raywenderlich.contentprovidertodo.provider"
+  //The URI Authority
+  const val AUTHORITY = "com.raywenderlich.android.contentprovidertodo.provider"
 
   // Only one public table.
   const val CONTENT_PATH = "todoitems"
@@ -48,21 +52,23 @@ object ToDoContract {
   // URI to get the number of entries.
   val ROW_COUNT_URI: Uri = Uri.parse("content://$AUTHORITY/$CONTENT_PATH/$COUNT")
 
-  const val SINGLE_RECORD_MIME_TYPE = "vnd.android.cursor.item/vnd.com.raywenderlich.contentprovidertodo" +
-      ".provider.todoitems"
 
-  const val MULTIPLE_RECORDS_MIME_TYPE = "vnd.android.cursor.item/vnd.com.raywenderlich" +
+  // Single record mime type
+  const val SINGLE_RECORD_MIME_TYPE = "vnd.android.cursor.item/vnd.com.raywenderlich" +
       ".contentprovidertodo" +
-      ".provider.todoitems"
+  ".provider.todoitems"
 
+  // Multiple Record MIME type
+  const val MULTIPLE_RECORDS_MIME_TYPE = "vnd.android.cursor.item/vnd.com.raywenderlich" +
+      ".contentprovidertodo.provider.todoitems"
+
+  // Table Constants
   object ToDoTable {
 
+    // The constants for the table columns
     object Columns {
-      // 4
       const val KEY_TODO_ID: String = "todoid" //The unique ID column
-      // 5
       const val KEY_TODO_NAME: String = "todoname" //The ToDo's Name
-      // 6
       const val KEY_TODO_IS_COMPLETED: String = "iscompleted" //The ToDo's category
     }
   }

@@ -30,7 +30,6 @@
 
 package com.raywenderlich.android.contentprovidertodoclient.view
 
-import android.content.ContentValues
 import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -39,9 +38,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.raywenderlich.android.contentprovidertodoclient.controller.ToDoAdapter
-import com.raywenderlich.android.contentprovidertodoclient.controller.provider.ToDoContract.CONTENT_URI
-import com.raywenderlich.android.contentprovidertodoclient.controller.provider.ToDoContract.ToDoTable.Columns.KEY_TODO_NAME
-import com.raywenderlich.android.contentprovidertodoclient.R
 import com.raywenderlich.android.contentprovidertodoclient.databinding.ActivityMainBinding
 import com.raywenderlich.android.contentprovidertodoclient.databinding.DialogToDoItemBinding
 
@@ -50,17 +46,18 @@ import com.raywenderlich.android.contentprovidertodoclient.databinding.DialogToD
  * Main Screen
  */
 class MainActivity : AppCompatActivity() {
-  lateinit private var binding: ActivityMainBinding
+  private lateinit var binding: ActivityMainBinding
   private var layoutManager: RecyclerView.LayoutManager? = null
+  private lateinit var toDoAdapter : ToDoAdapter
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     binding = ActivityMainBinding.inflate(layoutInflater)
     setContentView(binding.root)
     layoutManager = LinearLayoutManager(this)
+    toDoAdapter = ToDoAdapter(this)
     binding.recyclerView.layoutManager = layoutManager
-    binding.recyclerView.adapter = ToDoAdapter(this)
-
+    binding.recyclerView.adapter = toDoAdapter
 
     binding.fab.setOnClickListener {
       val dialog = AlertDialog.Builder(this)
@@ -69,9 +66,7 @@ class MainActivity : AppCompatActivity() {
       dialog.setView(dialogToDoItemBinding.root)
       dialog.setPositiveButton("Add") { _: DialogInterface, _: Int ->
         if (dialogToDoItemBinding.edtToDoName.text.isNotEmpty()) {
-          var values = ContentValues()
-          values.put(KEY_TODO_NAME, dialogToDoItemBinding.edtToDoName.text.toString())
-          this.contentResolver.insert(CONTENT_URI, values)
+          toDoAdapter.insertToDo(dialogToDoItemBinding.edtToDoName.text.toString())
         }
       }
       dialog.setNegativeButton("Cancel") { _: DialogInterface, _: Int ->
