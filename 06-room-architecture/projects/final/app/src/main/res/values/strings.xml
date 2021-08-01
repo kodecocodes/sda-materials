@@ -1,0 +1,14 @@
+<resources>
+  <string name="app_name">DroidQuiz</string>
+  <string name="start">START</string>
+  <string name="title">Welcome to DroidQuiz!</string>
+  <string name="prepopulate">Prepopulate</string>
+  <string name="clear">Clear</string>
+  <string name="play_again">Play Again</string>
+  <string name="congratulations">Congratulations!</string>
+  <string name="test">Test</string>
+  <string name="next">NEXT</string>
+  <string name="there_are_no_questions_yet">There are no questions yet!</string>
+  <string name="android_checking_a_list">Android checking a list.</string>
+  <string name="android_holding_a_device_running_kotlin">Android holding a device running Kotlin.</string>
+</resources>
