@@ -7,8 +7,8 @@
   tools:context=".ui.login.LoginActivity">
 
   <androidx.appcompat.widget.Toolbar
-    android:id="@+id/loginToolbar"
     style="@style/ToolbarStyle"
+    android:id="@+id/loginToolbar"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"

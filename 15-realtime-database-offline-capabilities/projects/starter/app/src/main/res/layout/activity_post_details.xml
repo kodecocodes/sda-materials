@@ -22,6 +22,9 @@
     android:layout_marginStart="@dimen/normal_margin"
     android:layout_marginTop="@dimen/normal_margin"
     android:layout_marginEnd="@dimen/normal_margin"
+    android:hint="@string/type_here"
+    android:importantForAutofill="no"
+    android:inputType="text"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@id/postDetailsToolbar" />
@@ -74,6 +77,8 @@
     android:layout_marginEnd="@dimen/normal_margin"
     android:layout_marginBottom="@dimen/small_margin"
     android:hint="@string/comment"
+    android:inputType="text"
+    android:importantForAutofill="no"
     app:layout_constraintBottom_toTopOf="@id/addCommentButton"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent" />

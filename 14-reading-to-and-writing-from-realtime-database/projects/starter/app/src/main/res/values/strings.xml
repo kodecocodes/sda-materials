@@ -8,10 +8,10 @@
   <string name="new_post">New Post</string>
   <string name="post">Post</string>
   <string name="type_here">Type here</string>
-  <string name="empty_post_message">Post cannot be empty. Please add some content!</string>
-  <string name="empty_comment_message">Comment cannot be empty. Please add some content!</string>
+  <string name="empty_post_message">Post can\'t be empty. Please add some content!</string>
+  <string name="empty_comment_message">Comment can\'t be empty. Please add some content!</string>
   <string name="posted_successfully">Posted successfully!</string>
-  <string name="posting_failed">Posted could not be saved to the database!</string>
+  <string name="posting_failed">Post could not be saved to the database!</string>
   <string name="post_details">Post Details</string>
   <string name="update">Update</string>
   <string name="delete">Delete</string>

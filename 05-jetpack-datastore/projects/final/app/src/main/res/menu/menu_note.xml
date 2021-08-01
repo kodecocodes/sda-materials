@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+  <item
+      android:id="@+id/change_note_background_color"
+      android:title="@string/change_note_background_color"
+      app:showAsAction="never" />
+  <item android:id="@+id/filter_note_by_priority"
+      android:title="@string/filter_note_by_priority"
+      android:icon="@drawable/ic_filter"
+      app:showAsAction="ifRoom">
+    <menu>
+      <group android:checkableBehavior="all">
+        <item android:id="@+id/priority_1"
+            android:title="@string/priority_1" />
+        <item android:id="@+id/priority_2"
+            android:title="@string/priority_2" />
+        <item android:id="@+id/priority_3"
+            android:title="@string/priority_3" />
+
+      </group>
+    </menu>
+  </item>
+  <item android:id="@+id/sort_notes_by"
+      android:title="@string/sort_notes_by"
+      android:icon="@drawable/ic_sort"
+      app:showAsAction="ifRoom">
+    <menu>
+      <group android:checkableBehavior="single">
+        <item android:id="@+id/sort_by_date_last_modified_asc"
+            android:title="@string/date_modified_ascending"/>
+        <item android:id="@+id/sort_by_date_last_modified_desc"
+            android:title="@string/date_modified_descending"/>
+        <item android:id="@+id/sort_by_filename_asc"
+            android:title="@string/filename_ascending" />
+        <item android:id="@+id/sort_by_filename_desc"
+            android:title="@string/filename_descending" />
+        <item android:id="@+id/sort_by_priority_asc"
+            android:title="@string/priority_ascending" />
+        <item android:id="@+id/sort_by_priority_desc"
+            android:title="@string/priority_descending" />
+      </group>
+    </menu>
+
+  </item>
+</menu>
