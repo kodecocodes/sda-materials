@@ -1,10 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- Copyright (c) 2019 Razeware LLC
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  Notwithstanding the foregoing, you may not use, copy, modify, merge, publish,
+  distribute, sublicense, create a derivative work, and/or sell copies of the
+  Software in any work that is designed, intended, or marketed for pedagogical or
+  instructional purposes related to programming, coding, application development,
+  or information technology.  Permission for such use, copying, modification,
+  merger, publication, distribution, sublicensing, creation of derivative works,
+  or sale is expressly withheld.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  THE SOFTWARE.
+-->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
-  xmlns:tools="http://schemas.android.com/tools"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  tools:context=".view.QuestionActivity">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.QuestionActivity">
 
   <TextView
           android:id="@+id/questionTextView"
@@ -14,15 +43,15 @@
           android:layout_marginTop="8dp"
           android:layout_marginEnd="16dp"
           android:fontFamily="sans-serif-light"
-          android:text="Test"
+          android:text="@string/test"
           android:textColor="@color/colorPrimaryDark"
           android:textSize="24sp"
           android:textStyle="bold"
+          android:visibility="gone"
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toTopOf="parent"
-          tools:text="Which of the following languages is not commonly used to create Android Apps?"
-          android:visibility="gone"/>
+          tools:text="Which of the following languages is not commonly used to create Android Apps?" />
 
   <RadioGroup
           android:id="@+id/questionsRadioGroup"
@@ -31,10 +60,11 @@
           android:layout_marginStart="8dp"
           android:layout_marginEnd="8dp"
           android:layout_marginBottom="8dp"
+          android:visibility="gone"
           app:layout_constraintBottom_toBottomOf="parent"
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toBottomOf="@+id/questionTextView" android:visibility="gone">
+          app:layout_constraintTop_toBottomOf="@+id/questionTextView">
 
     <RadioButton
             android:id="@+id/option1"
@@ -42,10 +72,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="sans-serif-light"
-            android:text="Naruto"
             android:textSize="24sp"
             android:textStyle="bold"
-            tools:text="Naruto"/>
+            tools:text="Naruto" />
 
     <RadioButton
             android:id="@+id/option2"
@@ -53,10 +82,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="sans-serif-light"
-            android:text="Dragon Ball"
             android:textSize="24sp"
             android:textStyle="bold"
-            tools:text="Dragon Ball"/>
+            tools:text="Dragon Ball" />
 
     <RadioButton
             android:id="@+id/option3"
@@ -64,10 +92,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="sans-serif-light"
-            android:text="Avatar"
             android:textSize="24sp"
             android:textStyle="bold"
-            tools:text="Avatar"/>
+            tools:text="Avatar" />
   </RadioGroup>
 
   <ImageView
@@ -81,11 +108,13 @@
           android:adjustViewBounds="true"
           android:cropToPadding="false"
           android:scaleType="fitCenter"
+          android:contentDescription="@string/android_holding_a_device_running_kotlin"
+          android:visibility="gone"
           app:layout_constraintBottom_toTopOf="@+id/questionsRadioGroup"
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toBottomOf="@+id/questionTextView"
-          app:srcCompat="@drawable/kotllin" android:visibility="gone"/>
+          app:srcCompat="@drawable/kotlin" />
 
   <Button
           android:id="@+id/button"
@@ -94,39 +123,60 @@
           android:layout_height="wrap_content"
           android:background="@color/colorPrimary"
           android:fontFamily="sans-serif-light"
-          android:onClick="nextQuestion"
-          android:text="NEXT"
+          android:text="@string/next"
           android:textColor="@android:color/background_light"
           android:textSize="24sp"
           android:textStyle="bold"
+          android:visibility="gone"
           app:layout_constraintBottom_toBottomOf="parent"
           app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintStart_toStartOf="parent" android:visibility="gone"/>
+          app:layout_constraintStart_toStartOf="parent" />
+
   <ProgressBar
+          android:id="@+id/progressBar"
           style="@android:style/Widget.Material.Light.ProgressBar.Large"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:id="@+id/progressBar"
-          app:layout_constraintTop_toBottomOf="@+id/questionTextView" android:layout_marginBottom="8dp"
-          app:layout_constraintBottom_toBottomOf="@+id/button" app:layout_constraintEnd_toEndOf="parent"
-          android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
-          android:layout_marginStart="8dp" android:visibility="gone"/>
+          android:layout_marginStart="8dp"
+          android:layout_marginEnd="8dp"
+          android:layout_marginBottom="8dp"
+          android:visibility="gone"
+          app:layout_constraintBottom_toBottomOf="@+id/button"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/questionTextView" />
+
   <ImageView
+          android:id="@+id/emptyDroid"
           android:layout_width="200dp"
-          android:layout_height="200dp" app:srcCompat="@drawable/liost"
-          android:id="@+id/emptyDroid" android:layout_marginTop="32dp"
+          android:layout_height="200dp"
+          android:layout_marginStart="24dp"
+          android:layout_marginTop="32dp"
+          android:layout_marginEnd="24dp"
+          android:layout_marginBottom="32dp"
+          android:contentDescription="@string/android_checking_a_list"
+          android:visibility="gone"
+          app:layout_constraintBottom_toTopOf="@+id/emptyTextView"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toTopOf="parent"
-          app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="24dp"
-          app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="24dp" android:layout_marginBottom="32dp"
-          app:layout_constraintBottom_toTopOf="@+id/emptyTextView" android:visibility="gone"/>
+          app:srcCompat="@drawable/list" />
+
   <TextView
-          android:text="There are no questions yet!"
+          android:id="@+id/emptyTextView"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:id="@+id/emptyTextView" android:layout_marginTop="8dp"
-          app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="8dp"
-          app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent"
-          android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
-          android:layout_marginStart="8dp" android:textSize="24sp" android:fontFamily="sans-serif-light"
-          android:textStyle="bold" android:visibility="gone"/>
+          android:layout_marginStart="8dp"
+          android:layout_marginTop="8dp"
+          android:layout_marginEnd="8dp"
+          android:layout_marginBottom="8dp"
+          android:fontFamily="sans-serif-light"
+          android:text="@string/there_are_no_questions_yet"
+          android:textSize="24sp"
+          android:textStyle="bold"
+          android:visibility="gone"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
