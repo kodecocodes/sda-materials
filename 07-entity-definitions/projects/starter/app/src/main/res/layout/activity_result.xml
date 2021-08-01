@@ -45,7 +45,8 @@
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/textView"
-    app:srcCompat="@drawable/versions" />
+    app:srcCompat="@drawable/versions"
+    tools:ignore="ContentDescription" />
 
   <TextView
     android:id="@+id/textView"
@@ -55,7 +56,7 @@
     android:layout_marginTop="8dp"
     android:layout_marginEnd="8dp"
     android:fontFamily="sans-serif-light"
-    android:text="Congratulations!"
+    android:text="@string/congratulations"
     android:textColor="@color/colorPrimaryDark"
     android:textSize="30sp"
     android:textStyle="bold"
@@ -71,13 +72,13 @@
     android:layout_marginTop="8dp"
     android:layout_marginEnd="8dp"
     android:fontFamily="sans-serif-light"
-    android:text="You scored: 1/4"
     android:textColor="@color/colorPrimaryDark"
     android:textSize="30sp"
     android:textStyle="bold"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+    app:layout_constraintTop_toBottomOf="@+id/imageView3"
+    tools:text="You scored: 1/4" />
 
   <Button
     android:id="@+id/playButton"
@@ -85,8 +86,8 @@
     android:layout_height="wrap_content"
     android:background="@color/colorPrimary"
     android:fontFamily="sans-serif-light"
-    android:onClick="playAgain"
-    android:text="PLAY AGAIN"
+    android:text="@string/play_again"
+    android:textAllCaps="true"
     android:textColor="@android:color/background_light"
     android:textSize="24sp"
     android:textStyle="bold"
