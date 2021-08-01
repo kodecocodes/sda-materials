@@ -1,0 +1,37 @@
+<resources>
+  <string name="app_name">Organized Simple Note</string>
+  <string name="change_note_background_color">Change Note Background Color</string>
+  <string name="text_delete">Delete</string>
+  <string name="text_save">Save</string>
+  <string name="text_cancel">Cancel</string>
+  <string name="note_text_hint">Note Text</string>
+  <string name="fake_date">01–01–01 01:01:01</string>
+  <string name="filename_hint">Filename</string>
+  <string name="lines_text_1">1</string>
+  <string name="hint_note_text">Note Text</string>
+  <string name="green">Green</string>
+  <string name="orange">Orange</string>
+  <string name="purple">Purple</string>
+  <string name="edit_note_title">Edit Note</string>
+  <string name="add_note_title">Add Note</string>
+  <string name="add_note">Add Note</string>
+  <string name="filter_note_by_priority">Filter Note By Priority</string>
+  <string name="priority_1">Priority 1</string>
+  <string name="priority_2">Priority 2</string>
+  <string name="priority_3">Priority 3</string>
+  <string name="sort_notes_by">Sort Notes By…</string>
+  <string name="date_modified_ascending">Date Modified Ascending</string>
+  <string name="filename_ascending">Filename Ascending</string>
+  <string name="date_modified_descending">Date Modified Descending</string>
+  <string name="priority_ascending">Priority Ascending</string>
+  <string name="priority_descending">Priority Descending</string>
+  <string name="filename_descending">Filename Descending</string>
+
+
+  <string-array name="prioritiesList">
+    <item>(priority)</item>
+    <item>1</item>
+    <item>2</item>
+    <item>3</item>
+  </string-array>
+</resources>
