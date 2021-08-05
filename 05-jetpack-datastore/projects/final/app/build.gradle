@@ -40,5 +40,5 @@ dependencies {
   implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.3.1"
 
   // TUTORIAL DEPENDENCIES HERE
-  implementation "androidx.datastore:datastore-preferences:1.0.0-rc01"
+  implementation "androidx.datastore:datastore-preferences:1.0.0"
 }
